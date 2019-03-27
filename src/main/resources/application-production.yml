@@ -1,0 +1,8 @@
+org.elpuentesearcy:
+  isTestMode: false
+  domain: elpuentesearcy.org
+  google:
+    analytics:
+      trackingId: UA-137077382-1
+    maps:
+      apiKey: AIzaSyB8Y_HTlI53HV4Ky0XSeTiw3DSo1aTjwA8

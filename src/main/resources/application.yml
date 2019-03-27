@@ -1,2 +1,12 @@
 server:
   port: 8091
+
+org.elpuentesearcy:
+  version: @project.version@
+  isTestMode: true
+  domain: localhost
+  google:
+    analytics:
+      trackingId:
+    maps:
+      apiKey: AIzaSyAUs1B95NJzFcSpf2An9EDWfKCrDyHlrwQ

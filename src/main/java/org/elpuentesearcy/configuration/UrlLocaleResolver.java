@@ -10,69 +10,70 @@ import java.util.Optional;
 
 public class UrlLocaleResolver implements LocaleResolver
 {
-    private static final String URL_LOCALE_ATTRIBUTE_NAME = "URL_LOCALE_ATTRIBUTE_NAME";
-
-    private enum ElPuenteLocale
+    public enum ElPuenteLanguage
     {
         English( Locale.ENGLISH, "en" ),
-        Spanish( new Locale( "es" ), "es" )
-        ;
+        Spanish( new Locale( "es" ), "es" );
 
         private final Locale locale;
-        private final String path;
+        private final String subdomain;
 
-        ElPuenteLocale( Locale locale, String path )
+        ElPuenteLanguage( Locale locale, String subdomain )
         {
             this.locale = locale;
-            this.path = path;
+            this.subdomain = subdomain;
         }
 
-        boolean matches( String uri, String contextPath )
+        public static Optional<ElPuenteLanguage> get( String subdomain )
         {
-            boolean matches = false;
+            return Arrays.stream( values() )
+                         .filter( l -> l.subdomain.equalsIgnoreCase( subdomain ) )
+                         .findFirst();
+        }
 
-            String prefix = contextPath + "/" + path;
-            if ( uri.startsWith( prefix ) )
+        public static Optional<ElPuenteLanguage> getFromSubdomain( HttpServletRequest request )
+        {
+            String domain = request.getServerName();
+            String subdomain = domain.substring( 0, Math.max( 0, domain.indexOf( '.' ) ) );
+
+            return get( subdomain );
+        }
+
+        public static Optional<ElPuenteLanguage> getFromHeaders( HttpServletRequest request )
+        {
+            String languageHeader = request.getHeader( "Accept-Language" );
+            String localeString = languageHeader.substring( 0, Math.max( 0, languageHeader.indexOf( "," ) ) );
+            if ( localeString.contains( "-" ) )
             {
-                if ( uri.length() > prefix.length() )
-                {
-                    matches = uri.startsWith( prefix + "/" );
-                }
-                else
-                {
-                    matches = true;
-                }
+                localeString = localeString.substring( 0, localeString.indexOf( "-" ) );
             }
 
-            return matches;
+            return get( localeString );
         }
 
-        public static Optional<Locale> resolveLocale( HttpServletRequest request )
+        public Locale getLocale()
         {
-            Optional<ElPuenteLocale> optional = Arrays.stream( values() )
-                                                      .filter( l -> l.matches( request.getRequestURI(), request.getServletContext().getContextPath() ) )
-                                                      .findFirst();
+            return locale;
+        }
 
-            Locale locale = optional.isPresent() ? optional.get().locale : (Locale) request.getSession().getAttribute( URL_LOCALE_ATTRIBUTE_NAME );
-
-            return Optional.ofNullable( locale );
+        public String getSubdomain()
+        {
+            return subdomain;
         }
     }
 
     @Override
     public Locale resolveLocale( HttpServletRequest request )
     {
-        Locale locale = ElPuenteLocale.resolveLocale( request ).orElse( Locale.ENGLISH );
-
-        //session-based locale (will override default if it has ever been set via the locale in the URL)
-//        request.getSession().setAttribute( URL_LOCALE_ATTRIBUTE_NAME, locale );
-
-        return locale;
+        return ElPuenteLanguage.getFromSubdomain( request )
+                               .orElseGet( () -> ElPuenteLanguage.getFromHeaders( request )
+                                                                 .orElse( ElPuenteLanguage.English )
+                             ).getLocale();
     }
 
     @Override
     public void setLocale( HttpServletRequest request, HttpServletResponse response, Locale locale )
     {
-        // Nothing
+        throw new UnsupportedOperationException( "Cannot change sub-domain locale - use a different locale resolution strategy" );
     }
 }
