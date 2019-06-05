@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<nav th:fragment="header" class="navbar navbar-expand-lg navbar-light bg-white">
-   <a class="navbar-brand" th:href="@{/}">
-      <img th:src="${'/images/logo_'+(#locale.language == 'es' ? 'es' : 'en')+'.png'}" alt="EL PUENTE" width="300px">
-   </a>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav m-auto">
-         <li class="nav-item">
-            <a th:replace="fragments/navlink::link( #{labels.home}, '/' )">Home</a>
-         </li>
-         <li class="nav-item">
-            <a th:replace="fragments/navlink::link( #{labels.services}, '/' )">Services</a>
-         </li>
-         <li class="nav-item">
-            <a th:replace="fragments/navlink::link( #{labels.boardOfDirectors}, '/' )">Board of Directors</a>
-         </li>
-         <li class="nav-item">
-            <a th:replace="fragments/navlink::link( #{labels.events}, '/' )">Events</a>
-         </li>
-         <li class="nav-item">
-            <a th:replace="fragments/navlink::link( #{labels.donations}, '/' )">Donations</a>
-         </li>
-         <li class="nav-item">
-            <a th:replace="fragments/navlink::link( #{labels.contactUs}, '/' )">Contact Us</a>
-         </li>
-         <li class="nav-item" th:if="${T(org.elpuentesearcy.configuration.Properties).get().isTestMode()}">
-            <a th:replace="fragments/navlink::betaLink( #{labels.submitRequest}, '/submitRequest' )">Submit Request</a>
-         </li>
-      </ul>
-   </div>
-</nav>
+<div th:fragment="header" th:with="footer=${footer ?: false}" th:class="${footer ? '' : 'container'}">
+   <nav class="navbar navbar-expand-md navbar-light bg-light py-0">
+      <a class="navbar-brand" th:href="@{/}">
+         <img th:unless="${footer}" th:src="${'/images/logo_'+(#locale.language == 'es' ? 'es' : 'en')+'.png'}" alt="EL PUENTE" width="300px">
+         <img th:if="${footer}" src="/images/logo-small.png" alt="EL PUENTE" width="50px">
+      </a>
+      <button class="navbar-toggler text-danger border-0" style="font-size: 2em;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <i class="fas fa-ellipsis-v"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul th:class="'navbar-nav '+${footer ? 'mx-auto' : 'ml-auto'}">
+            <li class="nav-item">
+               <a th:replace="fragments/navlink::link( #{labels.home}, '/' )">Home</a>
+            </li>
+            <li class="nav-item">
+               <a th:replace="fragments/navlink::link( #{labels.about}, '/about' )">About Us</a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--               <a th:replace="fragments/navlink::link( #{labels.events}, '/' )">Events</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--               <a th:replace="fragments/navlink::link( #{labels.donations}, '/' )">Donations</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--               <a th:replace="fragments/navlink::link( #{labels.contactUs}, '/contact' )">Contact Us</a>-->
+<!--            </li>-->
+            <li class="nav-item" th:if="${T(org.elpuentesearcy.configuration.Properties).get().isTestMode()}">
+               <a th:replace="fragments/navlink::betaLink( #{labels.submitRequest}, '/submitRequest' )">Submit Request</a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+</div>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+
+   <title th:text="#{titles.about}">About Us</title>
+   <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
+</head>
+<body>
+<main role="main" class="bg-light">
+   <div th:replace="fragments/navbar::header">
+      Header
+   </div>
+
+   <div th:replace="fragments/employeeCards::cards(employees=${boardOfDirectors}, header=#{labels.boardOfDirectors}, subheader=#{meetTheBoard})">
+      Board Cards
+   </div>
+
+   <div th:replace="fragments/employeeCards::cards(employees=${staff}, header=#{labels.staff})">
+      Staff Cards
+   </div>
+
+   <footer th:insert="fragments/footer::footer" th:remove="tag">
+      Footer
+   </footer>
+</main>
+</body>
+</html>

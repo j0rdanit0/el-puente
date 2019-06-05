@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+
+   <title th:text="#{titles.contactUs}">Title</title>
+</head>
+<body>
+<main role="main">
+   <div th:replace="fragments/navbar::header">
+      Header
+   </div>
+
+   <footer th:insert="fragments/footer::footer" th:remove="tag">
+      Footer
+   </footer>
+</main>
+</body>
+</html>

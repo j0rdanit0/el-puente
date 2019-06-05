@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="footer" class="text-dark py-3">
+   <div class="container">
+      <h3 th:insert="fragments/socialMedia::buttons(colorClass='text-secondary')" class="float-right pt-3"></h3>
+      <div th:replace="fragments/navbar::header(footer=true)">
+         Nav
+      </div>
+      <hr/>
+      <small class="text-center d-block mx-auto" th:text="'Copyright © '+${#dates.createNow().year + 1900}+' Jordan Simpson, All Rights Reserved.'">
+         Copyright
+      </small>
+   </div>
+</footer>
+</body>
+</html>

@@ -5,8 +5,84 @@ org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
   domain: localhost
+  email: office@elpuentesearcy.org
+  phone: 1234567890
+  physicalAddress:
+    - 811 South Main Street
+    - Suite F
+    - Searcy, AR 72143
+  mailingAddress:
+    - P.O. Box 8046
+    - Searcy, AR 72145
+  facebookUrl: facebook
+  twitterUrl:
   google:
     analytics:
       trackingId:
     maps:
       apiKey: AIzaSyAUs1B95NJzFcSpf2An9EDWfKCrDyHlrwQ
+  board:
+    -
+      name: Jay Simpson
+      title:
+        en: President
+        es: El Presidente
+      description:
+        en:
+        es:
+    -
+      name: Larry Wilks
+      title:
+        en: Vice President
+        es: El Vicepresidente
+      description:
+        en:
+        es:
+    -
+      name: Jaclyn Seiders
+      title:
+        en: Secretary/Treasurer
+        es: La Sectretaria-Tesorera
+      description:
+        en:
+        es:
+    -
+      name: Guillermo Hernandez
+      title:
+        en:
+        es:
+      description:
+        en:
+        es:
+    -
+      name: Tity Abbud
+      title:
+        en:
+        es:
+      description:
+        en:
+        es:
+    -
+      name: Logan Russell
+      title:
+        en:
+        es:
+      description:
+        en:
+        es:
+    -
+      name: Roddy Lochala
+      title:
+        en:
+        es:
+      description:
+        en:
+        es:
+  staff:
+    - name: Ruth Simpson
+      title:
+        en: Executive Director
+        es: La Directora Ejecutiva
+      description:
+        en:
+        es:

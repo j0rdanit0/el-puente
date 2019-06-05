@@ -1,0 +1,20 @@
+@media (min-width: 576px) {
+   .card-columns {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+   }
+}
+
+@media (min-width: 992px) {
+   .card-columns {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+   }
+}
+
+.boardHero {
+   height: 5rem;
+   background: linear-gradient(to right, var(--primary) 50%, var(--primary) 50%);
+}

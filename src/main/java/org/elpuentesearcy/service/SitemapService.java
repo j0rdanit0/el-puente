@@ -49,8 +49,7 @@ public class SitemapService
                 Class<?> klass = controller.getClass();
                 while ( klass != Object.class )
                 {
-                    final List<Method> allMethods = new ArrayList<>( Arrays.asList( klass.getDeclaredMethods() ) );
-                    for ( Method method : allMethods )
+                    for ( Method method : klass.getDeclaredMethods() )
                     {
                         if ( method.isAnnotationPresent( GetMapping.class ) )
                         {

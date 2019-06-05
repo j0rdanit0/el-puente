@@ -1,0 +1,39 @@
+:root {
+   --primary: #6BA6CB;
+   --secondary: #9A9A9A;
+   --dark: #363133;
+   --danger: #E07F52;
+}
+
+
+.text-primary {
+   color: var(--primary)!important;
+}
+.text-secondary {
+   color: var(--secondary)!important;
+}
+.text-danger {
+   color: var(--danger)!important;
+}
+.text-dark {
+   color: var(--dark)!important;
+}
+
+
+.bg-primary {
+   background-color: var(--primary)!important;
+}
+.bg-secondary {
+   background-color: var(--secondary)!important;
+}
+.bg-danger {
+   background-color: var(--danger)!important;
+}
+.bg-dark {
+   background-color: var(--dark)!important;
+}
+
+
+.card {
+   border-radius: 0!important;
+}

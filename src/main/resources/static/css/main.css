@@ -1,3 +1,63 @@
+body {
+   line-height: 1.5;
+   margin: 0;
+   background-color: var( --light );
+}
+
+@media (min-width: 0px) {
+   body {
+      font-size: 0.9rem;
+   }
+}
+
+@media (min-width: 576px) {
+   body {
+      font-size: 0.95rem;
+   }
+}
+
+@media (min-width: 768px) {
+   body {
+      font-size: 1rem;
+   }
+}
+
+@media (min-width: 992px) {
+   body {
+      font-size: 1.125rem;
+   }
+}
+
 .hoverPointer {
    cursor: pointer;
+}
+
+.boxShadow {
+   box-shadow: 0 12px 28px -9px #69757a;
+   -webkit-box-shadow: 0 12px 28px -9px #69757a;
+   -moz-box-shadow: 0 12px 28px -9px #69757a;
+}
+
+.header {
+   background: linear-gradient(90deg,#d5d9db,#d5d9db) 50%/100% 2px no-repeat;
+}
+
+.carousel-caption {
+   text-shadow: 0 0 4px #000000;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+a.facebook:hover {
+   color: #4267B2!important;
+}
+
+a.twitter:hover {
+   color: #1DA1F2!important;
+}
+
+footer {
+   border-top: 1rem solid var(--primary);
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<body>
+<div layout:fragment="card" th:with="color=${color ?: '--primary'}" class="card border-0">
+   <div class="card-body" th:style="'border-top: solid 3px var('+${color}+')'">
+      <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
+         <div layout:insert="~{layouts/info::icon(__${fontawesomeClass}__)}" th:remove="tag"></div>
+      </th:block>
+      <div layout:fragment="content">
+         Content
+      </div>
+   </div>
+</div>
+
+<div layout:fragment="icon(fontawesomeClass)" class="align-content-center">
+   <h1 class="float-left text-danger mr-3">
+      <i th:class="'fas '+${fontawesomeClass}"></i>
+   </h1>
+   <div layout:fragment="label"></div>
+</div>
+</body>
+</html>

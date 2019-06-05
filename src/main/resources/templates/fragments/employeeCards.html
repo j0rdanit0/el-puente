@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+<div th:fragment="cards">
+   <div class="boardHero"></div>
+   <div class="container">
+      <div layout:insert="~{layouts/info::card}" th:with="color='--danger'" class="boxShadow" style="transform:translateY(-50px)">
+         <div layout:fragment="content">
+            <h1 class="text-center">
+               <strong class="text-dark" th:text="${header}">
+                  Board of Directors
+               </strong>
+            </h1>
+            <small th:if="${!#strings.isEmpty(subheader)}" class="text-center text-secondary d-block" th:text="${subheader}">
+               Meet the peeps
+            </small>
+         </div>
+      </div>
+      <div class="card-columns">
+         <div layout:insert="~{layouts/info::card}" th:each="employee:${employees}">
+            <div layout:fragment="content">
+               <div th:class="'row no-gutters '+${#strings.isEmpty(employee.getLocalDescription(#locale.language)) ? 'align-items-center' : ''}">
+                  <div class="col-md-4 col-lg-3">
+                     <img th:src="@{__${employee.squareImage}__}" class="rounded-circle p-2 d-block d-md-none mx-auto" width="85px" th:alt="${employee.name}">
+                     <img th:src="@{__${employee.image}__}" class="d-none d-md-block mr-auto" width="100%" th:alt="${employee.name}">
+                  </div>
+                  <div class="col-md-8 col-lg-9">
+                     <div class="pl-md-3">
+                        <h5 class="mt-0 mb-1 text-center">
+                           <span th:text="${employee.name}">Name</span>
+                           <small th:if="${!#strings.isEmpty(employee.getLocalTitle(#locale.language))}" th:utext="${employee.getLocalTitle(#locale.language)}" class="text-secondary font-italic">Title</small>
+                           <hr class="mb-0"/>
+                        </h5>
+                        <small th:text="${employee.getLocalDescription(#locale.language)}">Description</small>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>
