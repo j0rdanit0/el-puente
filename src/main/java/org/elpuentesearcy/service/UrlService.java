@@ -19,7 +19,7 @@ public class UrlService
 
     public String getBaseUrl( UrlLocaleResolver.ElPuenteLanguage subdomain )
     {
-        return "http" + (isUsesSSL() ? "s" : "") + "://" + ( subdomain == null ? "" : subdomain.getSubdomain() + "." ) + getDomain() + (isUsesSSL() ? "" : ":" + getPort());
+        return "http" + (isUsesSSL() ? "s" : "") + "://" + (subdomain == null ? "" : subdomain.getSubdomain() + ".") + getDomain() + (isUsesSSL() ? "" : ":" + getPort());
     }
 
     public int getPort()

@@ -1,9 +1,20 @@
 server:
   port: 8091
 
+logging:
+  level:
+    org.elpuentesearcy: TRACE
+
 org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
+  siteChanges:
+    - Fixed the collapsible menu that isn't expanding on the <a href="/about">About Us</a> page.
+    - Made the logo smaller when the screen is skinnier to keep the menu button at the top.
+    - Updated the logos to show orange "beta" when viewing the beta site to clearly show you aren't looking at the real site.
+    - Mission Statement text has been updated on the <a href="/">Home</a> page in English and Spanish.
+    - Added occupation information to each Board of Directors member on the <a href="/about">About Us</a> page in English.
+    - The navigation menu in the footer now never collapses and is always visible.
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 1234567890
@@ -28,56 +39,45 @@ org.elpuentesearcy:
         en: President
         es: El Presidente
       description:
-        en:
-        es:
+        en: Senior Associate Director of Financial Aid Services<br/><strong>Harding University</strong>
     -
       name: Larry Wilks
       title:
         en: Vice President
         es: El Vicepresidente
       description:
-        en:
-        es:
+        en: Chaplain<br/><strong>Harding Place</strong>
     -
       name: Jaclyn Seiders
       title:
         en: Secretary/Treasurer
         es: La Sectretaria-Tesorera
       description:
-        en:
-        es:
+        en: Literacy Coach/ESOL Coordinator<br/><strong>Searcy Public Schools</strong>
     -
       name: Guillermo Hernandez
       title:
         en:
-        es:
       description:
-        en:
-        es:
+        en: Immigration Attorney<br/><strong>Hernandez Law Firm</strong>
     -
       name: Tity Abbud
       title:
         en:
-        es:
       description:
-        en:
-        es:
+        en: Community Advocate
     -
       name: Logan Russell
       title:
         en:
-        es:
       description:
-        en:
-        es:
+        en: Community Liaison<br/><strong>ARCare</strong>
     -
-      name: Roddy Lochala
+      name: Dr. Roddy Lochala
       title:
         en:
-        es:
       description:
-        en:
-        es:
+        en: Family Medicine Residency Associate Program Director<br/><strong>Unity Health</strong>
   staff:
     - name: Ruth Simpson
       title:
@@ -85,4 +85,3 @@ org.elpuentesearcy:
         es: La Directora Ejecutiva
       description:
         en:
-        es:

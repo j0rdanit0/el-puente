@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
+   <th:block th:with="isTestMode=${T(org.elpuentesearcy.configuration.Properties).get().isTestMode()}">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
@@ -25,24 +26,34 @@
       <!--<script async src='https://www.google-analytics.com/analytics.js'></script>-->
    </th:block>
 
-   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-   <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-   <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-   <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-   <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-   <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-   <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-   <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-   <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-   <link rel="manifest" href="/manifest.json">
+   <th:block th:unless="${isTestMode}">
+      <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/manifest.json">
+   </th:block>
+   <th:block th:if="${isTestMode}">
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-beta-180x180.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-beta-192x192.png">
+      <link rel="manifest" href="/manifest-beta.json">
+   </th:block>
+
    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6ba6cb">
-   <meta name="apple-mobile-web-app-title" content="El Puente">
-   <meta name="application-name" content="El Puente">
-   <meta name="msapplication-TileColor" content="#6ba6cb">
+   <meta name="apple-mobile-web-app-capable" content="no">
+   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${isTestMode?' BETA':''}">
+   <meta name="application-name" th:content="'El Puente'+${isTestMode?' BETA':''}">
+   <meta name="msapplication-config" content="browserconfig.xml">
+   <meta name="msapplication-TileColor" th:content="'#'+${isTestMode?'E07F52':'6ba6cb'}">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
    <meta name="theme-color" content="#ffffff">
 
@@ -50,11 +61,11 @@
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
    <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
+   </th:block>
 </head>
 <body th:fragment="scripts">
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="/webjars/jquery/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-   <script th:src="@{'/js/main.js?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}"></script>
 </body>
 </html>

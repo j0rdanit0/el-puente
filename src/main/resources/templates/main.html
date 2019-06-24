@@ -115,5 +115,6 @@
 </main>
 
    <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+   <script th:src="@{'/js/main.js?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}"></script>
 </body>
 </html>

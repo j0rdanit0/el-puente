@@ -3,17 +3,17 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
 <div th:fragment="cards">
-   <div class="boardHero"></div>
+   <div class="banner-primary"></div>
    <div class="container">
       <div layout:insert="~{layouts/info::card}" th:with="color='--danger'" class="boxShadow" style="transform:translateY(-50px)">
          <div layout:fragment="content">
             <h1 class="text-center">
                <strong class="text-dark" th:text="${header}">
-                  Board of Directors
+                  Header
                </strong>
             </h1>
             <small th:if="${!#strings.isEmpty(subheader)}" class="text-center text-secondary d-block" th:text="${subheader}">
-               Meet the peeps
+               Subheader
             </small>
          </div>
       </div>
@@ -32,7 +32,7 @@
                            <small th:if="${!#strings.isEmpty(employee.getLocalTitle(#locale.language))}" th:utext="${employee.getLocalTitle(#locale.language)}" class="text-secondary font-italic">Title</small>
                            <hr class="mb-0"/>
                         </h5>
-                        <small th:text="${employee.getLocalDescription(#locale.language)}">Description</small>
+                        <small class="d-block text-center" th:utext="${employee.getLocalDescription(#locale.language)}">Description</small>
                      </div>
                   </div>
                </div>

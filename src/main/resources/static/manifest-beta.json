@@ -1,0 +1,14 @@
+{
+ "name": "El Puente BETA",
+ "short_name": "BETA",
+ "icons": [
+  {
+   "src": "\/images\/logo-small-beta.png",
+   "sizes": "192x192",
+   "type": "image\/png",
+   "density": "4.0"
+  }
+ ],
+ "theme_color": "#E07F52",
+ "background_color": "#ffffff"
+}

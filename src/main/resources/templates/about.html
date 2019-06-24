@@ -9,7 +9,7 @@
    <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
 </head>
 <body>
-<main role="main" class="bg-light">
+<main role="main">
    <div th:replace="fragments/navbar::header">
       Header
    </div>
@@ -26,5 +26,7 @@
       Footer
    </footer>
 </main>
+
+<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
 </body>
 </html>

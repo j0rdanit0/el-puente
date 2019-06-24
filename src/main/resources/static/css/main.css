@@ -8,17 +8,29 @@ body {
    body {
       font-size: 0.9rem;
    }
+
+   .navLogo {
+      width: 200px;
+   }
 }
 
 @media (min-width: 576px) {
    body {
       font-size: 0.95rem;
    }
+
+   .navLogo {
+      width: 250px;
+   }
 }
 
 @media (min-width: 768px) {
    body {
       font-size: 1rem;
+   }
+
+   .navLogo {
+      width: 300px;
    }
 }
 
@@ -60,4 +72,14 @@ a.twitter:hover {
 
 footer {
    border-top: 1rem solid var(--primary);
+}
+
+.banner-primary {
+   height: 5rem;
+   background: linear-gradient(to right, var(--primary) 50%, var(--primary) 50%);
+}
+
+.banner-danger {
+   height: 5rem;
+   background: linear-gradient(to right, var(--danger) 50%, var(--danger) 50%);
 }

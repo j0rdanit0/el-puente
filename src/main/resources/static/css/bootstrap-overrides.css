@@ -34,6 +34,38 @@
 }
 
 
+.btn-primary {
+   background-color: var(--primary)!important;
+   border-color: var(--primary)!important;
+}
+.btn-secondary {
+   background-color: var(--secondary)!important;
+   border-color: var(--secondary)!important;
+}
+.btn-danger {
+   background-color: var(--danger)!important;
+   border-color: var(--danger)!important;
+}
+.btn-dark {
+   background-color: var(--dark)!important;
+   border-color: var(--dark)!important;
+}
+
+
+.badge-primary {
+   background-color: var(--primary)!important;
+}
+/*.badge-secondary {*/
+/*   background-color: var(--secondary)!important;*/
+/*}*/
+.badge-danger {
+   background-color: var(--danger)!important;
+}
+.badge-dark {
+   background-color: var(--dark)!important;
+}
+
+
 .card {
    border-radius: 0!important;
 }
