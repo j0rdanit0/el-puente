@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+<head>
+   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+
+   <title th:text="#{resources.title}">Title</title>
+   <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${properties.version}__}">
+</head>
+<body>
+<main role="main">
+   <div th:replace="fragments/navbar::header">
+      Header
+   </div>
+
+   <a href="https://www.searcychamber.com/">
+      <img src="/images/searcy-chamber-of-commerce.png">
+   </a>
+
+   <footer th:insert="fragments/footer::footer" th:remove="tag">
+      Footer
+   </footer>
+</main>
+
+<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+</body>
+</html>

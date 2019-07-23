@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html th:lang="${#locale.language}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
-   <title th:text="#{titles.changes}">Title</title>
-   <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
+   <title th:text="#{changes.title}">Title</title>
+   <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${properties.version}__}">
 </head>
 <body>
 <main role="main">
@@ -15,7 +18,7 @@
       </div>
    </div>
 
-   <h1 th:replace="fragments/sectionHeader::header(#{labels.changes})">
+   <h1 th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')">
       Changes
    </h1>
 
@@ -45,11 +48,11 @@
       </div>
    </div>
 
-   <h1 th:replace="fragments/sectionHeader::header(#{labels.submitRequest})">
+   <h1 th:replace="fragments/sectionHeader::header(#{changes.submitRequest})">
       Submit a Request
    </h1>
    <div class="text-center">
-      <iframe th:src="'https://docs.google.com/forms/d/e/1FAIpQLScuYV0CMvL30BWD6YVKvx6ppN0XljZTItC7VNmCjdgb1xrkRg/viewform?embedded=true&hl='+${#locale.language}" width="640" height="400" frameborder="0" marginheight="0" marginwidth="0" th:text="#{labels.loading}+'...'">Loading...</iframe>
+      <iframe th:src="'https://docs.google.com/forms/d/e/1FAIpQLScuYV0CMvL30BWD6YVKvx6ppN0XljZTItC7VNmCjdgb1xrkRg/viewform?embedded=true&hl='+${#locale.language}" width="640" height="400" frameborder="0" marginheight="0" marginwidth="0" th:text="#{changes.loading}+'...'">Loading...</iframe>
    </div>
 
    <footer th:insert="fragments/footer::footer" th:remove="tag">
@@ -62,9 +65,7 @@
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js" integrity="sha256-9Nt2r+tJnSd2A2CRUvnjgsD+ES1ExvjbjBNqidm9doI=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
-<th:block th:with="version=${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}">
-   <script th:src="@{'/js/cookieHelper.js?v='+__${version}__}"></script>
-   <script th:src="@{'/js/websockets.js?v='+__${version}__}"></script>
-   <script th:src="@{'/js/changes.js?v='+__${version}__}"></script>
-</th:block>
+<script th:src="@{'/js/cookieHelper.js?v='+__${properties.version}__}"></script>
+<script th:src="@{'/js/websockets.js?v='+__${properties.version}__}"></script>
+<script th:src="@{'/js/changes.js?v='+__${properties.version}__}"></script>
 </body>

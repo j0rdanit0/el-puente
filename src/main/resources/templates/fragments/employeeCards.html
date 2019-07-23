@@ -30,7 +30,7 @@
                         <h5 class="mt-0 mb-1 text-center">
                            <span th:text="${employee.name}">Name</span>
                            <small th:if="${!#strings.isEmpty(employee.getLocalTitle(#locale.language))}" th:utext="${employee.getLocalTitle(#locale.language)}" class="text-secondary font-italic">Title</small>
-                           <hr class="mb-0"/>
+                           <hr th:if="${!#strings.isEmpty(employee.getLocalDescription(#locale.language))}" class="mb-0"/>
                         </h5>
                         <small class="d-block text-center" th:utext="${employee.getLocalDescription(#locale.language)}">Description</small>
                      </div>

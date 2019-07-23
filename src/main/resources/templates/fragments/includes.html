@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
-   <th:block th:with="isTestMode=${T(org.elpuentesearcy.configuration.Properties).get().isTestMode()}">
+<head th:fragment="head" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
 
-   <th:block th:if="${!#strings.isEmpty(T(org.elpuentesearcy.configuration.Properties).get().getGoogle().getAnalytics().getTrackingId())}">
-      <script async th:src="'https://www.googletagmanager.com/gtag/js?id='+${T(org.elpuentesearcy.configuration.Properties).get().getGoogle().getAnalytics().getTrackingId()}"></script>
+   <th:block th:if="${!#strings.isEmpty(properties.google.analytics.trackingId)}" th:with="trackingId=${properties.google.analytics.trackingId}">
+      <script async th:src="'https://www.googletagmanager.com/gtag/js?id='+${trackingId}"></script>
       <script th:inline="javascript">
          /*<![CDATA[*/
          window.dataLayer = window.dataLayer || [];
          function gtag(){dataLayer.push(arguments);}
          gtag('js', new Date());
 
-         gtag('config', [[${T(org.elpuentesearcy.configuration.Properties).get().getGoogle().getAnalytics().getTrackingId()}]]);
+         gtag('config', [[${trackingId}]]);
          /*]]>*/
       </script>
 
-      <!--<script th:inline="javascript">-->
-         <!--window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;-->
-         <!--ga('create', [[${T(org.elpuentesearcy.configuration.Properties).get().getGoogle().getAnalytics().getTrackingId()}]], 'auto');-->
-         <!--ga('send', 'pageview');-->
-      <!--</script>-->
-      <!--<script async src='https://www.google-analytics.com/analytics.js'></script>-->
+      <script th:inline="javascript">
+         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+         ga('create', [[${trackingId}]], 'auto');
+         ga('send', 'pageview');
+      </script>
+      <script async src='https://www.google-analytics.com/analytics.js'></script>
    </th:block>
 
-   <th:block th:unless="${isTestMode}">
+   <th:block th:unless="${properties.testMode}">
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
       <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -42,7 +41,7 @@
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
       <link rel="manifest" href="/manifest.json">
    </th:block>
-   <th:block th:if="${isTestMode}">
+   <th:block th:if="${properties.testMode}">
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-beta-180x180.png">
       <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-beta-192x192.png">
       <link rel="manifest" href="/manifest-beta.json">
@@ -50,18 +49,17 @@
 
    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6ba6cb">
    <meta name="apple-mobile-web-app-capable" content="no">
-   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${isTestMode?' BETA':''}">
-   <meta name="application-name" th:content="'El Puente'+${isTestMode?' BETA':''}">
+   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${properties.testMode?' BETA':''}">
+   <meta name="application-name" th:content="'El Puente'+${properties.testMode?' BETA':''}">
    <meta name="msapplication-config" content="browserconfig.xml">
-   <meta name="msapplication-TileColor" th:content="'#'+${isTestMode?'E07F52':'6ba6cb'}">
+   <meta name="msapplication-TileColor" th:content="'#'+${properties.testMode?'E07F52':'6ba6cb'}">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
    <meta name="theme-color" content="#ffffff">
 
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-   <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
-   <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
-   </th:block>
+   <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${properties.version}__}">
 </head>
 <body th:fragment="scripts">
    <script src="/webjars/jquery/jquery.min.js"></script>

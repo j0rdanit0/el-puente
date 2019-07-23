@@ -12,7 +12,9 @@ public class AboutController
     @Autowired
     private Properties properties;
 
-    @GetMapping( "/about" )
+    public static final String URL_BASE = "/about";
+
+    @GetMapping( URL_BASE )
     public String about( Model model )
     {
         model.addAttribute( "boardOfDirectors", properties.getBoard() );

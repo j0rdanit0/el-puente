@@ -1,109 +1,63 @@
 <!DOCTYPE html>
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
-   <title th:text="#{titles.home}">Title</title>
-   <link rel="stylesheet" th:href="@{'/css/home.css?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}">
+   <title th:text="#{home.title}">Title</title>
+   <link rel="stylesheet" th:href="@{'/css/home.css?v='+__${properties.version}__}">
 </head>
 <body>
+   <div id="fb-root"></div>
+   <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
    <main role="main">
       <div th:replace="fragments/navbar::header">
          Header
       </div>
 
-      <div class="card border-0 bg-primary">
-         <div class="card-body container py-5 px-3 px-md-5">
-            <h2 class="font-italic text-center text-light font-weight-light" th:text="#{missionStatement}">
-               Mission statement
-            </h2>
-            <small class="text-right d-block text-white" th:text="#{missionStatementSignature}">
-               Signature
-            </small>
-         </div>
-      </div>
-
-      <h1 th:replace="fragments/sectionHeader::header(#{labels.contactUs})">
-         contact us
-      </h1>
-
-      <div class="container" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
-         <div class="card-columns">
-            <div layout:insert="~{layouts/info::card}" th:remove="tag" th:if="${!#lists.isEmpty(properties.physicalAddress)}">
-               <div layout:fragment="content" th:remove="tag">
-                  <div layout:insert="~{layouts/info::icon('fa-map-marker-alt')}" class="hoverPointer" onclick="mapsSelector(35.241926, -91.736496)">
-                     <div layout:fragment="label">
-                        <strong class="text-dark">
-                           <th:block th:each="line:${properties.physicalAddress}">
-                              <span th:text="${line}">Line</span>
-                              <br/>
-                           </th:block>
-                        </strong>
-                        <small class="text-secondary font-italic" th:text="#{mailNotice}">
-                           Don't mail here!
-                        </small>
+      <div class="container my-3">
+         <div class="row">
+            <div class="col-12 col-md-6 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">
+               <div layout:insert="~{layouts/info::card}">
+                  <div layout:fragment="content" th:remove="tag">
+                     <div class="fb-page d-block"
+                          th:attr="data-href=${properties.facebookUrl}"
+                          data-tabs="timeline, events"
+                          data-width=""
+                          data-height=""
+                          data-small-header="false"
+                          data-adapt-container-width="true"
+                          data-hide-cover="false"
+                          data-show-facepile="true">
+                        <blockquote th:cite="${properties.facebookUrl}" class="fb-xfbml-parse-ignore">
+                           <a th:href="${properties.facebookUrl}">
+                              El Puente Hispanic Services Center
+                           </a>
+                        </blockquote>
                      </div>
                   </div>
                </div>
             </div>
-            <div layout:insert="~{layouts/info::card}" th:remove="tag">
-               <div layout:fragment="content" th:remove="tag">
-                  <th:block th:if="${!#lists.isEmpty(properties.mailingAddress)}">
-                     <div layout:insert="~{layouts/info::icon('fa-envelope-square')}">
-                        <strong layout:fragment="label" class="text-dark">
-                           <th:block th:each="line:${properties.mailingAddress}">
-                              <span th:text="${line}">Line</span>
-                              <br/>
-                           </th:block>
-                        </strong>
-                     </div>
-                     <hr/>
-                  </th:block>
-                  <th:block th:if="${!#strings.isEmpty(properties.phone)}">
-                     <a th:href="'tel:'+${properties.phone}">
-                        <div layout:insert="~{layouts/info::icon('fa-phone-square')}">
-                           <strong layout:fragment="label" class="text-dark">
-                              <span th:text="#{labels.phone}+':'" class="text-capitalize">
-                                 Phone:
-                              </span>
-                              <br/>
-                              <span th:text="${properties.formattedPhone}">
-                                 (123) 456-7890
-                              </span>
-                           </strong>
-                        </div>
-                     </a>
-                     <hr/>
-                  </th:block>
-                  <th:block th:if="${!#strings.isEmpty(properties.email)}">
-                     <a th:href="'mailto:'+${properties.email}">
-                        <div layout:insert="~{layouts/info::icon('fa-at')}">
-                           <strong layout:fragment="label" class="text-dark">
-                              <span th:text="#{labels.email}+':'" class="text-capitalize">
-                                 Email:
-                              </span>
-                              <br/>
-                              <span th:text="${properties.email}">
-                                 test@abc.com
-                              </span>
-                           </strong>
-                        </div>
-                     </a>
-                     <hr/>
-                  </th:block>
-                  <h1 th:include="fragments/socialMedia::buttons"></h1>
+            <div class="col-12 col-md-6 mb-3">
+               <div class="card border-0 bg-primary">
+                  <div class="card-body container pt-5 px-3 px-md-5">
+                     <p class="font-italic text-center text-light font-weight-light" th:text="#{home.missionStatement}">
+                        Mission statement
+                     </p>
+                     <small class="text-right d-block text-white" th:text="#{home.missionStatementSignature}">
+                        Signature
+                     </small>
+                  </div>
                </div>
-            </div>
-            <div layout:insert="~{layouts/info::card}" th:remove="tag">
-               <div layout:fragment="content">
-                  <iframe th:src="'https://www.google.com/maps/embed/v1/place?q=811+S+Main+St,+Searcy,+AR+72143&key='+${T(org.elpuentesearcy.configuration.Properties).get().getGoogle().getMaps().getApiKey()}+'&language='+${#locale.language}"
-                          class="mx-auto d-block border-0"
-                          width="100%"
-                          height="480"
-                          allowfullscreen>
-                  </iframe>
+               <br/>
+               <div layout:insert="~{layouts/info::card}">
+                  <div layout:fragment="content" th:remove="tag">
+                     <div class="text-center" th:utext="#{home.donationText}">
+                        Donation stuff
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -115,6 +69,6 @@
 </main>
 
    <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
-   <script th:src="@{'/js/main.js?v='+__${T(org.elpuentesearcy.configuration.Properties).get().getVersion()}__}"></script>
+   <script th:src="@{'/js/facebookEmbed.js?v='+__${properties.version}__}"></script>
 </body>
 </html>

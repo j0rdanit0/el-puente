@@ -24,6 +24,8 @@ public class ChangesController
 
     private static final List<ChangeApproval> CHANGE_APPROVALS = new ArrayList<>();
 
+    public static final String URL_BASE = "/changes";
+
     @PostConstruct
     public void postConstruct()
     {
@@ -33,7 +35,7 @@ public class ChangesController
         }
     }
 
-    @GetMapping( "/changes" )
+    @GetMapping( URL_BASE )
     public String home()
     {
         return "changes";

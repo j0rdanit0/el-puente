@@ -9,23 +9,20 @@ org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
   siteChanges:
-    - Fixed the collapsible menu that isn't expanding on the <a href="/about">About Us</a> page.
-    - Made the logo smaller when the screen is skinnier to keep the menu button at the top.
-    - Updated the logos to show orange "beta" when viewing the beta site to clearly show you aren't looking at the real site.
-    - Mission Statement text has been updated on the <a href="/">Home</a> page in English and Spanish.
-    - Added occupation information to each Board of Directors member on the <a href="/about">About Us</a> page in English.
-    - The navigation menu in the footer now never collapses and is always visible.
+    - Embedded <strong>Facebook Timeline and Events</strong>, and added text about <strong>donations</strong> in the <a href="/">Home</a> page.
+    - Added <strong>About Us</strong> and <strong>History</strong> sections to the <a href="/about">About Us</a> page. (English only)
+    - Embedded <strong>Facebook Messages</strong>, and removed <strong>Physical Address, Office Hours, and Google Maps</strong> in the <a href="/contact">Contact Us</a> page.
+    - Added <strong>Kairos photo creds and website link</strong> to the footer.
   domain: localhost
   email: office@elpuentesearcy.org
-  phone: 1234567890
+  phone: 5018279944
+  officeHoursWeekday: 9:00am - 4:00pm
+  officeHoursWeekend: 1:00pm - 5:00pm
   physicalAddress:
-    - 811 South Main Street
-    - Suite F
-    - Searcy, AR 72143
   mailingAddress:
     - P.O. Box 8046
     - Searcy, AR 72145
-  facebookUrl: facebook
+  facebookUrl: https://www.facebook.com/elpuentesearcy/
   twitterUrl:
   google:
     analytics:

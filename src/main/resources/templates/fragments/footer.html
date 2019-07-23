@@ -8,7 +8,19 @@
          Nav
       </div>
       <hr/>
-      <small class="text-center d-block mx-auto" th:text="'Copyright © '+${#dates.createNow().year + 1900}+' Jordan Simpson, All Rights Reserved.'">
+      <div class="text-center text-secondary">
+         <small th:text="#{photoCreds}">Photo creds</small>
+         <br/>
+         <a href="http://kairos.photography" class="text-center d-block" target="_blank">
+            <img src="https://cdn.zenfolio.net/img/s/v-5/u804581710-o327057621-111.png"
+                 height="75px"
+                 alt="Kairos Photography">
+            <br/>
+            Kairos Photography
+         </a>
+      </div>
+      <hr/>
+      <small class="text-center d-block" th:text="'Copyright © '+${#dates.createNow().year + 1900}+' Jordan Simpson, All Rights Reserved.'">
          Copyright
       </small>
    </div>

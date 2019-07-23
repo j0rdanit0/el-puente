@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="header" th:with="footer=${footer ?: false}, isTestMode=${T(org.elpuentesearcy.configuration.Properties).get().isTestMode()}" th:class="${footer ? '' : 'container'}">
-   <nav th:class="'navbar navbar-light bg-light py-0 '+${footer ? 'navbar-expand' : 'navbar-expand-md'}">
+   <nav class="navbar navbar-light bg-light py-0 navbar-expand-md">
       <a class="navbar-brand" th:href="@{/}">
          <img th:unless="${footer}" th:src="${'/images/logo_'+(#locale.language == 'es' ? 'es' : 'en')+(isTestMode?'_beta':'')+'.png'}" th:alt="${'EL PUENTE'+(isTestMode?' BETA':'')}" class="navLogo">
          <img th:if="${footer}" th:src="${'/images/logo-small'+(isTestMode?'-beta':'')+'.png'}" th:alt="${'EL PUENTE'+(isTestMode?' BETA':'')}" width="50px">
@@ -13,22 +13,28 @@
       <div class="collapse navbar-collapse" th:id="'navbarSupportedContent'+${footer}">
          <ul th:class="'navbar-nav '+${footer ? 'mx-auto' : 'ml-auto'}">
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{labels.home}, '/' )">Home</a>
+               <a th:replace="fragments/navlink::link( #{about.navlink}, ${T(org.elpuentesearcy.controller.AboutController).URL_BASE} )">About Us</a>
             </li>
+<!--            <li class="nav-item">-->
+<!--               <a th:replace="fragments/navlink::link( #{page.services}, ${T(org.elpuentesearcy.controller.ServicesController).URL_BASE} )">Services</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--               <a th:replace="fragments/navlink::link( #{page.programs}, ${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE} )">Programs</a>-->
+<!--            </li>-->
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{labels.about}, '/about' )">About Us</a>
+               <a th:replace="fragments/navlink::link( #{events.navlink}, ${T(org.elpuentesearcy.configuration.Properties).get().getFacebookUrl()} )">News & Events</a>
             </li>
 <!--            <li class="nav-item">-->
-<!--               <a th:replace="fragments/navlink::link( #{labels.events}, '/' )">Events</a>-->
+<!--               <a th:replace="fragments/navlink::link( #{page.involvement}, ${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE} )">Get Involved</a>-->
 <!--            </li>-->
 <!--            <li class="nav-item">-->
-<!--               <a th:replace="fragments/navlink::link( #{labels.donations}, '/' )">Donations</a>-->
+<!--               <a th:replace="fragments/navlink::link( #{page.resources}, ${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE} )">Partners/Resources</a>-->
 <!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--               <a th:replace="fragments/navlink::link( #{labels.contactUs}, '/contact' )">Contact Us</a>-->
-<!--            </li>-->
+            <li class="nav-item">
+               <a th:replace="fragments/navlink::link( #{contact.navlink}, ${T(org.elpuentesearcy.controller.ContactController).URL_BASE} )">Contact Us</a>
+            </li>
             <li class="nav-item" th:if="${isTestMode}">
-               <a th:replace="fragments/navlink::betaLink( #{labels.changes}, '/changes' )">Changes</a>
+               <a th:replace="fragments/navlink::betaLink( #{changes.navlink}, ${T(org.elpuentesearcy.controller.ChangesController).URL_BASE} )">Changes</a>
             </li>
          </ul>
       </div>

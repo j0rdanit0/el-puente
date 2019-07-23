@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <a th:fragment="link(text, uri)" class="nav-link" th:href="${uri}">
-   <span th:text="${text}">
+   <span th:utext="${text}">
       Link text
    </span>
 </a>
 <a th:fragment="betaLink(text, uri)" class="nav-link" th:href="${uri}">
-   <span th:text="${text}">
+   <span th:utext="${text}">
       Link text
    </span>
    <span class="badge badge-pill badge-danger">

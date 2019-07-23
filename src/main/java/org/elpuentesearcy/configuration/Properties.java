@@ -19,6 +19,8 @@ public class Properties
     private boolean isTestMode;
     private List<String> physicalAddress = new ArrayList<>();
     private List<String> mailingAddress = new ArrayList<>();
+    private String officeHoursWeekday;
+    private String officeHoursWeekend;
     private String email;
     private String phone;
     private String facebookUrl;
@@ -238,6 +240,26 @@ public class Properties
     public void setMailingAddress( List<String> mailingAddress )
     {
         this.mailingAddress = mailingAddress;
+    }
+
+    public String getOfficeHoursWeekday()
+    {
+        return officeHoursWeekday;
+    }
+
+    public void setOfficeHoursWeekday( String officeHoursWeekday )
+    {
+        this.officeHoursWeekday = officeHoursWeekday;
+    }
+
+    public String getOfficeHoursWeekend()
+    {
+        return officeHoursWeekend;
+    }
+
+    public void setOfficeHoursWeekend( String officeHoursWeekend )
+    {
+        this.officeHoursWeekend = officeHoursWeekend;
     }
 
     public String getEmail()
