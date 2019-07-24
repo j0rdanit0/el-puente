@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<footer th:fragment="footer" class="text-dark py-3">
+<footer th:fragment="footer(activeTab)" class="text-dark py-3">
    <div class="container">
       <h3 th:insert="fragments/socialMedia::buttons(colorClass='text-secondary')" class="float-right pt-3"></h3>
-      <div th:replace="fragments/navbar::header(footer=true)">
+      <div th:replace="fragments/navbar::header(activeTab=${activeTab}, footer=true)">
          Nav
       </div>
       <hr/>
       <div class="text-center text-secondary">
          <small th:text="#{photoCreds}">Photo creds</small>
          <br/>
-         <a href="http://kairos.photography" class="text-center d-block" target="_blank">
-            <img src="https://cdn.zenfolio.net/img/s/v-5/u804581710-o327057621-111.png"
-                 height="75px"
-                 alt="Kairos Photography">
-            <br/>
-            Kairos Photography
-         </a>
+         <div class="w-100 text-center">
+            <a href="http://kairos.photography" class="text-primary" target="_blank">
+               <img src="https://cdn.zenfolio.net/img/s/v-5/u804581710-o327057621-111.png"
+                    height="75px"
+                    alt="Kairos Photography">
+               <br/>
+               Kairos Photography
+            </a>
+         </div>
       </div>
       <hr/>
       <small class="text-center d-block" th:text="'Copyright © '+${#dates.createNow().year + 1900}+' Jordan Simpson, All Rights Reserved.'">

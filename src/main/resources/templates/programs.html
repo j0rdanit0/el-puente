@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.language}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+<head>
+   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
+
+   <title th:text="#{programs.title}">Title</title>
+</head>
+<body>
+<main role="main">
+   <div th:replace="fragments/navbar::header(#{programs.navlink})">
+      Header
+   </div>
+
+   <h1 th:replace="fragments/sectionHeader::header(#{programs.navlink})">
+      programs
+   </h1>
+
+   <div class="card border-0 bg-primary">
+      <div class="card-body container pt-3 pb-0">
+         <p class="text-light" th:utext="#{programs.description}">
+            Description
+         </p>
+      </div>
+   </div>
+
+   <div class="container my-5">
+      <div class="d-none d-sm-inline-block w-100">
+         <span class="float-right">
+            <a id="displayInColumnsButton" class="btn btn-sm btn-secondary border-0" title="Column view">
+               <i class="fas fa-columns"></i>
+            </a>
+            <a id="displayInRowsButton" class="btn btn-sm btn-outline-secondary border-0" title="List view">
+               <i class="fas fa-align-left"></i>
+            </a>
+         </span>
+      </div>
+      <div id="displayCards" class="card-columns">
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-hotdog', #{programs.english.label}, #{programs.english.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-pepper-hot', #{programs.spanish.label}, #{programs.spanish.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-flag-usa', #{programs.citizenship.label}, #{programs.citizenship.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-laptop', #{programs.computer.label}, #{programs.computer.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-sun', #{programs.afterSchoolSummer.label}, #{programs.afterSchoolSummer.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-hiking', #{programs.camp.label}, #{programs.camp.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-hand-paper', #{programs.leaders.label}, #{programs.leaders.description} )}"></div>
+         <div class="mb-1" layout:insert="~{layouts/info::iconCard('fa-female', #{programs.girls.label}, #{programs.girls.description} )}"></div>
+      </div>
+   </div>
+
+   <footer th:insert="fragments/footer::footer(#{programs.navlink})" th:remove="tag">
+      Footer
+   </footer>
+</main>
+
+<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+<script th:src="@{'/js/cardView.js?v='+__${properties.version}__}"></script>
+</body>
+</html>

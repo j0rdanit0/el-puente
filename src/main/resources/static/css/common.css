@@ -70,6 +70,10 @@ a.twitter:hover {
    color: #1DA1F2!important;
 }
 
+.nav-link span:hover {
+   border-bottom: 3px solid var(--primary);
+}
+
 footer {
    border-top: 1rem solid var(--primary);
 }

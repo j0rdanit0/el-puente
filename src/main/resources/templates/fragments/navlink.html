@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<a th:fragment="link(text, uri)" class="nav-link" th:href="${uri}">
-   <span th:utext="${text}">
+<a th:fragment="link(text, activeText, uri)" class="nav-link" th:href="${uri}">
+   <span th:utext="${text}" th:style="${text == activeText ? 'border-bottom: solid 3px var(--danger)' : ''}" th:class="${text == activeText ? 'font-weight-bold' : ''}">
       Link text
    </span>
 </a>
-<a th:fragment="betaLink(text, uri)" class="nav-link" th:href="${uri}">
-   <span th:utext="${text}">
+<a th:fragment="betaLink(text, activeText, uri)" class="nav-link" th:href="${uri}">
+   <span th:utext="${text}" class="badge badge-pill badge-danger">
       Link text
-   </span>
-   <span class="badge badge-pill badge-danger">
-      BETA
    </span>
 </a>
 </body>

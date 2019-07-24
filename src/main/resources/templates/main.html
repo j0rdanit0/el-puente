@@ -7,19 +7,18 @@
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
    <title th:text="#{home.title}">Title</title>
-   <link rel="stylesheet" th:href="@{'/css/home.css?v='+__${properties.version}__}">
 </head>
 <body>
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
    <main role="main">
-      <div th:replace="fragments/navbar::header">
+      <div th:replace="fragments/navbar::header('')">
          Header
       </div>
 
       <div class="container my-3">
          <div class="row">
-            <div class="col-12 col-md-6 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
                      <div class="fb-page d-block"
@@ -40,7 +39,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-12 col-md-6 mb-3">
+            <div class="col-12 col-md-6 col-lg-7 col-xl-8 mb-3">
                <div class="card border-0 bg-primary">
                   <div class="card-body container pt-5 px-3 px-md-5">
                      <p class="font-italic text-center text-light font-weight-light" th:text="#{home.missionStatement}">
@@ -63,7 +62,7 @@
          </div>
       </div>
 
-      <footer th:insert="fragments/footer::footer" th:remove="tag">
+      <footer th:insert="fragments/footer::footer('')" th:remove="tag">
          Footer
       </footer>
 </main>

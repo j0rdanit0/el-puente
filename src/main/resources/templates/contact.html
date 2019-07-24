@@ -14,7 +14,7 @@
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
 </th:block>
 <main role="main">
-   <div th:replace="fragments/navbar::header">
+   <div th:replace="fragments/navbar::header(#{contact.navlink})">
       Header
    </div>
 
@@ -28,7 +28,7 @@
             <div layout:insert="~{layouts/info::card}">
                <div layout:fragment="content" th:remove="tag">
                   <th:block th:if="${!#lists.isEmpty(properties.physicalAddress)}">
-                     <div layout:insert="~{layouts/info::icon('fa-map-marker-alt')}" th:class="hoverPointer" onclick="mapsSelector()">
+                     <div layout:insert="~{layouts/info::icon('fa-map-marker-alt')}" class="hoverPointer" onclick="mapsSelector()">
                      <span layout:fragment="label" class="text-dark">
                         <th:block th:each="line:${properties.physicalAddress}">
                            <strong th:text="${line}">Line</strong>
@@ -129,7 +129,7 @@
       </iframe>
    </div>
 
-   <footer th:insert="fragments/footer::footer" th:remove="tag">
+   <footer th:insert="fragments/footer::footer(#{contact.navlink})" th:remove="tag">
       Footer
    </footer>
 </main>

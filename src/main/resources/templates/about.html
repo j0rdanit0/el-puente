@@ -7,11 +7,11 @@
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
    <title th:text="#{about.title}">About Us</title>
-   <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
 </head>
 <body>
 <main role="main">
-   <div th:replace="fragments/navbar::header">
+   <div th:replace="fragments/navbar::header(#{about.navlink})">
       Header
    </div>
 
@@ -35,7 +35,7 @@
       Staff Cards
    </div>
 
-   <footer th:insert="fragments/footer::footer" th:remove="tag">
+   <footer th:insert="fragments/footer::footer(#{about.navlink})" th:remove="tag">
       Footer
    </footer>
 </main>

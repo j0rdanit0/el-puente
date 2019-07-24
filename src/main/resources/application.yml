@@ -13,6 +13,10 @@ org.elpuentesearcy:
     - Added <strong>About Us</strong> and <strong>History</strong> sections to the <a href="/about">About Us</a> page. (English only)
     - Embedded <strong>Facebook Messages</strong>, and removed <strong>Physical Address, Office Hours, and Google Maps</strong> in the <a href="/contact">Contact Us</a> page.
     - Added <strong>Kairos photo creds and website link</strong> to the footer.
+    - Added "News & Events" tab, which redirects to the Facebook page.
+    - Added <a href="/services">Services</a> page (English only).
+    - Added <a href="/programs">Programs</a> page (English only).
+    - Added "active" indicators to the navigation menu to show which page is the one you are currently visiting.
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
