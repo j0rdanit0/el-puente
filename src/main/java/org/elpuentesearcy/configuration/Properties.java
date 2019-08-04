@@ -17,6 +17,7 @@ public class Properties
 {
     private String version;
     private boolean isTestMode;
+    private String domain;
     private List<String> physicalAddress = new ArrayList<>();
     private List<String> mailingAddress = new ArrayList<>();
     private String officeHoursWeekday;
@@ -195,6 +196,16 @@ public class Properties
     public boolean isTestMode()
     {
         return isTestMode;
+    }
+
+    public String getDomain()
+    {
+        return domain;
+    }
+
+    public void setDomain( String domain )
+    {
+        this.domain = domain;
     }
 
     public void setIsTestMode( boolean testMode )

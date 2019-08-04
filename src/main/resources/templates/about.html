@@ -7,6 +7,9 @@
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
    <title th:text="#{about.title}">About Us</title>
+   <!--<meta property="og:url" content="">-->
+   <meta property="og:title" th:content="#{about.title}">
+   <meta property="og:description" th:content="#{about.aboutUs.content}">
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
 </head>
 <body>

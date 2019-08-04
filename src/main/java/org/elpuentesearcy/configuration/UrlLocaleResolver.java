@@ -41,14 +41,16 @@ public class UrlLocaleResolver implements LocaleResolver
 
         public static Optional<ElPuenteLanguage> getFromHeaders( HttpServletRequest request )
         {
-            String languageHeader = request.getHeader( "Accept-Language" );
-            String localeString = languageHeader.substring( 0, Math.max( 0, languageHeader.indexOf( "," ) ) );
-            if ( localeString.contains( "-" ) )
-            {
-                localeString = localeString.substring( 0, localeString.indexOf( "-" ) );
-            }
+            return Optional.ofNullable( request.getHeader( "Accept-Language" ) )
+                           .flatMap( languageHeader -> {
+                               String localeString = languageHeader.substring( 0, Math.max( 0, languageHeader.indexOf( "," ) ) );
+                               if ( localeString.contains( "-" ) )
+                               {
+                                   localeString = localeString.substring( 0, localeString.indexOf( "-" ) );
+                               }
 
-            return get( localeString );
+                               return get( localeString );
+                           } );
         }
 
         public Locale getLocale()

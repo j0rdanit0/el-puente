@@ -7,6 +7,10 @@
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
    <title th:text="#{resources.title}">Title</title>
+   <!--<meta property="og:url" content="">-->
+   <meta property="og:title" th:content="#{resources.title}">
+   <meta property="og:description" th:content="#{resources.navlink}">
+
    <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${properties.version}__}">
 </head>
 <body>

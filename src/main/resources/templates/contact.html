@@ -7,6 +7,9 @@
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
    <title th:text="#{contact.title}">Title</title>
+   <!--<meta property="og:url" content="">-->
+   <meta property="og:title" th:content="#{contact.title}">
+   <meta property="og:description" th:content="#{contact.contactUs}">
 </head>
 <body>
 <th:block th:if="${!#strings.isEmpty( properties.facebookUrl )}">

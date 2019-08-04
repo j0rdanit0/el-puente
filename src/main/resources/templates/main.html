@@ -7,6 +7,9 @@
    <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
 
    <title th:text="#{home.title}">Title</title>
+   <!--<meta property="og:url" content="">-->
+   <meta property="og:title" th:content="#{home.title}">
+   <meta property="og:description" th:content="#{home.missionStatement}">
 </head>
 <body>
    <div id="fb-root"></div>

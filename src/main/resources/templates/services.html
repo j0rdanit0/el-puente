@@ -10,6 +10,9 @@
    <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${properties.version}__}">
 
    <title th:text="#{services.title}">Title</title>
+   <!--<meta property="og:url" content="">-->
+   <meta property="og:title" th:content="#{services.title}">
+   <meta property="og:description" th:content="#{services.description}">
 </head>
 <body>
 <main role="main">
