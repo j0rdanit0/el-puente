@@ -10,7 +10,7 @@
             <span th:text="${label}"></span>
          </strong>
       </div>
-      <small th:text="${description}"></small>
+      <small th:utext="${description}"></small>
    </div>
 </div>
 
@@ -27,6 +27,22 @@
       <i th:class="'fas '+${fontawesomeClass}"></i>
    </h1>
    <div layout:fragment="label"></div>
+</div>
+
+<div layout:fragment="cardView" class="container my-5">
+   <div class="d-none d-sm-inline-block w-100">
+      <span class="float-right text-secondary">
+         <a id="displayInColumnsButton" class="viewButton btn btn-sm border-0 text-primary" title="Column view">
+            <i class="fas fa-columns"></i>
+         </a>
+         <a id="displayInRowsButton" class="viewButton btn btn-sm border-0" title="List view">
+            <i class="fas fa-align-left"></i>
+         </a>
+      </span>
+   </div>
+   <div id="displayCards" class="card-columns">
+      <div layout:fragment="iconCards"></div>
+   </div>
 </div>
 </body>
 </html>

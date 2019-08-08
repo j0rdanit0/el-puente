@@ -16,34 +16,13 @@
 </head>
 <body>
 <main role="main">
-   <div th:replace="fragments/navbar::header(#{services.navlink})">
-      Header
-   </div>
+   <i th:replace="fragments/navbar::header(#{services.navlink})"></i>
 
-   <h1 th:replace="fragments/sectionHeader::header(#{services.navlink})">
-      services
-   </h1>
+   <i th:replace="fragments/sectionHeader::header(#{services.navlink})"></i>
+   <i th:replace="fragments/sectionHeader::bannerText(#{services.description})"></i>
 
-   <div class="card border-0 bg-primary">
-      <div class="card-body container pt-3 pb-0">
-         <p class="text-light" th:utext="#{services.description}">
-            Description
-         </p>
-      </div>
-   </div>
-
-   <div class="container my-5">
-      <div class="d-none d-sm-inline-block w-100">
-         <span class="float-right text-secondary">
-            <a id="displayInColumnsButton" class="viewButton btn btn-sm border-0 text-primary" title="Column view">
-               <i class="fas fa-columns"></i>
-            </a>
-            <a id="displayInRowsButton" class="viewButton btn btn-sm border-0" title="List view">
-               <i class="fas fa-align-left"></i>
-            </a>
-         </span>
-      </div>
-      <div id="displayCards" class="card-columns">
+   <i layout:replace="~{layouts/info::cardView}">
+      <div layout:fragment="iconCards">
          <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-id-card', #{services.idCards.label}, #{services.idCards.description} )}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-user-friends', #{services.interpretations.label}, #{services.interpretations.description} )}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-copy', #{services.translations.label}, #{services.translations.description} )}"></div>
@@ -55,11 +34,9 @@
          <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-certificate', #{services.notary.label}, #{services.notary.description} )}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-file-signature', #{services.selectiveService.label}, #{services.selectiveService.description} )}"></div>
       </div>
-   </div>
+   </i>
 
-   <footer th:insert="fragments/footer::footer(#{services.navlink})" th:remove="tag">
-      Footer
-   </footer>
+   <i th:replace="fragments/footer::footer(#{services.navlink})"></i>
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->

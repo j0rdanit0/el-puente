@@ -12,13 +12,8 @@
 </head>
 <body>
 <main role="main">
-   <div th:replace="fragments/navbar::header(#{changes.navlink})">
-      Header
-   </div>
-
-   <h1 th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')">
-      Changes
-   </h1>
+   <i th:replace="fragments/navbar::header(#{changes.navlink})"></i>
+   <i th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')"></i>
 
    <form id="initialsContainer" class="form-inline justify-content-center my-5">
       <div class="form-group mx-sm-3">
@@ -46,16 +41,14 @@
       </div>
    </div>
 
-   <h1 th:replace="fragments/sectionHeader::header(#{changes.submitRequest})">
+   <i th:replace="fragments/sectionHeader::header(#{changes.submitRequest})">
       Submit a Request
-   </h1>
+   </i>
    <div class="text-center">
       <iframe th:src="'https://docs.google.com/forms/d/e/1FAIpQLScuYV0CMvL30BWD6YVKvx6ppN0XljZTItC7VNmCjdgb1xrkRg/viewform?embedded=true&hl='+${#locale.language}" width="640" height="400" frameborder="0" marginheight="0" marginwidth="0" th:text="#{changes.loading}+'...'">Loading...</iframe>
    </div>
 
-   <footer th:insert="fragments/footer::footer(#{changes.navlink})" th:remove="tag">
-      Footer
-   </footer>
+   <i th:replace="fragments/footer::footer(#{changes.navlink})"></i>
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->

@@ -2,9 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <h1 th:fragment="header(text)" class="header mb-5 text-center text-primary">
-   <strong class="bg-light px-4 text-uppercase" th:text="${text}">
-      header
-   </strong>
+   <strong class="bg-light px-4 text-uppercase" th:text="${text}"></strong>
 </h1>
+
+<div th:fragment="bannerText(text)" class="card border-0 bg-primary">
+   <div class="card-body container pt-3 pb-0">
+      <p class="text-light" th:utext="${text}"></p>
+   </div>
+</div>
 </body>
 </html>

@@ -8,6 +8,15 @@ body {
    body {
       font-size: 0.9rem;
    }
+   h1 {
+      font-size: 1.6rem;
+   }
+   h2 {
+      font-size: 1.5rem;
+   }
+   h3 {
+      font-size: 1.4rem;
+   }
 
    .navLogo {
       width: 200px;
@@ -17,6 +26,15 @@ body {
 @media (min-width: 576px) {
    body {
       font-size: 0.95rem;
+   }
+   h1 {
+      font-size: 2rem;
+   }
+   h2 {
+      font-size: 1.8rem;
+   }
+   h3 {
+      font-size: 1.6rem;
    }
 
    .navLogo {
@@ -28,15 +46,30 @@ body {
    body {
       font-size: 1rem;
    }
+   h1 {
+      font-size: 2.5rem;
+   }
+   h2 {
+      font-size: 2rem;
+   }
+   h3 {
+      font-size: 1.75rem;
+   }
 
    .navLogo {
-      width: 300px;
+      width: 200px;
    }
 }
 
 @media (min-width: 992px) {
    body {
       font-size: 1.125rem;
+   }
+}
+
+@media (min-width: 1200px) {
+   .navLogo {
+      width: 300px;
    }
 }
 
@@ -68,6 +101,13 @@ a.facebook:hover {
 
 a.twitter:hover {
    color: #1DA1F2!important;
+}
+
+.nav-link span {
+   -webkit-transition: border-bottom-width 200ms;
+   -moz-transition: border-bottom-width 200ms;
+   -o-transition: border-bottom-width 200ms;
+   transition: border-bottom-width 200ms;
 }
 
 .nav-link span:hover {

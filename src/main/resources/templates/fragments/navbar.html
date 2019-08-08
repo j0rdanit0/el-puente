@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="header(activeTab)" th:with="footer=${footer ?: false}, properties=${T(org.elpuentesearcy.configuration.Properties).get()}" th:class="${footer ? '' : 'container'}">
-   <nav class="navbar navbar-light bg-light p-0 navbar-expand-md">
+   <nav class="navbar navbar-light p-0 navbar-expand-lg">
       <a class="navbar-brand" th:href="@{/}">
          <img th:unless="${footer}" th:src="${'/images/logo_'+(#locale.language == 'es' ? 'es' : 'en')+(properties.testMode?'_beta':'')+'.png'}" th:alt="${'EL PUENTE'+(properties.testMode?' BETA':'')}" class="navLogo">
          <img th:if="${footer}" th:src="${'/images/logo-small'+(properties.testMode?'-beta':'')+'.png'}" th:alt="${'EL PUENTE'+(properties.testMode?' BETA':'')}" width="50px">
@@ -13,32 +13,33 @@
       <div class="collapse navbar-collapse" th:id="'navbarSupportedContent'+${footer}">
          <ul th:class="'navbar-nav '+${footer ? 'mx-auto' : 'ml-auto'}">
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{about.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.AboutController).URL_BASE} )">About Us</a>
+               <i th:replace="fragments/navlink::link( #{home.navlink}, ${activeTab}, '/' )">Home</i>
             </li>
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{services.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ServicesController).URL_BASE} )">Services</a>
+               <i th:replace="fragments/navlink::link( #{about.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.AboutController).URL_BASE} )">About Us</i>
             </li>
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{programs.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE} )">Programs</a>
+               <i th:replace="fragments/navlink::link( #{services.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ServicesController).URL_BASE} )">Services</i>
             </li>
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{events.navlink}, ${activeTab}, ${properties.facebookUrl} )">News & Events</a>
+               <i th:replace="fragments/navlink::link( #{programs.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE} )">Programs</i>
+            </li>
+            <li class="nav-item" th:if="${!#strings.isEmpty(properties.facebookUrl)}">
+               <i th:replace="fragments/navlink::link( #{news.navlink}, ${activeTab}, ${properties.facebookUrl} )">News</i>
+            </li>
+            <li class="nav-item">
+               <i th:replace="fragments/navlink::link( #{involvement.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE} )">Get Involved</i>
             </li>
 <!--            <li class="nav-item">-->
-<!--               <a th:replace="fragments/navlink::link( #{page.involvement}, ${activeTab}, ${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE} )">Get Involved</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--               <a th:replace="fragments/navlink::link( #{page.resources}, ${activeTab}, ${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE} )">Partners/Resources</a>-->
+<!--               <i th:replace="fragments/navlink::link( #{resources.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE} )">Partners/Resources</i>-->
 <!--            </li>-->
             <li class="nav-item">
-               <a th:replace="fragments/navlink::link( #{contact.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ContactController).URL_BASE} )">Contact Us</a>
-            </li>
-            <li class="nav-item" th:if="${properties.testMode}">
-               <a th:replace="fragments/navlink::betaLink( #{changes.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ChangesController).URL_BASE} )">Changes</a>
+               <i th:replace="fragments/navlink::link( #{contact.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ContactController).URL_BASE} )">Contact Us</i>
             </li>
          </ul>
       </div>
    </nav>
+   <i th:if="${properties.testMode}" th:replace="fragments/navlink::betaLink( #{changes.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ChangesController).URL_BASE} )">Changes</i>
 </div>
 </body>
 </html>

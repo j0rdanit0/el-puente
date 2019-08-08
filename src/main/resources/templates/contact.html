@@ -17,13 +17,8 @@
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
 </th:block>
 <main role="main">
-   <div th:replace="fragments/navbar::header(#{contact.navlink})">
-      Header
-   </div>
-
-   <h1 th:replace="fragments/sectionHeader::header(#{contact.contactUs})">
-      contact us
-   </h1>
+   <i th:replace="fragments/navbar::header(#{contact.navlink})"></i>
+   <i th:replace="fragments/sectionHeader::header(#{contact.contactUs})"></i>
 
    <div class="container">
       <div class="row">
@@ -31,7 +26,7 @@
             <div layout:insert="~{layouts/info::card}">
                <div layout:fragment="content" th:remove="tag">
                   <th:block th:if="${!#lists.isEmpty(properties.physicalAddress)}">
-                     <div layout:insert="~{layouts/info::icon('fa-map-marker-alt')}" class="hoverPointer" onclick="mapsSelector()">
+                     <div layout:insert="~{layouts/info::icon('fa-map-marker-alt')}" class="hoverPointer" th:attr="addressUrlLine=${addressUrlLine}" onclick="mapsSelector( this )">
                      <span layout:fragment="label" class="text-dark">
                         <th:block th:each="line:${properties.physicalAddress}">
                            <strong th:text="${line}">Line</strong>
@@ -132,9 +127,7 @@
       </iframe>
    </div>
 
-   <footer th:insert="fragments/footer::footer(#{contact.navlink})" th:remove="tag">
-      Footer
-   </footer>
+   <i th:replace="fragments/footer::footer(#{contact.navlink})"></i>
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->

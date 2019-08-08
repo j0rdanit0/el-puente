@@ -4,9 +4,7 @@
 <footer th:fragment="footer(activeTab)" class="text-dark py-3">
    <div class="container">
       <h3 th:insert="fragments/socialMedia::buttons(colorClass='text-secondary')" class="float-right pt-3"></h3>
-      <div th:replace="fragments/navbar::header(activeTab=${activeTab}, footer=true)">
-         Nav
-      </div>
+      <i th:replace="fragments/navbar::header(activeTab=${activeTab}, footer=true)"></i>
       <hr/>
       <div class="text-center text-secondary">
          <small th:text="#{photoCreds}">Photo creds</small>

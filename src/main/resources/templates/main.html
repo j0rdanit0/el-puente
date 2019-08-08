@@ -15,9 +15,7 @@
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
    <main role="main">
-      <div th:replace="fragments/navbar::header('')">
-         Header
-      </div>
+      <i th:replace="fragments/navbar::header('')"></i>
 
       <div class="container my-3">
          <div class="row">
@@ -56,8 +54,9 @@
                <br/>
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
-                     <div class="text-center" th:utext="#{home.donationText}">
-                        Donation stuff
+                     <div class="text-center">
+                        <p th:utext="#{home.donationText}"></p>
+                        <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, 'fa-hand-holding-heart', #{home.donationOptionsButton})"></i>
                      </div>
                   </div>
                </div>
@@ -65,9 +64,7 @@
          </div>
       </div>
 
-      <footer th:insert="fragments/footer::footer('')" th:remove="tag">
-         Footer
-      </footer>
+      <i th:replace="fragments/footer::footer('')"></i>
 </main>
 
    <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->

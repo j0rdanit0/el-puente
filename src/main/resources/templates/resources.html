@@ -10,22 +10,19 @@
    <!--<meta property="og:url" content="">-->
    <meta property="og:title" th:content="#{resources.title}">
    <meta property="og:description" th:content="#{resources.navlink}">
-
-   <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${properties.version}__}">
 </head>
 <body>
 <main role="main">
-   <div th:replace="fragments/navbar::header(#{resources.navlink})">
-      Header
+   <i th:replace="fragments/navbar::header(#{resources.navlink})"></i>
+   <i th:replace="fragments/sectionHeader::header(#{resources.navlink})"></i>
+
+   <div class="container">
+      <a href="https://www.searcychamber.com/">
+         <img src="/images/searcy-chamber-of-commerce.png" alt="Searcy Chamber of Commerce">
+      </a>
    </div>
 
-   <a href="https://www.searcychamber.com/">
-      <img src="/images/searcy-chamber-of-commerce.png">
-   </a>
-
-   <footer th:insert="fragments/footer::footer(#{resources.navlink})" th:remove="tag">
-      Footer
-   </footer>
+   <i th:replace="fragments/footer::footer(#{resources.navlink})"></i>
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
