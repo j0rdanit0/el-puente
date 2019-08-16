@@ -1,76 +1,74 @@
+:root {
+   --body-font-size: 0.9rem;
+   --h1-font-size: 1.6rem;
+   --h2-font-size: 1.6rem;
+   --h3-font-size: 1.4rem;
+   --nav-logo-height: 55px;
+}
+
+@media (min-width: 576px) {
+   :root {
+      --body-font-size: 0.95rem;
+      --h1-font-size: 2rem;
+      --h2-font-size: 1.8rem;
+      --h3-font-size: 1.6rem;
+   }
+}
+
+@media (min-width: 768px) {
+   :root {
+      --body-font-size: 1rem;
+      --h1-font-size: 2.5rem;
+      --h2-font-size: 2rem;
+      --h3-font-size: 1.75rem;
+      --nav-logo-height: 112px;
+   }
+}
+
+@media (min-width: 992px) {
+   :root {
+      --body-font-size: 1.125rem;
+   }
+}
+
+@media (min-width: 1200px) {
+   :root {
+      --nav-logo-height: 160px;
+   }
+}
+
 body {
    line-height: 1.5;
    margin: 0;
    background-color: var( --light );
 }
 
-@media (min-width: 0px) {
-   body {
-      font-size: 0.9rem;
-   }
-   h1 {
-      font-size: 1.6rem;
-   }
-   h2 {
-      font-size: 1.5rem;
-   }
-   h3 {
-      font-size: 1.4rem;
-   }
-
-   .navLogo {
-      width: 200px;
-   }
+main {
+   padding-top: var(--nav-logo-height);
 }
 
-@media (min-width: 576px) {
-   body {
-      font-size: 0.95rem;
-   }
-   h1 {
-      font-size: 2rem;
-   }
-   h2 {
-      font-size: 1.8rem;
-   }
-   h3 {
-      font-size: 1.6rem;
-   }
-
-   .navLogo {
-      width: 250px;
-   }
+#navLogo {
+   height: var(--nav-logo-height);
 }
 
-@media (min-width: 768px) {
-   body {
-      font-size: 1rem;
-   }
-   h1 {
-      font-size: 2.5rem;
-   }
-   h2 {
-      font-size: 2rem;
-   }
-   h3 {
-      font-size: 1.75rem;
-   }
-
-   .navLogo {
-      width: 200px;
-   }
+.decoratedNav {
+   border-bottom: solid 2px var(--primary);
 }
 
-@media (min-width: 992px) {
-   body {
-      font-size: 1.125rem;
-   }
+.smallNavLogo {
+   height: 55px!important;
 }
 
-@media (min-width: 1200px) {
-   .navLogo {
-      width: 300px;
-   }
+#navLogo {
+   transition: 0.4s;
+}
+
+.heroBanner {
+   background-color: var( --danger );
+   height: 350px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 .hoverPointer {

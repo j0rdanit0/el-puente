@@ -15,9 +15,8 @@
    <meta property="og:description" th:content="#{services.description}">
 </head>
 <body>
+<i th:replace="fragments/navbar::header(#{services.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/navbar::header(#{services.navlink})"></i>
-
    <i th:replace="fragments/sectionHeader::header(#{services.navlink})"></i>
    <i th:replace="fragments/sectionHeader::bannerText(#{services.description})"></i>
 

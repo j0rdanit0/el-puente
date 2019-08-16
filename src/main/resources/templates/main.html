@@ -10,12 +10,23 @@
    <!--<meta property="og:url" content="">-->
    <meta property="og:title" th:content="#{home.title}">
    <meta property="og:description" th:content="#{home.missionStatement}">
+   <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${properties.version}__}">
 </head>
 <body>
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
+   <i th:replace="fragments/navbar::header('')"></i>
    <main role="main">
-      <i th:replace="fragments/navbar::header('')"></i>
+      <div class="card border-0 heroBanner">
+         <div class="card-body container pt-5">
+            <p id="missionStatement" class="font-italic text-light font-weight-light" th:text="#{home.missionStatement}">
+               Mission statement
+            </p>
+            <small class="d-block text-white" th:text="#{home.missionStatementSignature}">
+               Signature
+            </small>
+         </div>
+      </div>
 
       <div class="container my-3">
          <div class="row">
@@ -26,7 +37,7 @@
                           th:attr="data-href=${properties.facebookUrl}"
                           data-tabs="timeline, events"
                           data-width=""
-                          data-height=""
+                          data-height="750"
                           data-small-header="false"
                           data-adapt-container-width="true"
                           data-hide-cover="false"
@@ -41,17 +52,30 @@
                </div>
             </div>
             <div class="col-12 col-md-6 col-lg-7 col-xl-8 mb-3">
-               <div class="card border-0 bg-primary">
-                  <div class="card-body container pt-5 px-3 px-md-5">
-                     <p class="font-italic text-center text-light font-weight-light" th:text="#{home.missionStatement}">
-                        Mission statement
-                     </p>
-                     <small class="text-right d-block text-white" th:text="#{home.missionStatementSignature}">
-                        Signature
-                     </small>
+               <th:block th:if="${!#lists.isEmpty( carouselImageNames ) && !#strings.isEmpty( carouselImagePath )}">
+                  <div class="card">
+                     <div id="carousel" class="carousel slide card-img-top" data-ride="carousel">
+                        <div class="carousel-inner">
+                           <div th:class="'carousel-item '+${imageNameStat.index == carouselImageRandomStartIndex ? 'active' : ''}" th:each="imageName:${carouselImageNames}">
+                              <img th:src="${carouselImagePath + imageName}" class="d-block w-100">
+                           </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                           <span class="sr-only" th:text="#{home.carousel.previous}"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                           <span class="sr-only" th:text="#{home.carousel.next}"></span>
+                        </a>
+                     </div>
+                     <div class="card-body">
+                        <h5 class="card-title" th:text="#{home.carousel.title}"></h5>
+                        <p class="card-text" th:text="#{home.carousel.content}"></p>
+                     </div>
                   </div>
-               </div>
-               <br/>
+                  <br/>
+               </th:block>
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
                      <div class="text-center">

@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.elpuentesearcy</groupId>
     <artifactId>webapp</artifactId>
-    <version>0.2.1</version>
+    <version>0.3.0</version>
     <name>el-puente</name>
     <description></description>
 
@@ -101,6 +101,53 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.6</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <charset>UTF-8</charset>
+                            <webappSourceDir>${basedir}/src/main/resources/static</webappSourceDir>
+                            <webappTargetDir>${project.build.outputDirectory}/static</webappTargetDir>
+                            <cssSourceDir>css</cssSourceDir>
+                            <cssSourceFiles>
+                                <cssSourceFile>bootstrap-overrides.css</cssSourceFile>
+                                <cssSourceFile>cardColumns.css</cssSourceFile>
+                                <cssSourceFile>cardView.css</cssSourceFile>
+                                <cssSourceFile>changes.css</cssSourceFile>
+                                <cssSourceFile>common.css</cssSourceFile>
+                                <cssSourceFile>main.css</cssSourceFile>
+                            </cssSourceFiles>
+                            <cssTargetDir>css</cssTargetDir>
+                            <cssFinalFile>prod.css</cssFinalFile>
+                            <cssEngine>YUI</cssEngine>
+                            <jsSourceDir>js</jsSourceDir>
+                            <jsSourceFiles>
+                                <jsSourceFile>cardView.js</jsSourceFile>
+                                <jsSourceFile>changes.js</jsSourceFile>
+                                <jsSourceFile>common.js</jsSourceFile>
+                                <jsSourceFile>contact.js</jsSourceFile>
+                                <jsSourceFile>cookieHelper.js</jsSourceFile>
+                                <jsSourceFile>facebookEmbed.js</jsSourceFile>
+                                <jsSourceFile>websockets.js</jsSourceFile>
+                            </jsSourceFiles>
+                            <jsTargetDir>js</jsTargetDir>
+                            <jsFinalFile>prod.js</jsFinalFile>
+                            <jsEngine>CLOSURE</jsEngine>
+                            <skipMerge>true</skipMerge>
+                            <nosuffix>true</nosuffix>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

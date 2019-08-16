@@ -12,11 +12,11 @@
    <!--<meta property="og:url" content="">-->
    <meta property="og:title" th:content="#{involvement.title}">
    <meta property="og:description" th:content="#{involvement.involvement.content}">
+   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
 </head>
 <body>
+<i th:replace="fragments/navbar::header(#{involvement.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/navbar::header(#{involvement.navlink})"></i>
-
    <i th:replace="fragments/sectionHeader::header(#{involvement.involvement.header})"></i>
    <p class="container mb-5" th:utext="#{involvement.involvement.content}"></p>
 

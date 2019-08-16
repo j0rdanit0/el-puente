@@ -16,8 +16,8 @@
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
 </th:block>
+<i th:replace="fragments/navbar::header(#{contact.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/navbar::header(#{contact.navlink})"></i>
    <i th:replace="fragments/sectionHeader::header(#{contact.contactUs})"></i>
 
    <div class="container">
@@ -89,6 +89,10 @@
                               Office Hours:
                            </strong>
                            <br/>
+                           <small class="text-secondary font-italic" th:text="#{contact.hoursNotice}">
+                              Call before you come
+                           </small>
+                           <br/>
                            <th:block th:if="${!#strings.isEmpty(properties.officeHoursWeekday)}">
                               <small th:text="#{contact.hours.weekday}+':'">M-F</small>
                               <strong class="float-right" th:text="${properties.officeHoursWeekday}">9:00am - 11:00pm</strong>
@@ -99,9 +103,6 @@
                               <strong class="float-right" th:text="${properties.officeHoursWeekend}">9:00am - 11:00pm</strong>
                               <br/>
                            </th:block>
-                           <small class="text-secondary font-italic" th:text="#{contact.hoursNotice}">
-                              Call before you come
-                           </small>
                         </span>
                      </div>
                   </th:block>
@@ -109,7 +110,7 @@
             </div>
          </div>
          <div class="col-12 col-md-6 mb-3">
-            <div th:if="${!#strings.isEmpty( properties.facebookUrl )}" class="fb-page d-block" th:attr="data-href=${properties.facebookUrl}" data-tabs="messages" data-width="" data-height="350" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <div th:if="${!#strings.isEmpty( properties.facebookUrl )}" class="fb-page d-block" th:attr="data-href=${properties.facebookUrl}" data-tabs="messages" data-width="" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                <blockquote th:cite="${properties.facebookUrl}" class="fb-xfbml-parse-ignore">
                   <a th:href="${properties.facebookUrl}">
                      El Puente Hispanic Services Center

@@ -66,9 +66,10 @@
    <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/common.css?v='+__${properties.version}__}">
 </head>
-<body th:fragment="scripts">
+<body th:fragment="scripts" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
    <script src="/webjars/jquery/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   <script th:src="@{'/js/common.js?v='+__${properties.version}__}"></script>
 </body>
 </html>

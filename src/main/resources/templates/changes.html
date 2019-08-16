@@ -11,8 +11,8 @@
    <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${properties.version}__}">
 </head>
 <body>
+<i th:replace="fragments/navbar::header(#{changes.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/navbar::header(#{changes.navlink})"></i>
    <i th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')"></i>
 
    <form id="initialsContainer" class="form-inline justify-content-center my-5">
