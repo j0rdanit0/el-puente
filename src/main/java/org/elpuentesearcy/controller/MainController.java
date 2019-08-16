@@ -19,7 +19,7 @@ public class MainController
 
         String[] carouselImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + carouselFolder ).list();
         model.addAttribute( "carouselImageNames", carouselImageNames );
-        model.addAttribute( "carouselImageRandomStartIndex", ThreadLocalRandom.current().nextInt( carouselImageNames == null ? 0 : carouselImageNames.length ) );
+        model.addAttribute( "carouselImageRandomStartIndex", carouselImageNames == null ? 0 : ThreadLocalRandom.current().nextInt( carouselImageNames.length ) );
 
         return "main";
     }
