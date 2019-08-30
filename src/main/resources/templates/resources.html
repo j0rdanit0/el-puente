@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
-   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE})"></th:block>
 
    <title th:text="#{resources.title}">Title</title>
    <!--<meta property="og:url" content="">-->

@@ -5,9 +5,10 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
-   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ServicesController).URL_BASE})"></th:block>
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/services.css?v='+__${properties.version}__}">
 
    <title th:text="#{services.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -17,7 +18,7 @@
 <body>
 <i th:replace="fragments/navbar::header(#{services.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/sectionHeader::header(#{services.navlink})"></i>
+   <i layout:replace="~{layouts/info::banner(#{services.navlink})}"></i>
    <i th:replace="fragments/sectionHeader::bannerText(#{services.description})"></i>
 
    <i layout:replace="~{layouts/info::cardView}">

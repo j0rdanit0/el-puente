@@ -4,7 +4,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
-   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ContactController).URL_BASE})"></th:block>
+   <link rel="stylesheet" th:href="@{'/css/contact.css?v='+__${properties.version}__}">
 
    <title th:text="#{contact.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -18,7 +19,7 @@
 </th:block>
 <i th:replace="fragments/navbar::header(#{contact.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/sectionHeader::header(#{contact.contactUs})"></i>
+   <i layout:replace="~{layouts/info::banner(#{contact.contactUs})}"></i>
 
    <div class="container">
       <div class="row">

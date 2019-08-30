@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+<head th:fragment="head(currentURI)" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
@@ -40,6 +40,11 @@
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
       <link rel="manifest" href="/manifest.json">
+      <link rel="canonical" th:href="'https://'+${properties.domain + currentURI}">
+      <link rel="alternate" th:href="'https://'+${properties.domain + currentURI}" hreflang="x-default">
+      <th:block th:each="language:${T(org.elpuentesearcy.configuration.UrlLocaleResolver.ElPuenteLanguage).values()}">
+         <link rel="alternate" th:hreflang="${language.subdomain}" th:href="'https://'+${language.subdomain +'.'+ properties.domain + currentURI}">
+      </th:block>
    </th:block>
    <th:block th:if="${properties.testMode}">
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-beta-180x180.png">

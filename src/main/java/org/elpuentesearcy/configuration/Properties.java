@@ -26,6 +26,7 @@ public class Properties
     private String phone;
     private String facebookUrl;
     private String twitterUrl;
+    private String amazonSmileUrl;
     private Google google;
     private List<Employee> board;
     private List<Employee> staff;
@@ -316,6 +317,16 @@ public class Properties
     public void setTwitterUrl( String twitterUrl )
     {
         this.twitterUrl = twitterUrl;
+    }
+
+    public String getAmazonSmileUrl()
+    {
+        return amazonSmileUrl;
+    }
+
+    public void setAmazonSmileUrl( String amazonSmileUrl )
+    {
+        this.amazonSmileUrl = amazonSmileUrl;
     }
 
     public List<Employee> getStaff()

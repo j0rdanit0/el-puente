@@ -41,10 +41,21 @@ body {
    line-height: 1.5;
    margin: 0;
    background-color: var( --light );
+   font-size: var( --body-font-size );
 }
 
 main {
    padding-top: var(--nav-logo-height);
+}
+
+h1 {
+   font-size: var(--h1-font-size);
+}
+h2 {
+   font-size: var(--h2-font-size);
+}
+h3 {
+   font-size: var(--h3-font-size);
 }
 
 #navLogo {

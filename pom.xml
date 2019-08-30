@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.elpuentesearcy</groupId>
     <artifactId>webapp</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
     <name>el-puente</name>
     <description></description>
 
@@ -122,6 +122,10 @@
                                 <cssSourceFile>changes.css</cssSourceFile>
                                 <cssSourceFile>common.css</cssSourceFile>
                                 <cssSourceFile>main.css</cssSourceFile>
+                                <cssSourceFile>contact.css</cssSourceFile>
+                                <cssSourceFile>about.css</cssSourceFile>
+                                <cssSourceFile>programs.css</cssSourceFile>
+                                <cssSourceFile>services.css</cssSourceFile>
                             </cssSourceFiles>
                             <cssTargetDir>css</cssTargetDir>
                             <cssFinalFile>prod.css</cssFinalFile>

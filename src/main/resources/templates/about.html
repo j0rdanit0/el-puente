@@ -4,7 +4,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
-   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.AboutController).URL_BASE})"></th:block>
+   <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${properties.version}__}">
 
    <title th:text="#{about.title}">About Us</title>
    <!--<meta property="og:url" content="">-->
@@ -15,7 +16,7 @@
 <body>
 <i th:replace="fragments/navbar::header(#{about.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/sectionHeader::header(#{about.aboutUs.header})"></i>
+   <i layout:replace="~{layouts/info::banner(#{about.aboutUs.header})}"></i>
 
    <p class="container mb-5" th:utext="#{about.aboutUs.content}"></p>
 

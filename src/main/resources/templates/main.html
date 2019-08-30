@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
 <head>
-   <!--/*/ <th:block th:include="fragments/includes::head"></th:block> /*/-->
+   <th:block th:include="fragments/includes::head('/')"></th:block>
 
    <title th:text="#{home.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -80,7 +80,9 @@
                   <div layout:fragment="content" th:remove="tag">
                      <div class="text-center">
                         <p th:utext="#{home.donationText}"></p>
-                        <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, 'fa-hand-holding-heart', #{home.donationOptionsButton})"></i>
+                        <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
+                           <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
+                        </th:block>
                      </div>
                   </div>
                </div>

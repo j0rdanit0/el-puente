@@ -1,0 +1,20 @@
+:root {
+   --hero-banner-position-x: 50%;
+}
+
+.heroBanner {
+   background-image: url("/images/about-banner.jpg");
+   background-position-x: var(--hero-banner-position-x);
+}
+
+@media (min-width: 0) {
+   :root {
+      --hero-banner-position-x: 45%;
+   }
+}
+
+@media (min-width: 768px) {
+   :root {
+      --hero-banner-position-x: 50%;
+   }
+}
