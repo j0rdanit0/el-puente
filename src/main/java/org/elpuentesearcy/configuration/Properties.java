@@ -26,6 +26,7 @@ public class Properties
     private String phone;
     private String facebookUrl;
     private String twitterUrl;
+    private String instagramUrl;
     private String amazonSmileUrl;
     private Google google;
     private List<Employee> board;
@@ -317,6 +318,16 @@ public class Properties
     public void setTwitterUrl( String twitterUrl )
     {
         this.twitterUrl = twitterUrl;
+    }
+
+    public String getInstagramUrl()
+    {
+        return instagramUrl;
+    }
+
+    public void setInstagramUrl( String instagramUrl )
+    {
+        this.instagramUrl = instagramUrl;
     }
 
     public String getAmazonSmileUrl()

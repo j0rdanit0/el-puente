@@ -20,13 +20,13 @@
       <div class="card-columns">
          <div layout:insert="~{layouts/info::card}" th:each="employee:${employees}">
             <div layout:fragment="content">
-               <div th:class="'row no-gutters '+${#strings.isEmpty(employee.getLocalDescription(#locale.language)) ? 'align-items-center' : ''}">
-                  <div class="col-md-4 col-lg-3">
-                     <img th:src="@{__${employee.squareImage}__}" class="rounded-circle p-2 d-block d-md-none mx-auto" width="85px" th:alt="${employee.name}">
+               <div th:class="'row no-gutters text-center '+${#strings.isEmpty(employee.getLocalDescription(#locale.language)) ? 'align-items-center' : ''}">
+                  <div class="col-12">
+                     <img th:src="@{__${employee.squareImage}__}" class="img-fluid rounded-circle d-block d-md-none p-2 mx-auto" th:alt="${employee.name}">
                      <img th:src="@{__${employee.image}__}" class="d-none d-md-block mr-auto" width="100%" th:alt="${employee.name}">
                   </div>
-                  <div class="col-md-8 col-lg-9">
-                     <div class="pl-md-3">
+                  <div class="col-12">
+                     <div class="pt-3">
                         <h5 class="mt-0 mb-1 text-center">
                            <span th:text="${employee.name}">Name</span>
                            <small th:if="${!#strings.isEmpty(employee.getLocalTitle(#locale.language))}" th:utext="${employee.getLocalTitle(#locale.language)}" class="text-secondary font-italic">Title</small>

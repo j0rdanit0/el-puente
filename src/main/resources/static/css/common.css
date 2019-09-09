@@ -112,6 +112,18 @@ a.twitter:hover {
    color: #1DA1F2!important;
 }
 
+a.instagram {
+   display: inline-block;
+   padding: 0 3px;
+   border-radius: .25rem!important;
+}
+
+a.instagram:hover {
+   color: #fff !important;
+   background: #d6249f;
+   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
 .nav-link span {
    -webkit-transition: border-bottom-width 200ms;
    -moz-transition: border-bottom-width 200ms;

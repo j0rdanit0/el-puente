@@ -10,9 +10,14 @@ org.elpuentesearcy:
   isTestMode: true
   siteChanges:
     - Added banner to the following pages - <a href="/about">About Us</a>, <a href="/services">Services</a>, <a href="/programs">Programs</a>, and <a href="/contact">Contact Us</a>.
-    - Added Amazon Smile as a donation option (PLEASE REVIEW TEXT) (English only) to the <a href="/involvement">Get Involved</a> page.
-    - Moved Guillermo from Board of Directors to Staff and removed his job info on the <a href="/about">About Us</a> page.
+    - Added Amazon Smile as a donation option to the <a href="/involvement">Get Involved</a> page.
+    - Changed "Staff" to "Our Team" on the <a href="/about">About Us</a> page.
+    - Moved Guillermo from Board of Directors to Our Team, removed his job info, and added his title of "Legal Advisor" on the <a href="/about">About Us</a> page.
+    - Made images larger on the <a href="/about">About Us</a> page.
     - Added am/pm to office hours on the <a href="/contact">Contact Us</a> page.
+    - Removed "Opening in September!" from the <a href="/contact">Contact Us</a> page.
+    - Added all of the Spanish text from mom's email to the various pages.
+    - Added Instagram icon next to Facebook.
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
@@ -26,6 +31,7 @@ org.elpuentesearcy:
     - Searcy, AR 72145
   facebookUrl: https://www.facebook.com/elpuentesearcy/
   twitterUrl:
+  instagramUrl: https://www.instagram.com/el.puente
   amazonSmileUrl: https://smile.amazon.com/ch/83-3832275?fbclid=IwAR02gUtFEfDNnqZPOeibD8RSJC_jbKuWXJB6eaQ4H_3i4cpL_Fo3-8W6fuY
   google:
     analytics:
@@ -37,21 +43,21 @@ org.elpuentesearcy:
       name: Jay Simpson
       title:
         en: President
-        es: El Presidente
+        es: Presidente
       description:
         en: Senior Associate Director of Financial Aid Services<br/><strong>Harding University</strong>
     -
       name: Larry Wilks
       title:
         en: Vice President
-        es: El Vicepresidente
+        es: Vicepresidente
       description:
         en: Chaplain<br/><strong>Harding Place</strong>
     -
       name: Jaclyn Seiders
       title:
         en: Secretary/Treasurer
-        es: La Sectretaria-Tesorera
+        es: Sectretaria-Tesorera
       description:
         en: Literacy Coach/ESOL Coordinator<br/><strong>Searcy Public Schools</strong>
     -
@@ -76,11 +82,12 @@ org.elpuentesearcy:
     - name: Ruth Simpson
       title:
         en: Executive Director
-        es: La Directora Ejecutiva
+        es: Directora Ejecutiva
       description:
         en:
     - name: Guillermo Hernandez
       title:
-        en:
+        en: Legal Advisor
+        es: Consejero Legal
       description:
         en:

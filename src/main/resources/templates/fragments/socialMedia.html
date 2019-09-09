@@ -9,5 +9,8 @@
    <a th:if="${!#strings.isEmpty(properties.twitterUrl)}" th:href="${properties.twitterUrl}" th:class="'twitter '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.twitter}">
       <i class="fab fa-twitter-square"></i>
    </a>
+   <a th:if="${!#strings.isEmpty(properties.instagramUrl)}" th:href="${properties.instagramUrl}" th:class="'instagram '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.instagram}">
+      <i class="fab fa-instagram"></i>
+   </a>
 </span>
 </html>
