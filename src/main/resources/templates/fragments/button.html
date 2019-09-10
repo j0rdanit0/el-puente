@@ -2,7 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
-<a th:fragment="action(href, text)" th:class="'btn btn-danger '+${isLarge ? 'btn-lg' : ''}" th:href="${href}" th:with="fontawesomeClass=${fontawesomeClass ?: ''},isLarge=${isLarge ?: false}">
+<a th:fragment="action(href, text)"
+   th:with="fontawesomeClass=${fontawesomeClass ?: ''},isLarge=${isLarge ?: false},downloadFileName=${downloadFileName ?: ''}"
+   th:class="'btn btn-danger '+${isLarge ? 'btn-lg' : ''}"
+   th:href="${href}"
+   th:attr="download=${!#strings.isEmpty(downloadFileName)}?${downloadFileName}">
    <i th:if="${!#strings.isEmpty(fontawesomeClass)}" th:class="${#strings.startsWith(fontawesomeClass, 'fab ') ? fontawesomeClass : ('fas ' + fontawesomeClass)}"></i>
    <strong class="text-white" th:text="${text}"></strong>
 </a>

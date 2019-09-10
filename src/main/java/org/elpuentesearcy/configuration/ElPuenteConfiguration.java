@@ -36,7 +36,8 @@ public class ElPuenteConfiguration implements WebMvcConfigurer
     @Override
     public void addResourceHandlers( ResourceHandlerRegistry registry )
     {
-        registry.addResourceHandler( "/images/**" ).addResourceLocations( "file:" + ElPuenteBoot.IMAGE_DIRECTORY );
+        registry.addResourceHandler( ElPuenteBoot.IMAGE_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.IMAGE_DIRECTORY );
+        registry.addResourceHandler( ElPuenteBoot.DOWNLOADS_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.DOWNLOADS_DIRECTORY );
     }
 
     @Bean( name = "localeResolver" )

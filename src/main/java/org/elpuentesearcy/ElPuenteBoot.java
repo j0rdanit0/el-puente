@@ -10,11 +10,14 @@ import java.io.IOException;
 public class ElPuenteBoot
 {
     public static final String IMAGE_FOLDER = "/images/";
+    public static final String DOWNLOADS_FOLDER = "/downloads/";
     public static String IMAGE_DIRECTORY;
+    public static String DOWNLOADS_DIRECTORY;
 
     public static void main( String[] args ) throws IOException
     {
         IMAGE_DIRECTORY = new File( "." ).getCanonicalPath() + IMAGE_FOLDER;
+        DOWNLOADS_DIRECTORY = new File( "." ).getCanonicalPath() + DOWNLOADS_FOLDER;
         SpringApplication.run( ElPuenteBoot.class, args );
     }
 }

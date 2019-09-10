@@ -9,15 +9,10 @@ org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
   siteChanges:
-    - Added banner to the following pages - <a href="/about">About Us</a>, <a href="/services">Services</a>, <a href="/programs">Programs</a>, and <a href="/contact">Contact Us</a>.
-    - Added Amazon Smile as a donation option to the <a href="/involvement">Get Involved</a> page.
-    - Changed "Staff" to "Our Team" on the <a href="/about">About Us</a> page.
-    - Moved Guillermo from Board of Directors to Our Team, removed his job info, and added his title of "Legal Advisor" on the <a href="/about">About Us</a> page.
-    - Made images larger on the <a href="/about">About Us</a> page.
-    - Added am/pm to office hours on the <a href="/contact">Contact Us</a> page.
-    - Removed "Opening in September!" from the <a href="/contact">Contact Us</a> page.
-    - Added all of the Spanish text from mom's email to the various pages.
-    - Added Instagram icon next to Facebook.
+    - Added volunteer form download at the top and bottom of the <a href="/involvement">Get Involved</a> page.
+    - The volunteer form downloads as a .PDF instead of .docx, in case users aren't running on Windows.
+    - Also on the <a href="/involvement">Get Involved</a> page, a Give Lively donation widget has been embedded.
+    - The Give Lively campaign has also been linked to from the list of donation options.
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
@@ -33,6 +28,7 @@ org.elpuentesearcy:
   twitterUrl:
   instagramUrl: https://www.instagram.com/el.puente
   amazonSmileUrl: https://smile.amazon.com/ch/83-3832275?fbclid=IwAR02gUtFEfDNnqZPOeibD8RSJC_jbKuWXJB6eaQ4H_3i4cpL_Fo3-8W6fuY
+  giveLivelyUrl: https://secure.givelively.org/donate/el-puente-hispanic-services-center/website-donations
   google:
     analytics:
       trackingId:

@@ -28,6 +28,7 @@ public class Properties
     private String twitterUrl;
     private String instagramUrl;
     private String amazonSmileUrl;
+    private String giveLivelyUrl;
     private Google google;
     private List<Employee> board;
     private List<Employee> staff;
@@ -338,6 +339,16 @@ public class Properties
     public void setAmazonSmileUrl( String amazonSmileUrl )
     {
         this.amazonSmileUrl = amazonSmileUrl;
+    }
+
+    public String getGiveLivelyUrl()
+    {
+        return giveLivelyUrl;
+    }
+
+    public void setGiveLivelyUrl( String giveLivelyUrl )
+    {
+        this.giveLivelyUrl = giveLivelyUrl;
     }
 
     public List<Employee> getStaff()
