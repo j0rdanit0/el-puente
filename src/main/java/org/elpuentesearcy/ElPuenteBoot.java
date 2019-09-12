@@ -11,13 +11,16 @@ public class ElPuenteBoot
 {
     public static final String IMAGE_FOLDER = "/images/";
     public static final String DOWNLOADS_FOLDER = "/downloads/";
+    public static final String WELL_KNOWN_FOLDER = "/.well-known/";
     public static String IMAGE_DIRECTORY;
     public static String DOWNLOADS_DIRECTORY;
+    public static String WELL_KNOWN_DIRECTORY;
 
     public static void main( String[] args ) throws IOException
     {
         IMAGE_DIRECTORY = new File( "." ).getCanonicalPath() + IMAGE_FOLDER;
         DOWNLOADS_DIRECTORY = new File( "." ).getCanonicalPath() + DOWNLOADS_FOLDER;
+        WELL_KNOWN_DIRECTORY = new File( "." ).getCanonicalPath() + WELL_KNOWN_FOLDER;
         SpringApplication.run( ElPuenteBoot.class, args );
     }
 }
