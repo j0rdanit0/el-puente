@@ -9,10 +9,7 @@ org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
   siteChanges:
-    - Added volunteer form download at the top and bottom of the <a href="/involvement">Get Involved</a> page.
-    - The volunteer form downloads as a .PDF instead of .docx, in case users aren't running on Windows.
-    - Also on the <a href="/involvement">Get Involved</a> page, a Give Lively donation widget has been embedded.
-    - The Give Lively campaign has also been linked to from the list of donation options.
+    -
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
