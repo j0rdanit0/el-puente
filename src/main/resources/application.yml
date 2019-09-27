@@ -72,15 +72,24 @@ org.elpuentesearcy:
       description:
         en: Family Medicine Residency Associate Program Director<br/><strong>Unity Health</strong>
   staff:
-    - name: Ruth Simpson
+    -
+      name: Ruth Simpson
       title:
         en: Executive Director
         es: Directora Ejecutiva
       description:
         en:
-    - name: Guillermo Hernandez
+    -
+      name: Guillermo Hernandez
       title:
         en: Legal Advisor
         es: Consejero Legal
+      description:
+        en:
+    -
+      name: Mary Kathryn Lochala
+      title:
+        en: Finance
+        es: Finanzas
       description:
         en:
