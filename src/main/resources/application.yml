@@ -9,7 +9,8 @@ org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
   siteChanges:
-    -
+    - Changed Salsa Competition to Searcy Salsa Standoff
+    - Added advertisement for salsa competition to the home page
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
@@ -26,6 +27,9 @@ org.elpuentesearcy:
   instagramUrl: https://www.instagram.com/el.puente
   amazonSmileUrl: https://smile.amazon.com/ch/83-3832275?fbclid=IwAR02gUtFEfDNnqZPOeibD8RSJC_jbKuWXJB6eaQ4H_3i4cpL_Fo3-8W6fuY
   giveLivelyUrl: https://secure.givelively.org/donate/el-puente-hispanic-services-center/website-donations
+  salsaCompetitionSignupUrl: https://docs.google.com/forms/d/e/1FAIpQLSe1X-sTwzfxQCi8GXluDAtPHG6o_uZGpKo_YX74dfyokr1d2w/viewform?usp=sf_link
+  salsaCompetitionRulesDownload: SalsaCompetitionRules
+  volunteerFormDownload: ElPuenteVolunteerForm
   google:
     analytics:
       trackingId:

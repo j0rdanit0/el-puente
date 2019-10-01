@@ -1,8 +1,12 @@
 :root {
    --primary: #6BA6CB;
+   --primary-hover: #4B86AB;
    --secondary: #9A9A9A;
+   --secondary-hover: #7A7A7A;
    --dark: #363133;
+   --dark-hover: #161113;
    --danger: #E07F52;
+   --danger-hover: #C05F32;
 }
 
 
@@ -38,17 +42,33 @@
    background-color: var(--primary)!important;
    border-color: var(--primary)!important;
 }
+.btn-primary:hover {
+   background-color: var(--primary-hover)!important;
+   border-color: var(--primary-hover)!important;
+}
 .btn-secondary {
    background-color: var(--secondary)!important;
    border-color: var(--secondary)!important;
+}
+.btn-secondary:hover {
+   background-color: var(--secondary-hover)!important;
+   border-color: var(--secondary-hover)!important;
 }
 .btn-danger {
    background-color: var(--danger)!important;
    border-color: var(--danger)!important;
 }
+.btn-danger:hover {
+   background-color: var(--danger-hover)!important;
+   border-color: var(--danger-hover)!important;
+}
 .btn-dark {
    background-color: var(--dark)!important;
    border-color: var(--dark)!important;
+}
+.btn-dark:hover {
+   background-color: var(--dark-hover)!important;
+   border-color: var(--dark-hover)!important;
 }
 
 

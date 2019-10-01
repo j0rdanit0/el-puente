@@ -29,6 +29,9 @@ public class Properties
     private String instagramUrl;
     private String amazonSmileUrl;
     private String giveLivelyUrl;
+    private String salsaCompetitionSignupUrl;
+    private String salsaCompetitionRulesDownload;
+    private String volunteerFormDownload;
     private Google google;
     private List<Employee> board;
     private List<Employee> staff;
@@ -351,6 +354,46 @@ public class Properties
         this.giveLivelyUrl = giveLivelyUrl;
     }
 
+    public String getSalsaCompetitionSignupUrl()
+    {
+        return salsaCompetitionSignupUrl;
+    }
+
+    public void setSalsaCompetitionSignupUrl( String salsaCompetitionSignupUrl )
+    {
+        this.salsaCompetitionSignupUrl = salsaCompetitionSignupUrl;
+    }
+
+    public String getSalsaCompetitionRulesDownload()
+    {
+        return salsaCompetitionRulesDownload;
+    }
+
+    public void setSalsaCompetitionRulesDownload( String salsaCompetitionRulesDownload )
+    {
+        this.salsaCompetitionRulesDownload = salsaCompetitionRulesDownload;
+    }
+
+    public String getSalsaCompetitionRulesDownloadPath()
+    {
+        return getDownloadsPath( salsaCompetitionRulesDownload );
+    }
+
+    public String getVolunteerFormDownload()
+    {
+        return volunteerFormDownload;
+    }
+
+    public void setVolunteerFormDownload( String volunteerFormDownload )
+    {
+        this.volunteerFormDownload = volunteerFormDownload;
+    }
+
+    public String getVolunteerFormDownloadPath()
+    {
+        return getDownloadsPath( volunteerFormDownload );
+    }
+
     public List<Employee> getStaff()
     {
         return staff;
@@ -369,5 +412,10 @@ public class Properties
     public void setSiteChanges( List<String> siteChanges )
     {
         this.siteChanges = siteChanges;
+    }
+
+    private String getDownloadsPath( String fileName )
+    {
+        return ElPuenteBoot.DOWNLOADS_FOLDER + fileName + ".pdf";
     }
 }

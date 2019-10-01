@@ -36,17 +36,62 @@
             </small>
          </div>
       </div>
+      <div class="container">
+         <div class="container">
+            <div layout:insert="~{layouts/info::card}" class="boxShadow" style="transform:translateY(-50px)">
+               <div layout:fragment="content">
+                  <div class="row">
+                     <div class="col-12 col-lg-6">
+                        <h2 class="text-center text-lg-left">
+                           <a th:href="${properties.salsaCompetitionRulesDownloadPath}">
+                              <strong class="text-primary" th:text="#{salsaCompetition.title}"></strong>
+                           </a>
+                        </h2>
+                     </div>
+                     <div class="col-12 col-lg-2 text-center mt-lg-2">
+                        <span class="text-secondary d-block">
+                           Oct 19 6:00pm
+                        </span>
+                     </div>
+                     <div class="col-12 col-lg-4 text-center text-lg-right">
+                        <span th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.salsaCompetitionRulesDownload}">
+                           <i th:replace="fragments/button::action(${properties.salsaCompetitionRulesDownloadPath}, #{salsaCompetition.rules})"></i>
+                        </span>
+                        <span th:with="fontawesomeClass='fa-share'">
+                           <i th:replace="fragments/button::action(${properties.salsaCompetitionSignupUrl}, #{salsaCompetition.signup})"></i>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
       <div class="container my-3">
          <div class="row">
             <div class="col-12 col-md-6 col-lg-5 col-xl-4 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">
+               <div class="card">
+                  <div class="card-img-top">
+                     <img th:src="@{/images/salsa-competition.jpg}" class="d-block w-100" alt="Searcy Salsa Standoff - October 19 at Searcy's Beats & Eats">
+                  </div>
+                  <div class="card-body text-center">
+                     <span th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.salsaCompetitionRulesDownload}">
+                        <i th:replace="fragments/button::action(${properties.salsaCompetitionRulesDownloadPath}, #{salsaCompetition.rules})"></i>
+                     </span>
+                     <span th:with="fontawesomeClass='fa-share'">
+                        <i th:replace="fragments/button::action(${properties.salsaCompetitionSignupUrl}, #{salsaCompetition.signup})"></i>
+                     </span>
+                  </div>
+               </div>
+               <br/>
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
+                     <h5 class="card-title" th:text="#{social.facebook}"></h5>
                      <div class="fb-page d-block"
                           th:attr="data-href=${properties.facebookUrl}"
                           data-tabs="timeline, events"
                           data-width=""
-                          data-height="750"
+                          data-height="400"
                           data-small-header="false"
                           data-adapt-container-width="true"
                           data-hide-cover="false"
@@ -56,17 +101,6 @@
                               El Puente Hispanic Services Center
                            </a>
                         </blockquote>
-                     </div>
-                  </div>
-               </div>
-               <br/>
-               <div layout:insert="~{layouts/info::card}">
-                  <div layout:fragment="content" th:remove="tag">
-                     <div class="text-center">
-                        <p th:utext="#{home.donationText}"></p>
-                        <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
-                           <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
-                        </th:block>
                      </div>
                   </div>
                </div>
@@ -131,6 +165,16 @@
                      <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
                      <!--End mc_embed_signup-->
                   </div>
+               </div>
+            </div>
+         </div>
+         <div layout:insert="~{layouts/info::card}">
+            <div layout:fragment="content" th:remove="tag">
+               <div class="text-center">
+                  <p th:utext="#{home.donationText}"></p>
+                  <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
+                     <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
+                  </th:block>
                </div>
             </div>
          </div>
