@@ -4,9 +4,10 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE})"></th:block>
+   <th:block th:include="fragments/includes::head(${uri})"></th:block>
+   <link rel="stylesheet" th:href="@{'/css/involvement.css?v='+__${properties.version}__}">
 
    <title th:text="#{involvement.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -17,7 +18,7 @@
 <body>
 <i th:replace="fragments/navbar::header(#{involvement.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/sectionHeader::header(#{involvement.involvement.header})"></i>
+   <i layout:replace="~{layouts/info::banner(#{involvement.involvement.header},${uri})}"></i>
    <p class="container mb-5" th:utext="#{involvement.involvement.content}"></p>
    <div class="text-center" th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.volunteerFormDownload}">
       <i th:replace="fragments/button::action(${properties.volunteerFormDownloadPath}, #{involvement.volunteerForm.downloadText})"></i>
@@ -46,16 +47,16 @@
    <i layout:replace="~{layouts/info::cardView}">
       <div layout:fragment="iconCards">
          <div th:if="${!#strings.isEmpty(properties.giveLivelyUrl)}"
-              class="pt-1" layout:insert="~{layouts/info::iconCard('fa-hand-holding-usd', #{involvement.donations.online.label}, #{involvement.donations.online.content} )}"
-              th:with="actionButtonURL=${properties.giveLivelyUrl}, actionButtonText=#{involvement.donations.online.button}"></div>
+              class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-hand-holding-usd', label=#{involvement.donations.online.label}, description=#{involvement.donations.online.content},
+              actionButtonURL=${properties.giveLivelyUrl}, actionButtonText=#{involvement.donations.online.button}"></div>
          <div th:if="${!#strings.isEmpty(mailingAddress)}"
-              class="pt-1" layout:insert="~{layouts/info::iconCard('fa-envelope-open-text', #{involvement.donations.mail.label}, #{involvement.donations.mail.content(${'<strong>'+mailingAddress+'</strong>'})} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fab fa-amazon', #{involvement.donations.amazon.label}, #{involvement.donations.amazon.content} )}"
-              th:with="actionButtonURL=${properties.amazonSmileUrl}, actionButtonText=#{involvement.donations.amazon.button}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-monument', #{involvement.donations.memorial.label}, #{involvement.donations.memorial.content} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-gift', #{involvement.donations.wishlist.label}, #{involvement.donations.wishlist.content} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-file-invoice-dollar', #{involvement.donations.matchinggifts.label}, #{involvement.donations.matchinggifts.content} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-donate', #{involvement.donations.plannedgiving.label}, #{involvement.donations.plannedgiving.content} )}"></div>
+              class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-envelope-open-text', label=#{involvement.donations.mail.label}, description=#{involvement.donations.mail.content(${'<strong>'+mailingAddress+'</strong>'})}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fab fa-amazon', label=#{involvement.donations.amazon.label}, description=#{involvement.donations.amazon.content},
+              actionButtonURL=${properties.amazonSmileUrl}, actionButtonText=#{involvement.donations.amazon.button}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-monument', label=#{involvement.donations.memorial.label}, description=#{involvement.donations.memorial.content}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-gift', label=#{involvement.donations.wishlist.label}, description=#{involvement.donations.wishlist.content}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-file-invoice-dollar', label=#{involvement.donations.matchinggifts.label}, description=#{involvement.donations.matchinggifts.content}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-donate', label=#{involvement.donations.plannedgiving.label}, description=#{involvement.donations.plannedgiving.content}"></div>
       </div>
    </i>
 

@@ -5,12 +5,23 @@ logging:
   level:
     org.elpuentesearcy: TRACE
 
+#Encrypting sensitive properties:
+#java -cp C:\Users\JordanS\.m2\repository\org\jasypt\jasypt\1.9.3\jasypt-1.9.3.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="{input}" password={password} algorithm=PBEWithMD5AndDES
+
+trello:
+  api:
+    baseUrl: https://api.trello.com/1/
+    key: ENC(0zQwGPaElT2LfCsdtrXmhw1k6rkWQMPSqa6hPFdWY32x7lc8qisX/pqXpCRbhFZw)
+    token: ENC(ekD06id1HzyTBewrxhahay4BJ+g9mFtl7tIM9cNSNyKLBmZ0JyLllYVguDJPzjL0z1YeiU3WOsJzcnmAMyXMfBi+QovIDz5TdRHSc5HLEYg=)
+  approvedListId: 5d9373776cd8888e4d4f5977
+
 org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
   siteChanges:
-    - Changed Salsa Competition to Searcy Salsa Standoff
-    - Added advertisement for salsa competition to the home page
+    - <blockquote class="trello-card"><a href="https://trello.com/c/Yqx1wxUw/1-add-a-resources-page">Add a "Resources" page</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+    - <blockquote class="trello-card"><a href="https://trello.com/c/rtHrPBqN/8-add-2-new-banners">Add 2 new banners</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+    - <blockquote class="trello-card"><a href="https://trello.com/c/u5rcH4ob/9-add-arkansas-hospice-alphabetically-under-the-services-header-on-the-resources-page-arkansashospiceorg">Add Arkansas Hospice alphabetically under the Services header on the Resources page.  arkansashospice.org</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
@@ -26,7 +37,7 @@ org.elpuentesearcy:
   twitterUrl:
   instagramUrl: https://www.instagram.com/el.puente
   amazonSmileUrl: https://smile.amazon.com/ch/83-3832275?fbclid=IwAR02gUtFEfDNnqZPOeibD8RSJC_jbKuWXJB6eaQ4H_3i4cpL_Fo3-8W6fuY
-  giveLivelyUrl: https://secure.givelively.org/donate/el-puente-hispanic-services-center/website-donations
+  giveLivelyUrl: https://secure.givelively.org/donate/el-puente-hispanic-services-center
   salsaCompetitionSignupUrl: https://docs.google.com/forms/d/e/1FAIpQLSe1X-sTwzfxQCi8GXluDAtPHG6o_uZGpKo_YX74dfyokr1d2w/viewform?usp=sf_link
   salsaCompetitionRulesDownload: SalsaCompetitionRules
   volunteerFormDownload: ElPuenteVolunteerForm
@@ -34,7 +45,7 @@ org.elpuentesearcy:
     analytics:
       trackingId:
     maps:
-      apiKey: AIzaSyAUs1B95NJzFcSpf2An9EDWfKCrDyHlrwQ
+      apiKey: ENC(hSb7bNn7DHbUXqEYXdPJi4y+rKajYN7Nj/OsebHHPcnF8/AIdaqSQtbXg+DcX4VI)
   board:
     -
       name: Jay Simpson
@@ -68,7 +79,7 @@ org.elpuentesearcy:
       title:
         en:
       description:
-        en: Community Liaison<br/><strong>ARCare</strong>
+        en: Community Liaison<br/><strong>ARcare</strong>
     -
       name: Dr. Roddy Lochala
       title:

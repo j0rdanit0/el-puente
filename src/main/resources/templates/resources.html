@@ -2,9 +2,12 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE})"></th:block>
+   <th:block th:include="fragments/includes::head(${uri})"></th:block>
+   <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${properties.version}__}">
 
    <title th:text="#{resources.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -14,17 +17,43 @@
 <body>
 <i th:replace="fragments/navbar::header(#{resources.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/sectionHeader::header(#{resources.navlink})"></i>
+   <i layout:replace="~{layouts/info::banner(#{resources.navlink},${uri})}"></i>
 
+   <i th:replace="fragments/sectionHeader::header(#{resources.services.header})"></i>
    <div class="container">
-      <a href="https://www.searcychamber.com/">
-         <img src="/images/searcy-chamber-of-commerce.png" alt="Searcy Chamber of Commerce">
-      </a>
+      <i layout:replace="~{layouts/info::cardView}">
+         <div layout:fragment="iconCards">
+            <a th:each="resourceCard:${services}" th:href="${resourceCard.url}" target="_blank">
+               <div class="pt-2" layout:insert="~{layouts/info::iconCard}" th:with="text=${resourceCard.label}, classes='btn p-0 paper'"></div>
+            </a>
+         </div>
+      </i>
+   </div>
+   <i th:replace="fragments/sectionHeader::header(#{resources.education.header})"></i>
+   <div class="container">
+      <i layout:replace="~{layouts/info::cardView}">
+         <div layout:fragment="iconCards">
+            <a th:each="resourceCard:${education}" th:href="${resourceCard.url}" target="_blank">
+               <div class="pt-2" layout:insert="~{layouts/info::iconCard}" th:with="text=${resourceCard.label}, classes='btn p-0 paper'"></div>
+            </a>
+         </div>
+      </i>
+   </div>
+   <i th:replace="fragments/sectionHeader::header(#{resources.nonProfits.header})"></i>
+   <div class="container">
+      <i layout:replace="~{layouts/info::cardView}">
+         <div layout:fragment="iconCards">
+            <a th:each="resourceCard:${nonProfits}" th:href="${resourceCard.url}" target="_blank">
+               <div class="pt-2" layout:insert="~{layouts/info::iconCard}" th:with="text=${resourceCard.label}, classes='btn p-0 paper'"></div>
+            </a>
+         </div>
+      </i>
    </div>
 
    <i th:replace="fragments/footer::footer(#{resources.navlink})"></i>
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+<script th:src="@{'/js/cardView.js?v='+__${properties.version}__}"></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ChangesController).URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ChangesController).URL_BASE})"></th:block>
+   <th:block th:include="fragments/includes::head(${uri})"></th:block>
 
    <title th:text="#{changes.title}">Title</title>
    <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${properties.version}__}">
@@ -41,11 +41,11 @@
       </div>
    </div>
 
-   <i th:replace="fragments/sectionHeader::header(#{changes.submitRequest})">
-      Submit a Request
-   </i>
-   <div class="text-center">
-      <iframe th:src="'https://docs.google.com/forms/d/e/1FAIpQLScuYV0CMvL30BWD6YVKvx6ppN0XljZTItC7VNmCjdgb1xrkRg/viewform?embedded=true&hl='+${#locale.language}" width="640" height="400" frameborder="0" marginheight="0" marginwidth="0" th:text="#{changes.loading}+'...'">Loading...</iframe>
+   <i th:replace="fragments/sectionHeader::header('Trello')"></i>
+   <div class="text-center mb-5">
+      <blockquote class="trello-board-compact">
+         <a href="https://trello.com/b/HFKMKE3L">Trello Board</a>
+      </blockquote>
    </div>
 
    <i th:replace="fragments/footer::footer(#{changes.navlink})"></i>
@@ -59,4 +59,5 @@
 <script th:src="@{'/js/cookieHelper.js?v='+__${properties.version}__}"></script>
 <script th:src="@{'/js/websockets.js?v='+__${properties.version}__}"></script>
 <script th:src="@{'/js/changes.js?v='+__${properties.version}__}"></script>
+<script src="https://p.trellocdn.com/embed.min.js"></script>
 </body>

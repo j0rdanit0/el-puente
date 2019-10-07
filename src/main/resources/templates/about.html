@@ -2,9 +2,9 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.AboutController).URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.AboutController).URL_BASE})"></th:block>
+   <th:block th:include="fragments/includes::head(${uri})"></th:block>
    <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${properties.version}__}">
 
    <title th:text="#{about.title}">About Us</title>
@@ -16,7 +16,7 @@
 <body>
 <i th:replace="fragments/navbar::header(#{about.navlink})"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{about.aboutUs.header})}"></i>
+   <i layout:replace="~{layouts/info::banner(#{about.aboutUs.header}, ${uri})}"></i>
 
    <p class="container mb-5" th:utext="#{about.aboutUs.content}"></p>
 

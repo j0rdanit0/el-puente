@@ -2,9 +2,9 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ContactController).URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ContactController).URL_BASE})"></th:block>
+   <th:block th:include="fragments/includes::head(${uri})"></th:block>
    <link rel="stylesheet" th:href="@{'/css/contact.css?v='+__${properties.version}__}">
 
    <title th:text="#{contact.title}">Title</title>
@@ -19,7 +19,7 @@
 </th:block>
 <i th:replace="fragments/navbar::header(#{contact.navlink})"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{contact.contactUs})}"></i>
+   <i layout:replace="~{layouts/info::banner(#{contact.contactUs}, ${uri})}"></i>
 
    <div class="container">
       <div class="row">

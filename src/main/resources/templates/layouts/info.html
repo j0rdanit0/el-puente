@@ -3,8 +3,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <body>
-<div layout:fragment="banner(text)">
-   <div class="card border-0 heroBanner"></div>
+<div layout:fragment="banner(text, uri)">
+   <div class="card border-0 heroBanner" th:style="'background-image:  url(&quot;/images/'+${uri ?: 'main'}+'-banner.jpg&quot;);'"></div>
    <div class="container">
       <div class="container">
          <div layout:insert="~{layouts/info::card}" class="boxShadow" style="transform:translateY(-50px)">
@@ -18,14 +18,21 @@
    </div>
 </div>
 
-<div layout:fragment="iconCard(fontawesomeClass, label, description)" th:with="color=${color ?: '--primary'}" class="card border-0">
+<div layout:fragment="iconCard" th:with="color=${color ?: '--primary'}" th:class="'card border-0'+${!#strings.isEmpty(classes) ? ' '+classes : ''}">
    <div class="card-body" th:style="'border-top: solid 3px var('+${color}+')'">
-      <div layout:insert="~{layouts/info::icon(${fontawesomeClass})}">
-         <strong layout:fragment="label">
-            <span th:text="${label}"></span>
-         </strong>
-      </div>
-      <small th:utext="${description}"></small>
+      <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
+         <div layout:insert="~{layouts/info::icon(${fontawesomeClass})}">
+            <strong layout:fragment="label">
+               <span th:if="${!#strings.isEmpty(label)}" th:text="${label}"></span>
+            </strong>
+         </div>
+      </th:block>
+      <th:block th:if="${!#strings.isEmpty(description)}">
+         <small th:utext="${description}"></small>
+      </th:block>
+      <th:block th:if="${!#strings.isEmpty(text)}">
+         <span th:utext="${text}"></span>
+      </th:block>
       <th:block th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-share'}">
          <hr/>
          <i th:replace="fragments/button::action(${actionButtonURL}, ${actionButtonText})"></i>
@@ -48,18 +55,18 @@
    <div layout:fragment="label"></div>
 </div>
 
-<div layout:fragment="cardView" class="container my-4">
+<div layout:fragment="cardView" class="container my-4 cardViewContainer">
    <div class="d-none d-sm-inline-block w-100">
       <span class="float-right text-secondary">
-         <a id="displayInColumnsButton" class="viewButton btn btn-sm border-0 text-primary" title="Column view">
+         <a class="displayInColumnsButton viewButton btn btn-sm border-0 text-primary" title="Column view">
             <i class="fas fa-columns"></i>
          </a>
-         <a id="displayInRowsButton" class="viewButton btn btn-sm border-0" title="List view">
+         <a class="displayInRowsButton viewButton btn btn-sm border-0" title="List view">
             <i class="fas fa-align-left"></i>
          </a>
       </span>
    </div>
-   <div id="displayCards" class="card-columns">
+   <div class="displayCards card-columns">
       <div layout:fragment="iconCards"></div>
    </div>
 </div>

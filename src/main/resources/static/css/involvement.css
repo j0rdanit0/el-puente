@@ -3,6 +3,7 @@
 }
 
 .heroBanner {
+   background-color: var( --primary );
    background-position-x: var(--hero-banner-position-x);
 }
 

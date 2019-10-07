@@ -100,6 +100,7 @@ function updateChangeApprovals( changeApprovals ) {
    } );
 
    $('#changesList').html( html );
+   window.TrelloCards.load(document, { compact: false, allAnchors: false });
 }
 
 function sendApproval( index ) {

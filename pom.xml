@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.elpuentesearcy</groupId>
     <artifactId>webapp</artifactId>
-    <version>0.7.1</version>
+    <version>1.0.0</version>
     <name>el-puente</name>
     <description></description>
 
@@ -94,6 +94,12 @@
             <artifactId>sitemapgen4j</artifactId>
             <version>1.1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>2.1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -124,8 +130,8 @@
                                 <cssSourceFile>main.css</cssSourceFile>
                                 <cssSourceFile>contact.css</cssSourceFile>
                                 <cssSourceFile>about.css</cssSourceFile>
-                                <cssSourceFile>programs.css</cssSourceFile>
-                                <cssSourceFile>services.css</cssSourceFile>
+                                <cssSourceFile>involvement.css</cssSourceFile>
+                                <cssSourceFile>resources.css</cssSourceFile>
                             </cssSourceFiles>
                             <cssTargetDir>css</cssTargetDir>
                             <cssFinalFile>prod.css</cssFinalFile>

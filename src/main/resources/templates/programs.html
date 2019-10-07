@@ -3,12 +3,11 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE})"></th:block>
+   <th:block th:include="fragments/includes::head(${uri})"></th:block>
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${properties.version}__}">
-   <link rel="stylesheet" th:href="@{'/css/programs.css?v='+__${properties.version}__}">
 
    <title th:text="#{programs.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -18,19 +17,19 @@
 <body>
 <i th:replace="fragments/navbar::header(#{programs.navlink})"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{programs.navlink})}"></i>
+   <i layout:replace="~{layouts/info::banner(#{programs.navlink},${uri})}"></i>
    <i th:replace="fragments/sectionHeader::bannerText(#{programs.description})"></i>
 
    <i layout:replace="~{layouts/info::cardView}">
       <div layout:fragment="iconCards">
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-chalkboard-teacher', #{programs.english.label}, #{programs.english.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-chalkboard-teacher', #{programs.spanish.label}, #{programs.spanish.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-flag-usa', #{programs.citizenship.label}, #{programs.citizenship.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-laptop', #{programs.computer.label}, #{programs.computer.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-pencil-alt', #{programs.afterSchoolSummer.label}, #{programs.afterSchoolSummer.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-sun', #{programs.camp.label}, #{programs.camp.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-child', #{programs.leaders.label}, #{programs.leaders.description} )}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::iconCard('fa-female', #{programs.girls.label}, #{programs.girls.description} )}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.english.label}, description=#{programs.english.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.spanish.label}, description=#{programs.spanish.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-flag-usa', label=#{programs.citizenship.label}, description=#{programs.citizenship.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-laptop', label=#{programs.computer.label}, description=#{programs.computer.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-pencil-alt', label=#{programs.afterSchoolSummer.label}, description=#{programs.afterSchoolSummer.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-sun', label=#{programs.camp.label}, description=#{programs.camp.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-child', label=#{programs.leaders.label}, description=#{programs.leaders.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::iconCard}" th:with="fontawesomeClass='fa-female', label=#{programs.girls.label}, description=#{programs.girls.description}"></div>
       </div>
    </i>
 
