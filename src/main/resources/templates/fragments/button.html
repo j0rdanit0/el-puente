@@ -4,7 +4,7 @@
 <body>
 <a th:fragment="action(href, text)"
    th:with="fontawesomeClass=${fontawesomeClass ?: ''},isLarge=${isLarge ?: false},downloadFileName=${downloadFileName ?: ''}"
-   th:class="'btn btn-danger '+${isLarge ? 'btn-lg' : ''}"
+   th:class="'btn btn-danger '+${isLarge ? 'btn-lg' : ''}+${href == '#' ? 'disabled' : ''}"
    th:href="${href}"
    th:attr="download=${!#strings.isEmpty(downloadFileName)}?${downloadFileName}">
    <i th:if="${!#strings.isEmpty(fontawesomeClass)}" th:class="${#strings.startsWith(fontawesomeClass, 'fab ') ? fontawesomeClass : ('fas ' + fontawesomeClass)}"></i>

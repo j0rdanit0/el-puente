@@ -15,49 +15,38 @@
 <main role="main">
    <i th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')"></i>
 
-   <form id="initialsContainer" class="form-inline justify-content-center my-5">
-      <div class="form-group mx-sm-3">
-         <label for="initials">Approval Initials:</label>
-         <input type="text" class="form-control ml-2" id="initials" placeholder="Initials" style="width: 100px;">
-      </div>
-      <button class="btn btn-danger" onclick="showChanges( $('#initials').val() ); return false;">
-         <i class="fas fa-share"></i>
-         See Changes
-      </button>
-   </form>
+   <div class="container">
+      <th:block th:if="${#lists.isEmpty(trelloCards)}">
+         <div class="text-center mb-5">
+            <div class="mb-3">
+               No changes found. Add some work to the Trello board:
+            </div>
+            <blockquote class="trello-board-compact">
+               <a href="https://trello.com/b/HFKMKE3L">Trello Board</a>
+            </blockquote>
+         </div>
+      </th:block>
+      <th:block th:if="${!#lists.isEmpty(trelloCards)}">
+         <blockquote class="trello-card" th:each="trelloCard:${trelloCards}">
+            <a th:href="${trelloCard.url}" th:text="${trelloCard.name}"></a>
+         </blockquote>
 
-   <div id='changesContainer' class="blockedOnDisconnect container pb-5 px-3 card-columns">
-      <div class="mb-5 d-flex justify-content-center">
-         <span class="mt-2">
-            Approving as:&nbsp;<strong id="initialsDisplay"></strong>
-         </span>
-         <button class="btn btn-danger ml-2" onclick="enterInitials();">
-            <i class="fas fa-edit"></i>
-            Edit
-         </button>
-      </div>
-      <div id="changesList">
-         <span class="text-center">No Changes!</span>
-      </div>
-   </div>
-
-   <i th:replace="fragments/sectionHeader::header('Trello')"></i>
-   <div class="text-center mb-5">
-      <blockquote class="trello-board-compact">
-         <a href="https://trello.com/b/HFKMKE3L">Trello Board</a>
-      </blockquote>
+         <div class="text-center m-5">
+            <div id="goLiveButton" class="btn btn-success btn-lg">
+               <i class="fas fa-cloud"></i>
+               Go Live
+               <div class="spinner-border text-light d-none" role="status">
+                  <span class="sr-only">Loading...</span>
+               </div>
+            </div>
+         </div>
+      </th:block>
    </div>
 
    <i th:replace="fragments/footer::footer(#{changes.navlink})"></i>
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
-<script src="/webjars/sockjs-client/sockjs.min.js"></script>
-<script src="/webjars/stomp-websocket/stomp.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js" integrity="sha256-9Nt2r+tJnSd2A2CRUvnjgsD+ES1ExvjbjBNqidm9doI=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
-<script th:src="@{'/js/cookieHelper.js?v='+__${properties.version}__}"></script>
-<script th:src="@{'/js/websockets.js?v='+__${properties.version}__}"></script>
 <script th:src="@{'/js/changes.js?v='+__${properties.version}__}"></script>
 <script src="https://p.trellocdn.com/embed.min.js"></script>
 </body>

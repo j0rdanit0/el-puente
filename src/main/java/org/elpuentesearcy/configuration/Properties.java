@@ -35,7 +35,6 @@ public class Properties
     private Google google;
     private List<Employee> board;
     private List<Employee> staff;
-    private List<String> siteChanges = new ArrayList<>();
 
     private static Properties instance;
 
@@ -402,16 +401,6 @@ public class Properties
     public void setStaff( List<Employee> staff )
     {
         this.staff = staff;
-    }
-
-    public List<String> getSiteChanges()
-    {
-        return siteChanges;
-    }
-
-    public void setSiteChanges( List<String> siteChanges )
-    {
-        this.siteChanges = siteChanges;
     }
 
     private String getDownloadsPath( String fileName )

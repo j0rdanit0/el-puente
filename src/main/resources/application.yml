@@ -13,15 +13,12 @@ trello:
     baseUrl: https://api.trello.com/1/
     key: ENC(0zQwGPaElT2LfCsdtrXmhw1k6rkWQMPSqa6hPFdWY32x7lc8qisX/pqXpCRbhFZw)
     token: ENC(ekD06id1HzyTBewrxhahay4BJ+g9mFtl7tIM9cNSNyKLBmZ0JyLllYVguDJPzjL0z1YeiU3WOsJzcnmAMyXMfBi+QovIDz5TdRHSc5HLEYg=)
+  approvalListId: 5d93720df8af5683824ac6bf
   approvedListId: 5d9373776cd8888e4d4f5977
 
 org.elpuentesearcy:
   version: @project.version@
   isTestMode: true
-  siteChanges:
-    - <blockquote class="trello-card"><a href="https://trello.com/c/Yqx1wxUw/1-add-a-resources-page">Add a "Resources" page</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
-    - <blockquote class="trello-card"><a href="https://trello.com/c/rtHrPBqN/8-add-2-new-banners">Add 2 new banners</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
-    - <blockquote class="trello-card"><a href="https://trello.com/c/u5rcH4ob/9-add-arkansas-hospice-alphabetically-under-the-services-header-on-the-resources-page-arkansashospiceorg">Add Arkansas Hospice alphabetically under the Services header on the Resources page.  arkansashospice.org</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944

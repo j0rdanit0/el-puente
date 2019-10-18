@@ -36,7 +36,7 @@
             </small>
          </div>
       </div>
-      <div class="container">
+      <div class="container" th:if="${#dates.createToday().before( #dates.create( 2019, 10, 19, 19, 0 ) )}"> <!-- todo remove after October 19 -->
          <div class="container">
             <div layout:insert="~{layouts/info::card}" class="boxShadow" style="transform:translateY(-50px)">
                <div layout:fragment="content">
@@ -57,8 +57,8 @@
                         <span th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.salsaCompetitionRulesDownload}">
                            <i th:replace="fragments/button::action(${properties.salsaCompetitionRulesDownloadPath}, #{salsaCompetition.rules})"></i>
                         </span>
-                        <span th:with="fontawesomeClass='fa-share'">
-                           <i th:replace="fragments/button::action(${properties.salsaCompetitionSignupUrl}, #{salsaCompetition.signup})"></i>
+                        <span th:with="fontawesomeClass='fa-share'" data-toggle="tooltip" title="Thank you for your interest in competing in the Searcy Salsa Standoff! All of our competitor spots are filled, but please come out and be a salsa taster this year and plan to compete next year!">
+                           <i th:replace="fragments/button::action('#', #{salsaCompetition.signup})"></i>
                         </span>
                      </div>
                   </div>
@@ -74,12 +74,12 @@
                   <div class="card-img-top">
                      <img th:src="@{/images/salsa-competition.jpg}" class="d-block w-100" alt="Searcy Salsa Standoff - October 19 at Searcy's Beats & Eats">
                   </div>
-                  <div class="card-body text-center">
+                  <div class="card-body text-center" th:if="${#dates.createToday().before( #dates.create( 2019, 10, 19, 19, 0 ) )}"> <!-- todo remove after October 19 -->
                      <span th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.salsaCompetitionRulesDownload}">
                         <i th:replace="fragments/button::action(${properties.salsaCompetitionRulesDownloadPath}, #{salsaCompetition.rules})"></i>
                      </span>
-                     <span th:with="fontawesomeClass='fa-share'">
-                        <i th:replace="fragments/button::action(${properties.salsaCompetitionSignupUrl}, #{salsaCompetition.signup})"></i>
+                     <span th:with="fontawesomeClass='fa-share'" data-toggle="tooltip" title="Thank you for your interest in competing in the Searcy Salsa Standoff! All of our competitor spots are filled, but please come out and be a salsa taster this year and plan to compete next year!local">
+                        <i th:replace="fragments/button::action('#', #{salsaCompetition.signup})"></i>
                      </span>
                   </div>
                </div>
