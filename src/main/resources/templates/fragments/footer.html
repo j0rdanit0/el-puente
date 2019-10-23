@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<footer th:fragment="footer(activeTab)" class="text-dark py-3">
+<footer th:fragment="footer(activeTab)" class="text-dark pb-3">
    <div class="container">
+      <script async th:src="'https://cse.google.com/cse.js?cx=009109186331168666000:'+${#locale.language == 'es' ? 'nywmiziagwz' : 'hc8xpk2v2kh'}"></script>
+      <div class="gcse-search"></div>
       <h3 th:insert="fragments/socialMedia::buttons(colorClass='text-secondary')" class="float-right pt-2"></h3>
       <i th:replace="fragments/navbar::header(activeTab=${activeTab}, footer=true)"></i>
       <hr/>
@@ -20,7 +22,7 @@
          </div>
       </div>
       <hr/>
-      <small class="text-center d-block" th:text="'Copyright © '+${#dates.createNow().year + 1900}+' Jordan Simpson, All Rights Reserved.'">
+      <small class="text-center d-block" th:text="'Copyright © '+${#dates.createNow().year + 1900}+' El Puente Hispanic Services Center, All Rights Reserved.'">
          Copyright
       </small>
    </div>
