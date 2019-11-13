@@ -26,64 +26,22 @@
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
    <i th:replace="fragments/navbar::header('')"></i>
    <main role="main">
-      <div class="card border-0 heroBanner">
-         <div class="card-body container pt-5">
-            <p id="missionStatement" class="font-italic text-light font-weight-light" th:text="#{home.missionStatement}">
-               Mission statement
-            </p>
-            <small class="d-block text-white" th:text="#{home.missionStatementSignature}">
-               Signature
-            </small>
-         </div>
-      </div>
-      <div class="container" th:if="${#dates.createToday().before( #dates.create( 2019, 10, 19, 19, 0 ) )}"> <!-- todo remove after October 19 -->
-         <div class="container">
-            <div layout:insert="~{layouts/info::card}" class="boxShadow" style="transform:translateY(-50px)">
-               <div layout:fragment="content">
-                  <div class="row">
-                     <div class="col-12 col-lg-6">
-                        <h2 class="text-center text-lg-left">
-                           <a th:href="${properties.salsaCompetitionRulesDownloadPath}">
-                              <strong class="text-primary" th:text="#{salsaCompetition.title}"></strong>
-                           </a>
-                        </h2>
-                     </div>
-                     <div class="col-12 col-lg-2 text-center mt-lg-2">
-                        <span class="text-secondary d-block">
-                           Oct 19 6:00pm
-                        </span>
-                     </div>
-                     <div class="col-12 col-lg-4 text-center text-lg-right">
-                        <span th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.salsaCompetitionRulesDownload}">
-                           <i th:replace="fragments/button::action(${properties.salsaCompetitionRulesDownloadPath}, #{salsaCompetition.rules})"></i>
-                        </span>
-                        <span th:with="fontawesomeClass='fa-share'" data-toggle="tooltip" title="Thank you for your interest in competing in the Searcy Salsa Standoff! All of our competitor spots are filled, but please come out and be a salsa taster this year and plan to compete next year!">
-                           <i th:replace="fragments/button::action('#', #{salsaCompetition.signup})"></i>
-                        </span>
-                     </div>
-                  </div>
-               </div>
+      <i layout:replace="~{layouts/info::banner('El Puente Hispanic Services Center')}">
+         <i layout:fragment="textOverlay">
+            <div class="card-body container pt-5">
+               <p id="missionStatement" class="font-italic text-light font-weight-light" th:text="#{home.missionStatement}">
+                  Mission statement
+               </p>
+               <small class="d-block text-white" th:text="#{home.missionStatementSignature}">
+                  Signature
+               </small>
             </div>
-         </div>
-      </div>
+         </i>
+      </i>
 
       <div class="container my-3">
          <div class="row">
             <div class="col-12 col-md-6 col-lg-5 col-xl-4 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">
-               <div class="card">
-                  <div class="card-img-top">
-                     <img th:src="@{/images/salsa-competition.jpg}" class="d-block w-100" alt="Searcy Salsa Standoff - October 19 at Searcy's Beats & Eats">
-                  </div>
-                  <div class="card-body text-center" th:if="${#dates.createToday().before( #dates.create( 2019, 10, 19, 19, 0 ) )}"> <!-- todo remove after October 19 -->
-                     <span th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.salsaCompetitionRulesDownload}">
-                        <i th:replace="fragments/button::action(${properties.salsaCompetitionRulesDownloadPath}, #{salsaCompetition.rules})"></i>
-                     </span>
-                     <span th:with="fontawesomeClass='fa-share'" data-toggle="tooltip" title="Thank you for your interest in competing in the Searcy Salsa Standoff! All of our competitor spots are filled, but please come out and be a salsa taster this year and plan to compete next year!local">
-                        <i th:replace="fragments/button::action('#', #{salsaCompetition.signup})"></i>
-                     </span>
-                  </div>
-               </div>
-               <br/>
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
                      <h5 class="card-title" th:text="#{social.facebook}"></h5>
@@ -101,6 +59,17 @@
                               El Puente Hispanic Services Center
                            </a>
                         </blockquote>
+                     </div>
+                  </div>
+               </div>
+               <br/>
+               <div layout:insert="~{layouts/info::card}">
+                  <div layout:fragment="content" th:remove="tag">
+                     <div class="text-center">
+                        <p th:utext="#{home.donationText}"></p>
+                        <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
+                           <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
+                        </th:block>
                      </div>
                   </div>
                </div>
@@ -168,21 +137,10 @@
                </div>
             </div>
          </div>
-         <div layout:insert="~{layouts/info::card}">
-            <div layout:fragment="content" th:remove="tag">
-               <div class="text-center">
-                  <p th:utext="#{home.donationText}"></p>
-                  <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
-                     <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
-                  </th:block>
-               </div>
-            </div>
-         </div>
       </div>
 
       <i th:replace="fragments/footer::footer('')"></i>
 </main>
-
    <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
    <script th:src="@{'/js/facebookEmbed.js?v='+__${properties.version}__}"></script>
 </body>

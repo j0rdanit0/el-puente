@@ -4,7 +4,9 @@
 <head>
 <body>
 <div layout:fragment="banner(text, uri)">
-   <div class="card border-0 heroBanner" th:style="'background-image:  url(&quot;/images/'+${uri ?: 'main'}+'-banner.jpg&quot;);'"></div>
+   <div class="card border-0 heroBanner" th:style="'background-image:  url(&quot;/images/'+${uri ?: 'main'}+'-banner.jpg&quot;);'">
+      <div layout:fragment="textOverlay"></div>
+   </div>
    <div class="container">
       <div class="container">
          <div layout:insert="~{layouts/info::card}" class="boxShadow" style="transform:translateY(-50px)">

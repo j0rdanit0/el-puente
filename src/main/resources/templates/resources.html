@@ -5,9 +5,9 @@
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE}">
 <head>
    <th:block th:include="fragments/includes::head(${uri})"></th:block>
-   <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${properties.version}__}">
 
    <title th:text="#{resources.title}">Title</title>
    <!--<meta property="og:url" content="">-->
