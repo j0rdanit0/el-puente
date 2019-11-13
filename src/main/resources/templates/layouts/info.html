@@ -22,11 +22,9 @@
 
 <div layout:fragment="card" th:with="color=${color ?: '--primary'}" th:class="'card'+${!#strings.isEmpty(classes) ? ' '+classes : ''}" th:style="${#strings.isEmpty(yOffset) ? '' : 'transform:translateY('+yOffset+');'}+' border-top: solid 3px var('+${color}+');'">
    <div class="row no-gutters">
-      <th:block th:if="${!#strings.isEmpty(imageUrl)}">
-         <div class="col-12 cardImageContainer my-auto">
-            <img th:src="${imageUrl}" class="card-img" th:alt="${label}">
-         </div>
-      </th:block>
+      <div th:if="${!#strings.isEmpty(imageUrl)}" class="col-12 cardImageContainer my-auto">
+         <img th:src="${imageUrl}" class="card-img" th:alt="${label}">
+      </div>
       <div class="col">
          <div class="card-body">
             <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
@@ -36,16 +34,11 @@
                   </strong>
                </div>
             </th:block>
-            <th:block th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-share'}">
+            <small th:if="${!#strings.isEmpty(description)}" th:utext="${description}"></small>
+            <span th:if="${!#strings.isEmpty(text)}" th:utext="${text}"></span>
+            <div th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-share'}" class="float-right mb-2">
                <i th:replace="fragments/button::action(${actionButtonURL}, ${actionButtonText})"></i>
-               <hr/>
-            </th:block>
-            <th:block th:if="${!#strings.isEmpty(description)}">
-               <small th:utext="${description}"></small>
-            </th:block>
-            <th:block th:if="${!#strings.isEmpty(text)}">
-               <span th:utext="${text}"></span>
-            </th:block>
+            </div>
             <div layout:fragment="content"></div>
          </div>
       </div>
