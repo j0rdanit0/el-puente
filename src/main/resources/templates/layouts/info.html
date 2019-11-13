@@ -3,16 +3,16 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <body>
-<div layout:fragment="banner(text, uri)">
-   <div class="card border-0 heroBanner" th:style="'background-image:  url(&quot;/images/'+${uri ?: 'main'}+'-banner.jpg&quot;);'">
+<div layout:fragment="banner(bannerTitle, bannerImageUri)">
+   <div class="card heroBanner" th:style="'background-image:  url(&quot;/images/'+${bannerImageUri ?: 'main'}+'-banner.jpg&quot;);'">
       <div layout:fragment="textOverlay"></div>
    </div>
    <div class="container">
       <div class="container">
-         <div layout:insert="~{layouts/info::card}" class="boxShadow" style="transform:translateY(-50px)">
+         <div layout:insert="~{layouts/info::card}" th:with="classes='boxShadow',yOffset='-50px'">
             <div layout:fragment="content">
                <h1 class="text-center">
-                  <strong class="text-dark" th:text="${text}"></strong>
+                  <strong class="text-dark" th:text="${bannerTitle}"></strong>
                </h1>
             </div>
          </div>
@@ -20,32 +20,34 @@
    </div>
 </div>
 
-<div layout:fragment="iconCard" th:with="color=${color ?: '--primary'}" th:class="'card border-0'+${!#strings.isEmpty(classes) ? ' '+classes : ''}">
-   <div class="card-body" th:style="'border-top: solid 3px var('+${color}+')'">
-      <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
-         <div layout:insert="~{layouts/info::icon(${fontawesomeClass})}">
-            <strong layout:fragment="label">
-               <span th:if="${!#strings.isEmpty(label)}" th:text="${label}"></span>
-            </strong>
+<div layout:fragment="card" th:with="color=${color ?: '--primary'}" th:class="'card'+${!#strings.isEmpty(classes) ? ' '+classes : ''}" th:style="${#strings.isEmpty(yOffset) ? '' : 'transform:translateY('+yOffset+');'}+' border-top: solid 3px var('+${color}+');'">
+   <div class="row no-gutters">
+      <th:block th:if="${!#strings.isEmpty(imageUrl)}">
+         <div class="col-12 cardImageContainer my-auto">
+            <img th:src="${imageUrl}" class="card-img" th:alt="${label}">
          </div>
       </th:block>
-      <th:block th:if="${!#strings.isEmpty(description)}">
-         <small th:utext="${description}"></small>
-      </th:block>
-      <th:block th:if="${!#strings.isEmpty(text)}">
-         <span th:utext="${text}"></span>
-      </th:block>
-      <th:block th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-share'}">
-         <hr/>
-         <i th:replace="fragments/button::action(${actionButtonURL}, ${actionButtonText})"></i>
-      </th:block>
-   </div>
-</div>
-
-<div layout:fragment="card" th:with="color=${color ?: '--primary'}" class="card border-0">
-   <div class="card-body" th:style="'border-top: solid 3px var('+${color}+')'">
-      <div layout:fragment="content">
-         Content
+      <div class="col">
+         <div class="card-body">
+            <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
+               <div layout:insert="~{layouts/info::icon(${fontawesomeClass})}">
+                  <strong layout:fragment="label">
+                     <span th:if="${!#strings.isEmpty(label)}" th:text="${label}"></span>
+                  </strong>
+               </div>
+            </th:block>
+            <th:block th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-share'}">
+               <i th:replace="fragments/button::action(${actionButtonURL}, ${actionButtonText})"></i>
+               <hr/>
+            </th:block>
+            <th:block th:if="${!#strings.isEmpty(description)}">
+               <small th:utext="${description}"></small>
+            </th:block>
+            <th:block th:if="${!#strings.isEmpty(text)}">
+               <span th:utext="${text}"></span>
+            </th:block>
+            <div layout:fragment="content"></div>
+         </div>
       </div>
    </div>
 </div>
@@ -69,7 +71,7 @@
       </span>
    </div>
    <div class="displayCards card-columns">
-      <div layout:fragment="iconCards"></div>
+      <div layout:fragment="cards"></div>
    </div>
 </div>
 </body>

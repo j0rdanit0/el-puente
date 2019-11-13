@@ -5,13 +5,13 @@
       th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.AboutController).URL_BASE}">
 <head>
    <th:block th:include="fragments/includes::head(${uri})"></th:block>
-   <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${properties.version}__}">
 
    <title th:text="#{about.title}">About Us</title>
    <!--<meta property="og:url" content="">-->
    <meta property="og:title" th:content="#{about.title}">
    <meta property="og:description" th:content="#{about.aboutUs.content}">
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/about.css?v='+__${properties.version}__}">
 </head>
 <body>
 <i th:replace="fragments/navbar::header(#{about.navlink})"></i>

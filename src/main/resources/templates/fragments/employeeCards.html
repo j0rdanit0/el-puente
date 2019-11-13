@@ -4,8 +4,8 @@
 <body>
 <div th:fragment="cards">
    <div class="banner-primary"></div>
-   <div class="container">
-      <div layout:insert="~{layouts/info::card}" th:with="color='--danger'" class="boxShadow" style="transform:translateY(-50px)">
+   <div class="employeeCards container">
+      <div layout:insert="~{layouts/info::card}" th:with="color='--danger',classes='boxShadow',yOffset='-50px'">
          <div layout:fragment="content">
             <h1 class="text-center">
                <strong class="text-dark" th:text="${header}">

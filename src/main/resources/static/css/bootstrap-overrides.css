@@ -84,8 +84,3 @@
 .badge-dark {
    background-color: var(--dark)!important;
 }
-
-
-.card {
-   border-radius: 0!important;
-}
