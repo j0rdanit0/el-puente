@@ -25,7 +25,15 @@
    </div>
 
    <i th:replace="fragments/sectionHeader::header(#{involvement.donations.header})"></i>
-   <div class="container">
+
+   <div class="container" th:if="${#dates.createToday().before( #dates.create(2019, 12, 4) )}">
+      <!-- Begin Give Lively Fundraising Widget -->
+      <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/branded_donation/el-puente-hispanic-services-center/giving-tuesday.js';document.getElementsByTagName('head')[0].appendChild(gl);</script><div data-widget-src='https://secure.givelively.org/donate/el-puente-hispanic-services-center/giving-tuesday?ref=sd_widget' id="give-lively-widget" class="gl-branded-donation-widget"></div>
+      <!-- End Give Lively Fundraising Widget -->
+      <i th:replace="fragments/sectionHeader::bannerText(#{involvement.donations.content})"></i>
+   </div>
+
+   <div class="container" th:if="${#dates.createToday().after( #dates.create(2019, 12, 4) )}">
       <div class="row mb-1">
          <div class="col"></div>
          <div class="col-xs-10 col-md-8 col-lg-6">

@@ -40,6 +40,12 @@
          </i>
       </i>
 
+      <div class="container" th:if="${#dates.createToday().before( #dates.create(2019, 12, 4) )}">
+         <!-- Begin Give Lively Fundraising Widget -->
+         <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/branded_donation/el-puente-hispanic-services-center/giving-tuesday.js';document.getElementsByTagName('head')[0].appendChild(gl);</script><div data-widget-src='https://secure.givelively.org/donate/el-puente-hispanic-services-center/giving-tuesday?ref=sd_widget' id="give-lively-widget" class="gl-branded-donation-widget"></div>
+         <!-- End Give Lively Fundraising Widget -->
+      </div>
+
       <div class="container my-3">
          <div class="row">
             <div class="col-12 col-md-6 col-lg-5 col-xl-4 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">

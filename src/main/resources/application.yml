@@ -5,9 +5,6 @@ logging:
   level:
     org.elpuentesearcy: TRACE
 
-#Encrypting sensitive properties:
-#java -cp C:\Users\JordanS\.m2\repository\org\jasypt\jasypt\1.9.3\jasypt-1.9.3.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="{input}" password={password} algorithm=PBEWithMD5AndDES
-
 trello:
   api:
     baseUrl: https://api.trello.com/1/
@@ -44,64 +41,62 @@ org.elpuentesearcy:
     maps:
       apiKey: ENC(hSb7bNn7DHbUXqEYXdPJi4y+rKajYN7Nj/OsebHHPcnF8/AIdaqSQtbXg+DcX4VI)
   board:
-    -
-      name: Jay Simpson
+    - name: Jay Simpson
       title:
         en: President
         es: Presidente
       description:
         en: Senior Associate Director of Financial Aid Services<br/><strong>Harding University</strong>
-    -
-      name: Larry Wilks
+    - name: Larry Wilks
       title:
         en: Vice President
         es: Vicepresidente
       description:
         en: Chaplain<br/><strong>Harding Place</strong>
-    -
-      name: Jaclyn Seiders
+    - name: Jaclyn Seiders
       title:
         en: Secretary/Treasurer
         es: Sectretaria-Tesorera
       description:
         en: Literacy Coach/ESOL Coordinator<br/><strong>Searcy Public Schools</strong>
-    -
-      name: Tity Abbud
+    - name: Tity Abbud
       title:
         en:
       description:
         en: Community Advocate
-    -
-      name: Logan Russell
+    - name: Logan Russell
       title:
         en:
       description:
         en: Community Liaison<br/><strong>ARcare</strong>
-    -
-      name: Dr. Roddy Lochala
+    - name: Dr. Roddy Lochala
       title:
         en:
       description:
         en: Family Medicine Residency Associate Program Director<br/><strong>Unity Health</strong>
   staff:
-    -
-      name: Ruth Simpson
+    - name: Ruth Simpson
       title:
         en: Executive Director
         es: Directora Ejecutiva
       description:
         en:
-    -
-      name: Guillermo Hernandez
+    - name: Guillermo Hernandez
       title:
         en: Legal Advisor
         es: Consejero Legal
       description:
         en:
-    -
-      name: Mary Kathryn Lochala
+    - name: Mary Kathryn Lochala
       title:
         en: Finance
         es: Finanzas
       description:
         en:
+
+#Encrypting sensitive properties:
+#java -cp C:\Users\JordanS\.m2\repository\org\jasypt\jasypt\1.9.3\jasypt-1.9.3.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="{input}" password={password} algorithm=PBEWithMD5AndDES
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
