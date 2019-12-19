@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UrlService
 {
-    @Value( "${org.elpuentesearcy.isTestMode}" )
-    private boolean isTestMode;
+    @Value( "${org.elpuentesearcy.testMode}" )
+    private boolean testMode;
     @Value( "${server.port}" )
     private int port;
     @Value( "${org.elpuentesearcy.domain}" )
@@ -21,9 +21,9 @@ public class UrlService
 
     public String getBaseUrl( UrlLocaleResolver.ElPuenteLanguage subdomain )
     {
-        return "http" + (isTestMode ? "" : "s") + "://" +                   //https://
+        return "http" + (testMode ? "" : "s") + "://" +                   //https://
                (subdomain == null ? "" : subdomain.getSubdomain() + ".") +  //es.
                domain +                                                     //elpuentesearcy.org
-               (isTestMode ? ":" + port : "");                              //:8080
+               (testMode ? ":" + port : "");                              //:8080
     }
 }

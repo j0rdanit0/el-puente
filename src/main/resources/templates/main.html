@@ -40,7 +40,7 @@
          </i>
       </i>
 
-      <div class="container" th:if="${#dates.createToday().before( #dates.create(2019, 12, 4) )}">
+      <div class="container" th:if="${properties.showGivingTuesdayWidget}">
          <!-- Begin Give Lively Fundraising Widget -->
          <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/branded_donation/el-puente-hispanic-services-center/giving-tuesday.js';document.getElementsByTagName('head')[0].appendChild(gl);</script><div data-widget-src='https://secure.givelively.org/donate/el-puente-hispanic-services-center/giving-tuesday?ref=sd_widget' id="give-lively-widget" class="gl-branded-donation-widget"></div>
          <!-- End Give Lively Fundraising Widget -->
@@ -48,28 +48,30 @@
 
       <div class="container my-3">
          <div class="row">
-            <div class="col-12 col-md-6 col-lg-5 col-xl-4 mb-3" th:if="${!#strings.isEmpty( properties.facebookUrl )}">
-               <div layout:insert="~{layouts/info::card}">
-                  <div layout:fragment="content" th:remove="tag">
-                     <h5 class="card-title" th:text="#{social.facebook}"></h5>
-                     <div class="fb-page d-block"
-                          th:attr="data-href=${properties.facebookUrl}"
-                          data-tabs="timeline, events"
-                          data-width=""
-                          data-height="400"
-                          data-small-header="false"
-                          data-adapt-container-width="true"
-                          data-hide-cover="false"
-                          data-show-facepile="true">
-                        <blockquote th:cite="${properties.facebookUrl}" class="fb-xfbml-parse-ignore">
-                           <a th:href="${properties.facebookUrl}">
-                              El Puente Hispanic Services Center
-                           </a>
-                        </blockquote>
+            <div class="col-12 col-md-6 col-lg-6 col-xl-5 mb-3">
+               <th:block th:if="${!#strings.isEmpty( properties.facebookUrl )}">
+                  <div layout:insert="~{layouts/info::card}">
+                     <div layout:fragment="content" th:remove="tag">
+                        <h5 class="card-title" th:text="#{social.facebook}"></h5>
+                        <div class="fb-page d-block"
+                             th:attr="data-href=${properties.facebookUrl}"
+                             data-tabs="timeline, events"
+                             data-width=""
+                             data-height="400"
+                             data-small-header="false"
+                             data-adapt-container-width="true"
+                             data-hide-cover="false"
+                             data-show-facepile="true">
+                           <blockquote th:cite="${properties.facebookUrl}" class="fb-xfbml-parse-ignore">
+                              <a th:href="${properties.facebookUrl}">
+                                 El Puente Hispanic Services Center
+                              </a>
+                           </blockquote>
+                        </div>
                      </div>
                   </div>
-               </div>
-               <br/>
+                  <br/>
+               </th:block>
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
                      <div class="text-center">
@@ -80,8 +82,10 @@
                      </div>
                   </div>
                </div>
+               <br/>
+               <i th:replace="fragments/newsletterSignupForm::mailchimp"></i>
             </div>
-            <div class="col-12 col-md-6 col-lg-7 col-xl-8 mb-3">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-7 mb-3">
                <th:block th:if="${!#lists.isEmpty( carouselImageNames ) && !#strings.isEmpty( carouselImagePath )}">
                   <div class="card">
                      <div id="carousel" class="carousel slide card-img-top" data-ride="carousel">
@@ -106,41 +110,8 @@
                   </div>
                   <br/>
                </th:block>
-               <div layout:insert="~{layouts/info::card}">
-                  <div layout:fragment="content" th:remove="tag">
-                     <!-- Begin Mailchimp Signup Form -->
-                     <div id="mc_embed_signup">
-                        <form action="https://elpuentesearcy.us4.list-manage.com/subscribe/post?u=e1db33b1caf2cbdaab704c82c&amp;id=5caa913ba4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                           <div id="mc_embed_signup_scroll">
-                              <h2>
-                                 <i class="far fa-newspaper"></i>
-                                 <span th:text="#{newsletter.signup}"></span>
-                              </h2>
-                              <div class="mc-field-group">
-                                 <label for="mce-EMAIL"><span th:text="#{newsletter.emailAddress}"></span>  <span class="asterisk">*</span>
-                                 </label>
-                                 <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                              </div>
-                              <div class="mc-field-group">
-                                 <label for="mce-FNAME" th:text="#{newsletter.firstName}"></label>
-                                 <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                              </div>
-                              <div class="mc-field-group">
-                                 <label for="mce-LNAME" th:text="#{newsletter.lastName}"></label>
-                                 <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                              </div>
-                              <div id="mce-responses" class="clear">
-                                 <div class="response" id="mce-error-response" style="display:none"></div>
-                                 <div class="response" id="mce-success-response" style="display:none"></div>
-                              </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e1db33b1caf2cbdaab704c82c_5caa913ba4" tabindex="-1" value=""></div>
-                              <div class="clear"><input type="submit" th:value="#{newsletter.subscribe}" name="subscribe" id="mc-embedded-subscribe" class="button btn-danger"></div>
-                           </div>
-                        </form>
-                     </div>
-                     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-                     <!--End mc_embed_signup-->
-                  </div>
+               <div class="text-center">
+                  <img class="img-fluid mb-3" th:src="@{/images/citizenship_classes_ad.jpg}" alt="El Puente Citizenship Classes begin Thursday, January 9, 2020"/>
                </div>
             </div>
          </div>

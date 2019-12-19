@@ -15,7 +15,7 @@ trello:
 
 org.elpuentesearcy:
   version: @project.version@
-  isTestMode: true
+  testMode: true
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
@@ -35,6 +35,9 @@ org.elpuentesearcy:
   salsaCompetitionSignupUrl: https://docs.google.com/forms/d/e/1FAIpQLSe1X-sTwzfxQCi8GXluDAtPHG6o_uZGpKo_YX74dfyokr1d2w/viewform?usp=sf_link
   salsaCompetitionRulesDownload: SalsaCompetitionRules
   volunteerFormDownload: ElPuenteVolunteerForm
+  cashtag: $ElPuenteSearcy
+  showGivingTuesdayWidgetStart: '2020-10-31'
+  showGivingTuesdayWidgetEnd: '2020-12-02'
   google:
     analytics:
       trackingId:

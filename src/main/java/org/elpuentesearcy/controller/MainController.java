@@ -14,12 +14,12 @@ public class MainController
     @GetMapping( "" )
     public String home( Model model )
     {
-        final String carouselFolder = "carousel/";
-        model.addAttribute( "carouselImagePath", ElPuenteBoot.IMAGE_FOLDER + carouselFolder );
-
-        String[] carouselImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + carouselFolder ).list();
-        model.addAttribute( "carouselImageNames", carouselImageNames );
-        model.addAttribute( "carouselImageRandomStartIndex", carouselImageNames == null ? 0 : ThreadLocalRandom.current().nextInt( carouselImageNames.length ) );
+//        final String carouselFolder = "carousel/";
+//        model.addAttribute( "carouselImagePath", ElPuenteBoot.IMAGE_FOLDER + carouselFolder );
+//
+//        String[] carouselImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + carouselFolder ).list();
+//        model.addAttribute( "carouselImageNames", carouselImageNames );
+//        model.addAttribute( "carouselImageRandomStartIndex", carouselImageNames == null ? 0 : ThreadLocalRandom.current().nextInt( carouselImageNames.length ) );
 
         return "main";
     }

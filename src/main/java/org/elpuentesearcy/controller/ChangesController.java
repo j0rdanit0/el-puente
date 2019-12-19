@@ -12,13 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.util.List;
 
 @Controller
-@ConditionalOnProperty( "org.elpuentesearcy.isTestMode" )
+@ConditionalOnProperty( "org.elpuentesearcy.testMode" )
 public class ChangesController
 {
     private static final Logger logger = LoggerFactory.getLogger( ChangesController.class );
@@ -51,6 +52,12 @@ public class ChangesController
     {
         try
         {
+            List<TrelloCard> trelloCards = trelloService.get( new TypeToken<List<TrelloCard>>(){}.getType(), "lists/" + trelloApprovalListId + "/cards/open", "fields", "url,name" );
+            for ( TrelloCard trelloCard : trelloCards )
+            {
+                trelloService.makeTrelloRequest( RequestMethod.PUT, "cards/" + trelloCard.id, "{}", "idList", trelloApprovedListId );
+            }
+
             ProcessBuilder processBuilder = new ProcessBuilder( "/bin/bash", "/opt/elpuente/deploy/copyBetaToLive.sh" );
             processBuilder.start();
         }
