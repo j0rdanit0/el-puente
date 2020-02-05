@@ -1,5 +1,7 @@
 package org.elpuentesearcy.configuration;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.LocaleResolver;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,8 @@ import java.util.Optional;
 
 public class UrlLocaleResolver implements LocaleResolver
 {
+    @Getter
+    @RequiredArgsConstructor
     public enum ElPuenteLanguage
     {
         English( Locale.ENGLISH, "en" ),
@@ -17,12 +21,6 @@ public class UrlLocaleResolver implements LocaleResolver
 
         private final Locale locale;
         private final String subdomain;
-
-        ElPuenteLanguage( Locale locale, String subdomain )
-        {
-            this.locale = locale;
-            this.subdomain = subdomain;
-        }
 
         public static Optional<ElPuenteLanguage> get( String subdomain )
         {
@@ -51,16 +49,6 @@ public class UrlLocaleResolver implements LocaleResolver
 
                                return get( localeString );
                            } );
-        }
-
-        public Locale getLocale()
-        {
-            return locale;
-        }
-
-        public String getSubdomain()
-        {
-            return subdomain;
         }
     }
 

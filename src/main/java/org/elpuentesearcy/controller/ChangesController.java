@@ -1,11 +1,11 @@
 package org.elpuentesearcy.controller;
 
 import com.google.gson.reflect.TypeToken;
+import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.domain.TrelloCard;
 import org.elpuentesearcy.service.TrelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Controller;
@@ -19,13 +19,13 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @ConditionalOnProperty( "org.elpuentesearcy.testMode" )
 public class ChangesController
 {
     private static final Logger logger = LoggerFactory.getLogger( ChangesController.class );
 
-    @Autowired
-    private TrelloService trelloService;
+    private final TrelloService trelloService;
 
     @Value( "${trello.approvalListId}" )
     private String trelloApprovalListId;

@@ -18,9 +18,10 @@ public class ElPuenteBoot
 
     public static void main( String[] args ) throws IOException
     {
-        IMAGE_DIRECTORY = new File( "." ).getCanonicalPath() + IMAGE_FOLDER;
-        DOWNLOADS_DIRECTORY = new File( "." ).getCanonicalPath() + DOWNLOADS_FOLDER;
-        WELL_KNOWN_DIRECTORY = new File( "." ).getCanonicalPath() + WELL_KNOWN_FOLDER;
+        String basePath = new File( "." ).getCanonicalPath();
+        IMAGE_DIRECTORY = basePath + IMAGE_FOLDER;
+        DOWNLOADS_DIRECTORY = basePath + DOWNLOADS_FOLDER;
+        WELL_KNOWN_DIRECTORY = basePath + WELL_KNOWN_FOLDER;
         SpringApplication.run( ElPuenteBoot.class, args );
     }
 }

@@ -1,9 +1,9 @@
 package org.elpuentesearcy.configuration;
 
+import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.service.SitemapService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.AbstractView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.Writer;
 import java.util.Map;
 
-@Service
+@Component
+@RequiredArgsConstructor
 public final class SitemapView extends AbstractView
 {
-    @Autowired
-    private SitemapService sitemapService;
+    private final SitemapService sitemapService;
 
     @Override
     protected void renderMergedOutputModel( Map<String, Object> map, HttpServletRequest request, HttpServletResponse response ) throws Exception

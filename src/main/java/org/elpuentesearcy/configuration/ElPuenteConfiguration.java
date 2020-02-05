@@ -1,8 +1,8 @@
 package org.elpuentesearcy.configuration;
 
+import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.ElPuenteBoot;
 import org.elpuentesearcy.controller.Interceptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
@@ -22,10 +22,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableCaching
+@RequiredArgsConstructor
 public class ElPuenteConfiguration implements WebMvcConfigurer
 {
-    @Autowired
-    private Interceptor interceptor;
+    private final Interceptor interceptor;
 
     @Override
     public void addInterceptors( InterceptorRegistry registry )

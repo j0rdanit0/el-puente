@@ -1,5 +1,6 @@
 package org.elpuentesearcy.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.configuration.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 @Controller
+@RequiredArgsConstructor
 public class ContactController
 {
-    @Autowired
-    private Properties properties;
+    private final Properties properties;
 
     public static final String URL_BASE = "/contact";
 

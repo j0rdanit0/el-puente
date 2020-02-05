@@ -1,10 +1,10 @@
 package org.elpuentesearcy.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.configuration.ElPuenteCaches;
 import org.elpuentesearcy.configuration.SitemapView;
-import org.elpuentesearcy.service.UrlService;
 import org.elpuentesearcy.configuration.UrlLocaleResolver;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.elpuentesearcy.service.UrlService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
+@RequiredArgsConstructor
 public class SearchEngineOptimizationController
 {
-    @Autowired
-    private SitemapView view;
-    @Autowired
-    private UrlService urlService;
+    private final SitemapView view;
+    private final UrlService urlService;
 
     @RequestMapping( path = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE )
     public SitemapView createSitemap()

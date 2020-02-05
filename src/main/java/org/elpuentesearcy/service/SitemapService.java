@@ -2,6 +2,7 @@ package org.elpuentesearcy.service;
 
 import com.redfin.sitemapgenerator.GoogleLinkSitemapGenerator;
 import com.redfin.sitemapgenerator.GoogleLinkSitemapUrl;
+import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.configuration.ElPuenteCaches;
 import org.elpuentesearcy.configuration.UrlLocaleResolver;
 import org.elpuentesearcy.controller.SearchEngineOptimizationController;
@@ -27,14 +28,13 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class SitemapService
 {
     private static final Logger logger = LoggerFactory.getLogger( SitemapService.class );
 
-    @Autowired
-    private ListableBeanFactory listableBeanFactory;
-    @Autowired
-    private UrlService urlService;
+    private final ListableBeanFactory listableBeanFactory;
+    private final UrlService urlService;
 
     @Cacheable( cacheNames = ElPuenteCaches.SITEMAP, key = "#subdomain == null ? 'default' : #subdomain.subdomain" )
     public String createSitemap( UrlLocaleResolver.ElPuenteLanguage subdomain ) throws IOException
