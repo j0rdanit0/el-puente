@@ -49,9 +49,6 @@
       <div class="container my-3">
          <div class="row">
             <div class="col-12 col-md-6 col-lg-6 col-xl-5 mb-3">
-               <div class="text-center">
-                  <img class="img-fluid mb-3" th:src="@{/images/79656770_1526180124200544_980781049334202368_n.jpg}" alt="El Puente English Classes begin January 7, 2020"/>
-               </div>
                <th:block th:if="${!#strings.isEmpty( properties.facebookUrl )}">
                   <div layout:insert="~{layouts/info::card}">
                      <div layout:fragment="content" th:remove="tag">
@@ -113,7 +110,7 @@
                   <br/>
                </th:block>
                <div class="text-center">
-                  <img class="img-fluid mb-3" th:src="@{/images/citizenship_classes_ad.jpg}" alt="El Puente Citizenship Classes begin Thursday, January 9, 2020"/>
+                  <img class="img-fluid mb-3" th:src="@{/images/Street_Tacos2.jpg}" alt="Street Tacos fundraiser on Monday, February 24 from 4:00-6:30"/>
                </div>
                <br/>
                <i th:replace="fragments/newsletterSignupForm::mailchimp"></i>
