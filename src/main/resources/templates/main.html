@@ -47,6 +47,15 @@
       </div>
 
       <div class="container my-3">
+         <div class="card" th:with="phoneLink=${#strings.isEmpty(properties.phone) ? '' : '<a href=&quot;tel:'+properties.phone+'&quot;><strong>'+properties.formattedPhone+'</strong></a>'}, emailLink=${#strings.isEmpty(properties.email) ? '' : '<a href=&quot;mailto:'+properties.email+'&quot;><strong>'+properties.email+'</strong></a>'}">
+            <div class="card-body text-center bg-danger text-white">
+               <h1 class="pt-3">
+                  <i class="fas fa-heartbeat"></i>
+               </h1>
+               <p th:utext="#{home.covid19(${phoneLink}, ${emailLink})}" class="p-4"></p>
+            </div>
+         </div>
+         <br/>
          <div class="row">
             <div class="col-12 col-md-6 col-lg-6 col-xl-5 mb-3">
                <th:block th:if="${!#strings.isEmpty( properties.facebookUrl )}">
@@ -57,7 +66,7 @@
                              th:attr="data-href=${properties.facebookUrl}"
                              data-tabs="timeline, events"
                              data-width=""
-                             data-height="400"
+                             data-height="520"
                              data-small-header="false"
                              data-adapt-container-width="true"
                              data-hide-cover="false"
@@ -72,17 +81,6 @@
                   </div>
                   <br/>
                </th:block>
-               <div layout:insert="~{layouts/info::card}">
-                  <div layout:fragment="content" th:remove="tag">
-                     <div class="text-center">
-                        <p th:utext="#{home.donationText}"></p>
-                        <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
-                           <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
-                        </th:block>
-                     </div>
-                  </div>
-               </div>
-               <br/>
             </div>
             <div class="col-12 col-md-6 col-lg-6 col-xl-7 mb-3">
                <th:block th:if="${!#lists.isEmpty( carouselImageNames ) && !#strings.isEmpty( carouselImagePath )}">
@@ -109,11 +107,21 @@
                   </div>
                   <br/>
                </th:block>
-               <div class="text-center">
-                  <img class="img-fluid mb-3" th:src="@{/images/87468234_1597136333771589_6164025733371920384_o.jpg}" alt="English Class starts on Monday, March 16 from 6:30-8:00pm"/>
-               </div>
-               <br/>
+<!--               <div class="text-center">-->
+<!--                  <img class="img-fluid mb-3" th:src="@{/images/87468234_1597136333771589_6164025733371920384_o.jpg}" alt="English Class starts on Monday, March 16 from 6:30-8:00pm"/>-->
+<!--               </div>-->
                <i th:replace="fragments/newsletterSignupForm::mailchimp"></i>
+               <br/>
+               <div layout:insert="~{layouts/info::card}">
+                  <div layout:fragment="content" th:remove="tag">
+                     <div class="text-center">
+                        <p th:utext="#{home.donationText}"></p>
+                        <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
+                           <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
+                        </th:block>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
