@@ -61,5 +61,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          script: "sh /opt/elpuente/deploy/deploy.sh webapp-beta"
+          script: |
+            cd /opt/elpuente/deploy
+            sh deploy.sh webapp-beta
           script_stop: true

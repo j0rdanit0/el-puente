@@ -1,8 +1,7 @@
 package org.elpuentesearcy.configuration;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.elpuentesearcy.ElPuenteBoot;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.Ordered;
@@ -17,8 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-@Getter
-@Setter
+@Data
 @ConfigurationProperties( "org.elpuentesearcy" )
 public class Properties
 {
@@ -64,37 +62,34 @@ public class Properties
         return instance;
     }
 
-    @Getter
-    @Setter
+    @Data
     public static class Google
     {
         private Analytics analytics;
         private Maps maps;
 
-        @Getter
-        @Setter
+        @Data
         public static class Analytics
         {
             private String trackingId;
         }
 
-        @Getter
-        @Setter
+        @Data
         public static class Maps
         {
             private String apiKey;
         }
     }
 
-    @Getter
+    @Data
     @NoArgsConstructor
     public static class Employee
     {
         private String name;
-        @Setter private String image;
-        @Setter private String squareImage;
-        @Setter private Map<String, String> title;
-        @Setter private Map<String, String> description;
+        private String image;
+        private String squareImage;
+        private Map<String, String> title;
+        private Map<String, String> description;
 
         public void setName( String name )
         {

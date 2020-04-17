@@ -72,8 +72,8 @@
 
    <i th:replace="fragments/sectionHeader::header(#{involvement.volunteers.header})"></i>
    <p class="container mb-5" th:utext="#{involvement.volunteers.content}"></p>
-   <div class="text-center" th:with="fontawesomeClass='fa-file-pdf', downloadFileName='ElPuenteVolunteerForm'">
-      <i th:replace="fragments/button::action('/downloads/ElPuenteVolunteerForm.pdf', #{involvement.volunteerForm.downloadText})"></i>
+   <div class="text-center" th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.volunteerFormDownload}">
+      <i th:replace="fragments/button::action(${properties.volunteerFormDownloadPath}, #{involvement.volunteerForm.downloadText})"></i>
    </div>
 
    <i th:replace="fragments/sectionHeader::header(#{involvement.sponsors.header})"></i>
