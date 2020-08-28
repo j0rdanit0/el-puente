@@ -1,0 +1,52 @@
+
+server {
+
+	root /var/www/elpuentesearcy.org/html;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name elpuentesearcy.org www.elpuentesearcy.org en.elpuentesearcy.org es.elpuentesearcy.org;
+
+	location / {
+        if (-f $document_root/under_maintenance.html) {
+           return 503;
+        }
+		proxy_pass http://localhost:8080;
+                proxy_set_header Host      $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+	}
+
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+    error_page 503 /under_maintenance.html;
+            location = /under_maintenance.html {
+    }
+}
+
+server {
+    server_name admin.elpuentesearcy.org;
+    location / {
+        proxy_set_header Host $host;
+        proxy_pass http://localhost:8180;
+        proxy_redirect off;
+    }
+
+	listen 80;
+	listen [::]:80;
+}
+
+server {
+    server_name beta.elpuentesearcy.org es.beta.elpuentesearcy.org en.beta.elpuentesearcy.org;
+    location / {
+        proxy_set_header Host $host;
+        proxy_pass http://localhost:8091;
+        proxy_redirect off;
+    }
+
+	listen 80;
+	listen [::]:80;
+}

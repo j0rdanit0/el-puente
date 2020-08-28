@@ -50,9 +50,11 @@
          <div class="card" th:with="phoneLink=${#strings.isEmpty(properties.phone) ? '' : '<a class=&quot;text-white&quot; href=&quot;tel:'+properties.phone+'&quot;><strong>'+properties.formattedPhone+'</strong></a>'}, emailLink=${#strings.isEmpty(properties.email) ? '' : '<a class=&quot;text-white&quot; href=&quot;mailto:'+properties.email+'&quot;><strong>'+properties.email+'</strong></a>'}">
             <div class="card-body text-center bg-danger text-white px-5">
                <img class="rounded" th:src="@{/images/NFG-CSG-logo.jpg}" height="100px" style="border: 10px solid white;">
-               <p th:utext="#{home.covid19(${phoneLink}, ${emailLink})}" class="p-4"></p>
+               <p th:utext="#{home.covid19(${phoneLink}, ${emailLink})}" class="p-4">
+                  Due to coronavirus
+               </p>
                <h2>
-                  <a class="text-white" target="_blank" href="https://secure.givelively.org/donate/el-puente-hispanic-services-center/covid-19-relief-fund">
+                  <a class="text-white" target="_blank" href="https://secure.givelively.org/donate/el-puente-hispanic-services-center/covid-19-relief-fund" th:text="#{home.covid19Donation}">
                      Donate to Hispanic COVID-19 Victims Now
                   </a>
                </h2>

@@ -28,15 +28,15 @@
                <div layout:fragment="content" th:remove="tag">
                   <th:block th:if="${!#lists.isEmpty(properties.physicalAddress)}">
                      <div layout:insert="~{layouts/info::icon('fa-map-marker-alt')}" class="hoverPointer" th:attr="addressUrlLine=${addressUrlLine}" onclick="mapsSelector( this )">
-                     <span layout:fragment="label" class="text-dark">
-                        <th:block th:each="line:${properties.physicalAddress}">
-                           <strong th:text="${line}">Line</strong>
-                           <br/>
-                        </th:block>
-                        <small class="text-secondary font-italic" th:text="#{contact.mailNotice}">
-                           Don't mail here!
-                        </small>
-                     </span>
+                        <span layout:fragment="label" class="text-dark">
+                           <th:block th:each="line:${properties.physicalAddress}">
+                              <strong th:text="${line}">Line</strong>
+                              <br/>
+                           </th:block>
+                           <small class="text-secondary font-italic" th:text="#{contact.mailNotice}">
+                              Don't mail here!
+                           </small>
+                        </span>
                      </div>
                   </th:block>
                   <th:block th:if="${!#lists.isEmpty(properties.mailingAddress)}">
@@ -52,37 +52,33 @@
                   </th:block>
                   <th:block th:if="${!#strings.isEmpty(properties.phone)}">
                      <hr/>
-                     <a th:href="'tel:'+${properties.phone}">
-                        <div layout:insert="~{layouts/info::icon('fa-phone-square')}">
-                           <strong layout:fragment="label" class="text-dark">
+                     <div layout:insert="~{layouts/info::icon('fa-phone-square')}" th:with="href=${ 'tel:'+properties.phone }">
+                        <strong layout:fragment="label" class="text-dark">
                            <span th:text="#{contact.phone}+':'" class="text-capitalize">
                               Phone:
                            </span>
-                              <br/>
-                              <span th:text="${properties.formattedPhone}">
+                           <br/>
+                           <span th:text="${properties.formattedPhone}">
                               (123) 456-7890
                            </span>
-                           </strong>
-                        </div>
-                     </a>
+                        </strong>
+                     </div>
                   </th:block>
                   <th:block th:if="${!#strings.isEmpty(properties.email)}">
                      <hr/>
-                     <a th:href="'mailto:'+${properties.email}">
-                        <div layout:insert="~{layouts/info::icon('fa-at')}">
-                           <strong layout:fragment="label" class="text-dark">
+                     <div layout:insert="~{layouts/info::icon('fa-at')}" th:with="href=${ 'mailto:'+properties.email }">
+                        <strong layout:fragment="label" class="text-dark">
                            <span th:text="#{contact.email}+':'" class="text-capitalize">
                               Email:
                            </span>
-                              <br/>
-                              <span th:text="${properties.email}">
+                           <br/>
+                           <span th:text="${properties.email}">
                               test@abc.com
                            </span>
-                           </strong>
-                        </div>
-                     </a>
+                        </strong>
+                     </div>
                   </th:block>
-                  <th:block th:if="${!#lists.isEmpty(properties.physicalAddress) && (!#strings.isEmpty(properties.officeHoursWeekday) || !#strings.isEmpty(properties.officeHoursWeekend))}">
+                  <th:block th:if="${!#lists.isEmpty(properties.physicalAddress)}">
                      <hr/>
                      <div layout:insert="~{layouts/info::icon('fa-clock')}">
                         <span layout:fragment="label" class="text-dark">

@@ -19,8 +19,8 @@ org.elpuentesearcy:
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944
-  officeHoursWeekday: 1:30pm - 5:30pm
-  officeHoursWeekend: 10:00am - 4:00pm
+#  officeHoursWeekday: 1:30pm - 5:30pm
+#  officeHoursWeekend: 10:00am - 4:00pm
   physicalAddress:
     - 904 North Main Street
     - Searcy, AR 72143
