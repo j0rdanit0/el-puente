@@ -36,8 +36,8 @@ org.elpuentesearcy:
   salsaCompetitionRulesDownload: SalsaCompetitionRules
   volunteerFormDownload: ElPuenteVolunteerForm
   cashtag: $ElPuenteSearcy
-  showGivingTuesdayWidgetStart: '2020-10-31'
-  showGivingTuesdayWidgetEnd: '2020-12-02'
+  showGivingTuesdayWidgetStart: '2019-10-31'
+  showGivingTuesdayWidgetEnd: '2019-12-02'
   google:
     analytics:
       trackingId:
