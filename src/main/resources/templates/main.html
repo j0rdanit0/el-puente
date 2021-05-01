@@ -11,6 +11,7 @@
    <meta property="og:title" th:content="#{home.title}">
    <meta property="og:description" th:content="#{home.missionStatement}">
    <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/testimonial.css?v='+__${properties.version}__}">
 
    <!-- Mailchimp styling -->
    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
@@ -39,6 +40,20 @@
             </div>
          </i>
       </i>
+
+      <!-- https://codepen.io/andrewwright/pen/Aigre -->
+      <div class="container testimonial-quote group right">
+         <hr style="margin-bottom: 60px;">
+
+         <div class="quote-container">
+            <blockquote>
+               <p>El Puente has been a blessing for our community in so many aspects. Services provided as simple as an English class or a welcome guide to new residents are changing one life at a time. El Puente has quite literally become "the bridge" our community was in need of, and now a pathway has been built for all our Hispanic brothers and sisters. Thank you Mrs. Ruth Simpson and all the members who have helped create El Puente.”</p>
+            </blockquote>
+            <cite><span>Paola P.</span></cite>
+         </div>
+
+         <hr style="margin: 60px auto;">
+      </div>
 
       <div class="container" th:if="${properties.showGivingTuesdayWidget}">
          <!-- Begin Give Lively Fundraising Widget -->
