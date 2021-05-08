@@ -36,6 +36,7 @@ public class Properties
     private String giveLivelyUrl;
     private String salsaCompetitionSignupUrl;
     private String salsaCompetitionRulesDownload;
+    private String gardenTour2021Url;
     private String volunteerFormDownload;
     private String cashtag;
 
