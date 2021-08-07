@@ -41,19 +41,6 @@
          </i>
       </i>
 
-      <div class="container">
-         <div class="card" th:with="gardenTourLink=${'<a class=&quot;text-white&quot; href=&quot;'+properties.gardenTour2021Url+'&quot;>'}">
-            <div class="card-body text-center bg-primary text-white px-5">
-               <p th:utext="#{home.gardenTour2021(${gardenTourLink})}" class="p-4">
-                  Searcy Garden Tour
-               </p>
-               <a th:href="${properties.gardenTour2021Url}">
-                  <img class="rounded img-fluid" th:src="@{/images/Searcy_Garden_Tour_2021_without_link2.jpg}" style="max-height: 300px">
-               </a>
-            </div>
-         </div>
-      </div>
-
       <!-- https://codepen.io/andrewwright/pen/Aigre -->
       <div class="container testimonial-quote group right">
          <hr style="margin-bottom: 60px;">
