@@ -20,9 +20,6 @@
 <main role="main">
    <i layout:replace="~{layouts/info::banner(#{involvement.involvement.header},${uri})}"></i>
    <p class="container mb-5" th:utext="#{involvement.involvement.content}"></p>
-   <div class="text-center" th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.volunteerFormDownload}">
-      <i th:replace="fragments/button::action(${properties.volunteerFormDownloadPath}, #{involvement.volunteerForm.downloadText})"></i>
-   </div>
 
    <i th:replace="fragments/sectionHeader::header(#{involvement.donations.header})"></i>
 
@@ -72,8 +69,8 @@
 
    <i th:replace="fragments/sectionHeader::header(#{involvement.volunteers.header})"></i>
    <p class="container mb-5" th:utext="#{involvement.volunteers.content}"></p>
-   <div class="text-center" th:with="fontawesomeClass='fa-file-pdf', downloadFileName=${properties.volunteerFormDownload}">
-      <i th:replace="fragments/button::action(${properties.volunteerFormDownloadPath}, #{involvement.volunteerForm.downloadText})"></i>
+   <div class="container">
+      <img class="text-center" th:src="@{/images/VolunteeringForm.jpg}" width="100%" />
    </div>
 
    <i th:replace="fragments/sectionHeader::header(#{involvement.sponsors.header})"></i>
