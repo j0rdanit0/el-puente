@@ -25,7 +25,7 @@
                <li class="nav-item">
                   <i th:replace="fragments/navlink::link( #{programs.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE} )">Programs</i>
                </li>
-               <li class="nav-item" th:if="${!#strings.isEmpty(properties.facebookUrl)}">
+               <li class="nav-item" th:if="${!#strings.isEmpty(properties.facebookUrl)}" th:with="target='_blank'">
                   <i th:replace="fragments/navlink::link( #{news.navlink}, ${activeTab}, ${properties.facebookUrl} )">News</i>
                </li>
                <li class="nav-item">

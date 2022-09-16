@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<a th:fragment="link(text, activeText, uri)" class="nav-link" th:href="${uri}">
+<a th:fragment="link(text, activeText, uri)" class="nav-link" th:href="${uri}" th:target="${target ?: '_self'}">
    <span th:utext="${text}" th:style="${text == activeText ? 'border-bottom: solid 3px var(--danger)' : ''}" th:class="${text == activeText ? 'font-weight-bold' : ''}">
       Link text
    </span>
