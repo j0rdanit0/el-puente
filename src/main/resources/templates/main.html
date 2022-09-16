@@ -55,32 +55,18 @@
          <hr style="margin: 60px auto;">
       </div>
 
-      <div class="container" th:if="${properties.showGivingTuesdayWidget}">
+      <div class="container mb-5" th:if="${properties.showGivingTuesdayWidget}">
          <!-- Begin Give Lively Fundraising Widget -->
          <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/branded_donation/el-puente-hispanic-services-center/giving-tuesday.js';document.getElementsByTagName('head')[0].appendChild(gl);</script><div data-widget-src='https://secure.givelively.org/donate/el-puente-hispanic-services-center/giving-tuesday?ref=sd_widget' id="give-lively-widget" class="gl-branded-donation-widget"></div>
          <!-- End Give Lively Fundraising Widget -->
       </div>
-      <div class="container" th:if="${!properties.showGivingTuesdayWidget}">
+      <div class="container mb-5" th:if="${!properties.showGivingTuesdayWidget}">
          <!-- Begin Give Lively Fundraising Widget -->
          <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/simple_donation/el-puente-hispanic-services-center/covid-19-relief-fund.js?show_suggested_amount_buttons=false&show_in_honor_of=false&address_required=false&has_required_custom_question=false&prefilled_donation_amount=100';document.getElementsByTagName('head')[0].appendChild(gl);</script><div id="give-lively-widget" class="gl-simple-donation-widget"></div>
          <!-- End Give Lively Fundraising Widget -->
       </div>
 
       <div class="container my-3">
-         <div class="card" th:with="phoneLink=${#strings.isEmpty(properties.phone) ? '' : '<a class=&quot;text-white&quot; href=&quot;tel:'+properties.phone+'&quot;><strong>'+properties.formattedPhone+'</strong></a>'}, emailLink=${#strings.isEmpty(properties.email) ? '' : '<a class=&quot;text-white&quot; href=&quot;mailto:'+properties.email+'&quot;><strong>'+properties.email+'</strong></a>'}">
-            <div class="card-body text-center bg-danger text-white px-5">
-               <img class="rounded" th:src="@{/images/NFG-CSG-logo.jpg}" height="100px" style="border: 10px solid white;">
-               <p th:utext="#{home.covid19(${phoneLink}, ${emailLink})}" class="p-4">
-                  Due to coronavirus
-               </p>
-<!--               <h2>-->
-<!--                  <a class="text-white" target="_blank" href="https://secure.givelively.org/donate/el-puente-hispanic-services-center/covid-19-relief-fund" th:text="#{home.covid19Donation}">-->
-<!--                     Donate to Hispanic COVID-19 Victims Now-->
-<!--                  </a>-->
-<!--               </h2>-->
-            </div>
-         </div>
-         <br/>
          <div class="row">
             <div class="col-12 col-md-6 col-lg-6 col-xl-5 mb-3">
                <th:block th:if="${!#strings.isEmpty( properties.facebookUrl )}">

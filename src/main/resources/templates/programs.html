@@ -24,14 +24,14 @@
       <div layout:fragment="cards" th:with="phoneLink=${#strings.isEmpty(properties.phone) ? '' : '<a href=&quot;tel:'+properties.phone+'&quot;><strong>'+properties.formattedPhone+'</strong></a>'}">
          <div th:if="${!#strings.isEmpty(phoneLink)}"
               class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.english.label}, description=#{programs.english.description(${phoneLink})}, imageUrl=@{/images/englishClass.jpg}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.spanish.label}, description=#{programs.spanish.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.spanish.label}, description=#{programs.spanish.description(${phoneLink})}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-laptop', label=#{programs.computer.label}, description=#{programs.computer.description}"></div>
          <div th:if="${!#strings.isEmpty(phoneLink)}"
               class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-flag-usa', label=#{programs.citizenship.label}, description=#{programs.citizenship.description(${phoneLink})}, imageUrl=@{/images/citizenship.jpg}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-child', label=#{programs.leaders.label}, description=#{programs.leaders.description}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-female', label=#{programs.girls.label}, description=#{programs.girls.description}"></div>
          <div th:if="${!#strings.isEmpty(phoneLink)}"
-              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-pencil-alt', label=#{programs.afterSchool.label}, description=#{programs.afterSchool.description(${phoneLink})}, imageUrl=@{/images/afterSchoolProgram.jpg}"></div>
+              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-pencil-alt', label=#{programs.afterSchool.label}, description=#{programs.afterSchool.description(${phoneLink})}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-pencil-alt', label=#{programs.summer.label}, description=#{programs.summer.description}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-sun', label=#{programs.camp.label}, description=#{programs.camp.description}"></div>
       </div>
