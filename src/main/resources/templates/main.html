@@ -29,7 +29,7 @@
    <i th:replace="fragments/navbar::header('')"></i>
    <main role="main">
       <i layout:replace="~{layouts/info::banner('El Puente Hispanic Services Center')}">
-         <i layout:fragment="textOverlay">
+         <div layout:fragment="textOverlay">
             <div class="card-body container pt-5">
                <p id="missionStatement" class="font-italic text-light font-weight-light" th:text="#{home.missionStatement}">
                   Mission statement
@@ -38,8 +38,23 @@
                   Signature
                </small>
             </div>
-         </i>
+         </div>
       </i>
+
+      <div class="container text-center" th:if="${properties.showHispanicHeritageCelebrationDinner}">
+         <div th:if="${#locale.language == 'es'}">
+            <img class="mb-5" th:src="@{'/images/HHMCD-Spanish-Ticket-Sales.jpg'}" width="75%" />
+         </div>
+         <div th:if="${#locale.language != 'es'}">
+            <img class="mb-5" th:src="@{'/images/HHMCD-Individual-ticket-sales.jpg'}" width="75%" />
+            <div class="mb-5" th:with="fontawesomeClass='fa-share', target='_blank', isLarge=true">
+               <i th:replace="fragments/button::action(${properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')"></i>
+            </div>
+            <p>
+               El Puente Clients may purchase $10 tickets in person on Tuesdays and Thursdays, 3-6pm, at El Puente.  <a th:href="${#httpServletRequest.getRequestURL().toString().replaceFirst('://','://es.')}">Click here for more information.</a>
+            </p>
+         </div>
+      </div>
 
       <!-- https://codepen.io/andrewwright/pen/Aigre -->
       <div class="container testimonial-quote group right">
