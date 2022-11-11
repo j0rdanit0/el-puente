@@ -58,8 +58,10 @@
 
       <i th:replace="fragments/sectionHeader::header(#{home.whoWeAre})"></i>
 
-      <div class="container text-center">
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/u9y0OQkd608" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="container">
+         <div class="container video-container">
+            <iframe width="560" height="315" th:src="${'https://www.youtube.com/embed/u9y0OQkd608?cc_lang_pref=' + #locale.language + '&hl=' + #locale.language}" src="https://www.youtube.com/embed/u9y0OQkd608" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         </div>
       </div>
 
       <!-- https://codepen.io/andrewwright/pen/Aigre -->
