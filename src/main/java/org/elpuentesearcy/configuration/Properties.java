@@ -32,7 +32,6 @@ public class Properties
     private String facebookUrl;
     private String twitterUrl;
     private String instagramUrl;
-    private String amazonSmileUrl;
     private String giveLivelyUrl;
     private String salsaCompetitionSignupUrl;
     private String salsaCompetitionRulesDownload;

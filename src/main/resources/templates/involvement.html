@@ -62,8 +62,6 @@
               class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-dollar-sign', label=#{involvement.donations.cashapp.label}, description=#{involvement.donations.cashapp.content(${'<strong><a href=&quot;https://cash.me/'+properties.cashtag+'&quot; target=&quot;_blank&quot;>'+properties.cashtag+'</a></strong>'})}"></div>
          <div th:if="${!#strings.isEmpty(mailingAddress)}"
               class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-envelope-open-text', label=#{involvement.donations.mail.label}, description=#{involvement.donations.mail.content(${'<strong>'+mailingAddress+'</strong>'})}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fab fa-amazon', label=#{involvement.donations.amazon.label}, description=#{involvement.donations.amazon.content},
-              actionButtonURL=${properties.amazonSmileUrl}, actionButtonText=#{involvement.donations.amazon.button}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-monument', label=#{involvement.donations.memorial.label}, description=#{involvement.donations.memorial.content}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-gift', label=#{involvement.donations.wishlist.label}, description=#{involvement.donations.wishlist.content}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-file-invoice-dollar', label=#{involvement.donations.matchinggifts.label}, description=#{involvement.donations.matchinggifts.content}"></div>
