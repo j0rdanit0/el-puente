@@ -8,6 +8,11 @@
       <h3 th:insert="fragments/socialMedia::buttons(colorClass='text-secondary')" class="float-right pt-2"></h3>
       <i th:replace="fragments/navbar::header(activeTab=${activeTab}, footer=true)"></i>
       <hr/>
+      <div id="mni-membership-638197602042388553"></div>
+      <script src="https://searcychamberar.chambermaster.com/Content/Script/Member.js" type="text/javascript"></script>
+      <script type="text/javascript">
+         new MNI.Widgets.Member("mni-membership-638197602042388553",{member:5115503,styleTemplate:"#@id{text-align:center;position:relative}#@id .mn-widget-member-name{font-weight:700}#@id .mn-widget-member-logo{max-width:100%}"}).create();
+      </script>
       <div class="text-center text-secondary">
          <small th:text="#{photoCreds}">Photo creds</small>
          <br/>
