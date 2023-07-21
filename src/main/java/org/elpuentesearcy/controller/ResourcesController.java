@@ -44,7 +44,7 @@ public class ResourcesController
         services.add( new ResourceCard( "White County Government", "https://www.whitecountyar.org/" ) );
         services.add( new ResourceCard( "White County Health Unit - Searcy", "https://www.healthy.arkansas.gov/health-units/detail/white-county-health-unit-searcy" ) );
         services.add( new ResourceCard( "White County Regional Library System", "https://whitecountylibraries.org/" ) );
-        services.add( new ResourceCard( "White County Sheriff’s Office", "https://wcso.cc/" ) );
+        services.add( new ResourceCard( "White County Sheriff's Office", "https://wcso.cc/" ) );
         services.add( new ResourceCard( "Arkansas Hospice", "https://arkansashospice.org" ) );
         model.addAttribute( "services", services );
 
@@ -62,9 +62,9 @@ public class ResourcesController
         nonProfits.add( new ResourceCard( "Child Safety Center of White County", "https://childsafetycenter.org/" ) );
         nonProfits.add( new ResourceCard( "Community Action Program for Central Arkansas", "https://www.capcainc.org/" ) );
         nonProfits.add( new ResourceCard( "Hope Cottage", "http://www.hopecottage.info/" ) );
-        nonProfits.add( new ResourceCard( "Jacob’s Place", "http://www.jacobsplace.org/index.html" ) );
+        nonProfits.add( new ResourceCard( "Jacob's Place", "http://www.jacobsplace.org/index.html" ) );
         nonProfits.add( new ResourceCard( "Literacy Council of White County", "https://whitecountyliteracy.org/" ) );
-        nonProfits.add( new ResourceCard( "Sparrow’s Promise", "https://sparrowspromise.org/" ) );
+        nonProfits.add( new ResourceCard( "Sparrow's Promise", "https://sparrowspromise.org/" ) );
         nonProfits.add( new ResourceCard( "Addiction Resource", "https://addictionresource.com/" ) );
         nonProfits.add( new ResourceCard( "Drug Rehab", "https://www.drugrehab.com/" ) );
         model.addAttribute( "nonProfits", nonProfits );

@@ -22,7 +22,29 @@
 
    <i th:replace="fragments/sectionHeader::header(#{about.history.header})"></i>
 
-   <p class="container mb-5" th:utext="#{about.history.content}"></p>
+   <p class="container mb-5 font-weight-bold" th:utext="#{about.history.content}"></p>
+
+   <div class="container mb-5">
+      <div class="row">
+         <div class="col">
+            <div class="float-left text-center mb-2 mr-4" style="position: relative; left: -10px">
+               <img th:src="@{'/images/Ruth-headshot.jpg'}" class="float-left rounded-circle shadow" alt="Ruth Simpson" height="150px">
+               <h2 class="mb-2 font-weight-bolder font-italic" th:utext="#{about.history.story.header}" style="font-family: 'Bradley Hand ITC', cursive;"></h2>
+            </div>
+            <p th:utext="#{about.history.story.content1}"></p>
+            <p th:utext="#{about.history.story.content2}"></p>
+            <p th:utext="#{about.history.story.content3}"></p>
+            <p th:utext="#{about.history.story.content4}"></p>
+            <p th:utext="#{about.history.story.content5}"></p>
+            <p th:utext="#{about.history.story.content6}"></p>
+            <p th:utext="#{about.history.story.content7}"></p>
+            <p th:utext="#{about.history.story.content8}"></p>
+            <p th:utext="#{about.history.story.content9}"></p>
+            <p th:utext="#{about.history.story.content10}"></p>
+            <p th:utext="#{about.history.story.content11}"></p>
+         </div>
+      </div>
+   </div>
 
    <i th:replace="fragments/employeeCards::cards(employees=${boardOfDirectors}, header=#{about.boardOfDirectors}, subheader=#{about.meetTheBoard})">
       Board Cards
