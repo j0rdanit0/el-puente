@@ -19,6 +19,25 @@
 <main role="main">
    <i layout:replace="~{layouts/info::banner(#{resources.navlink},${uri})}"></i>
 
+   <div class="container">
+      <div class="row">
+         <div class="col"></div>
+         <div class="col-lg-5 col-sm-8 col-12">
+            <div class="video-container">
+               <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLjdEAA4jpEV-_DTWyCBqp4OiBGkBuTEEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+         </div>
+         <div class="col"></div>
+      </div>
+      <div class="row">
+         <div class="col"></div>
+         <div class="col-lg-8 col-12 p-3 text-center">
+            Are you studying for your Citizenship interview and test? Watch these videos where each question is read and answered in English and Spanish, for you to practice.
+         </div>
+         <div class="col"></div>
+      </div>
+   </div>
+
    <i th:replace="fragments/sectionHeader::header(#{resources.services.header})"></i>
    <div class="container">
       <i layout:replace="~{layouts/info::cardView}">

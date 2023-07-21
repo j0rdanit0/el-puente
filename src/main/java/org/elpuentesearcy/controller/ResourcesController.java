@@ -23,7 +23,7 @@ public class ResourcesController
         services.add( new ResourceCard( "Arkansas Department of Human Services", "https://humanservices.arkansas.gov/offices/detail/white" ) );
         services.add( new ResourceCard( "Arkansas Department of Workforce Services", "https://www.dws.arkansas.gov/" ) );
         services.add( new ResourceCard( "ARKids First", "https://humanservices.arkansas.gov/about-dhs/dms/ar-kids" ) );
-        services.add( new ResourceCard( "CenterPoint Energy", "https://www.centerpointenergy.com/en-us/" ) );
+        services.add( new ResourceCard( "Summit", "https://summitutilities.com/" ) );
         services.add( new ResourceCard( "City of Searcy", "https://www.cityofsearcy.org/" ) );
         services.add( new ResourceCard( "Entergy", "https://www.entergy-arkansas.com/" ) );
         services.add( new ResourceCard( "IRS (Internal Revenue Service)", "https://www.irs.gov/" ) );
@@ -42,10 +42,14 @@ public class ResourcesController
         services.add( new ResourceCard( "Voter Registration", "https://www.eac.gov/" ) );
         services.add( new ResourceCard( "White County Aging Program", "http://www.whitecountyaging.com/" ) );
         services.add( new ResourceCard( "White County Government", "https://www.whitecountyar.org/" ) );
-        services.add( new ResourceCard( "White County Health Unit - Searcy", "https://www.healthy.arkansas.gov/health-units/detail/white-county-health-unit-searcy" ) );
+        services.add( new ResourceCard( "Arkansas Department of Health", "https://www.healthy.arkansas.gov/" ) );
         services.add( new ResourceCard( "White County Regional Library System", "https://whitecountylibraries.org/" ) );
         services.add( new ResourceCard( "White County Sheriff's Office", "https://wcso.cc/" ) );
         services.add( new ResourceCard( "Arkansas Hospice", "https://arkansashospice.org" ) );
+        services.add( new ResourceCard( "Arkansas Court Connect", "https://caseinfo.arcourts.gov/cconnect/PROD/public/ck_public_qry_main.cp_main_idx" ) );
+        services.add( new ResourceCard( "Arisa Health", "https://www.arisahealth.org/locations/searcy" ) );
+        services.add( new ResourceCard( "Hernandez Law Firm, Immigration Attorney", "https://ghernandezlaw.com/" ) );
+        services.add( new ResourceCard( "Roots-Raices Bilingual Counseling", "https://www.roots-raices.com/" ) );
         model.addAttribute( "services", services );
 
         List<ResourceCard> education = new ArrayList<>();
@@ -56,6 +60,7 @@ public class ResourcesController
         education.add( new ResourceCard( "Arkansas State University - Beebe", "http://www.asub.edu/" ) );
         education.add( new ResourceCard( "Arkansas State University - Searcy", "http://www.asub.edu/about-us/locations/searcy.aspx" ) );
         education.add( new ResourceCard( "GED Testing Service", "https://ged.com/" ) );
+        education.add( new ResourceCard( "Pangburn School District", "https://www.pangburnschools.org/" ) );
         model.addAttribute( "education", education );
 
         SortedSet<ResourceCard> nonProfits = new TreeSet<>();
@@ -65,8 +70,11 @@ public class ResourcesController
         nonProfits.add( new ResourceCard( "Jacob's Place", "http://www.jacobsplace.org/index.html" ) );
         nonProfits.add( new ResourceCard( "Literacy Council of White County", "https://whitecountyliteracy.org/" ) );
         nonProfits.add( new ResourceCard( "Sparrow's Promise", "https://sparrowspromise.org/" ) );
-        nonProfits.add( new ResourceCard( "Addiction Resource", "https://addictionresource.com/" ) );
-        nonProfits.add( new ResourceCard( "Drug Rehab", "https://www.drugrehab.com/" ) );
+        nonProfits.add( new ResourceCard( "100 Families", "https://www.restorehopear.org/" ) );
+        nonProfits.add( new ResourceCard( "United Way of White County", "https://www.unitedwayofwhitecounty.org/" ) );
+        nonProfits.add( new ResourceCard( "El Centro Hispano, Jonesboro", "https://www.centrohispanoarkansas.com/" ) );
+        nonProfits.add( new ResourceCard( "Seis Puentes, North Little Rock", "https://seispuentes.org/" ) );
+        nonProfits.add( new ResourceCard( "Juntos Unidos, Batesville", "https://www.facebook.com/LatinosCreandoHorizontes/" ) );
         model.addAttribute( "nonProfits", nonProfits );
 
         return "resources";
