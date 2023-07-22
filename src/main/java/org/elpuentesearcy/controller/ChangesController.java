@@ -38,8 +38,7 @@ public class ChangesController
     @GetMapping( URL_BASE )
     public String home( Model model ) throws IOException
     {
-        List<TrelloCard> trelloCards = trelloService.get( new TypeToken<List<TrelloCard>>(){}.getType(), "lists/" + trelloApprovedListId + "/cards/open", "fields", "url,name" );
-        trelloCards.addAll( trelloService.get( new TypeToken<List<TrelloCard>>(){}.getType(), "lists/" + trelloApprovalListId + "/cards/open", "fields", "url,name" ) );
+        List<TrelloCard> trelloCards = trelloService.get( new TypeToken<List<TrelloCard>>(){}.getType(), "lists/" + trelloApprovalListId + "/cards/open", "fields", "url,name" );
 
         model.addAttribute( "trelloCards", trelloCards );
 
