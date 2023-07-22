@@ -22,15 +22,15 @@
 
 <div layout:fragment="card" th:with="color=${color ?: '--primary'}" th:class="'card'+${!#strings.isEmpty(classes) ? ' '+classes : ''}" th:style="${#strings.isEmpty(yOffset) ? '' : 'transform:translateY('+yOffset+');'}+' border-top: solid 3px var('+${color}+');'">
    <div class="row no-gutters">
-      <div th:if="${!#strings.isEmpty(imageUrl)}" class="col-12 cardImageContainer my-auto">
-         <img th:src="${imageUrl}" class="card-img" th:alt="${label}">
+      <div th:if="${!#strings.isEmpty(imageUrl)}" class="col-12 cardImageContainer blendedCardImage my-auto">
+         <img class="mw-100" th:src="${imageUrl}">
       </div>
       <div class="col">
-         <div class="card-body">
+         <div th:class="'card-body ' +${#strings.isEmpty(imageUrl) ? '' : 'blendedCardContainer blendedCard'}">
             <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
                <div layout:insert="~{layouts/info::icon(${fontawesomeClass})}">
                   <strong layout:fragment="label">
-                     <span th:if="${!#strings.isEmpty(label)}" th:text="${label}"></span>
+                     <span th:if="${!#strings.isEmpty(label)}" th:utext="${label}"></span>
                   </strong>
                </div>
             </th:block>

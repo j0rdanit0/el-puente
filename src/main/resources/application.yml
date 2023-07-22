@@ -95,6 +95,12 @@ org.elpuentesearcy:
         es: Directora Ejecutiva
       description:
         en:
+    - name: Corinne Aréchiga
+      title:
+        en: Assistant Director
+        es: Asistente a la Directora
+      description:
+        en:
     - name: Guillermo Hernandez
       title:
         en: Legal Advisor

@@ -4,7 +4,8 @@ $(document).ready( function() {
          .closest('.cardViewContainer').each( function() {
          $(this).find('.displayCards').addClass( 'card-columns' );
          $(this).find('.displayInRowsButton').removeClass( 'text-primary' );
-         $(this).find('.cardImageContainer').removeClass('col-md-4 col-lg-3');
+         $(this).find('.cardImageContainer').removeClass('col-md-4 col-lg-3').addClass('blendedCardImage');
+         $(this).find('.blendedCardContainer').addClass('blendedCard');
       });
    });
 
@@ -13,7 +14,8 @@ $(document).ready( function() {
          .closest('.cardViewContainer').each( function() {
          $(this).find('.displayCards').removeClass( 'card-columns' );
          $(this).find('.displayInColumnsButton').removeClass( 'text-primary' );
-         $(this).find('.cardImageContainer').addClass('col-md-4 col-lg-3');
+         $(this).find('.cardImageContainer').addClass('col-md-4 col-lg-3').removeClass('blendedCardImage');
+         $(this).find('.blendedCardContainer').removeClass('blendedCard');
       });
    });
 });
