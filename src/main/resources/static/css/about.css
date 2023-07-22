@@ -1,9 +1,16 @@
 :root {
    --hero-banner-position-x: 50%;
+   --column-count: 1;
 }
 
 .heroBanner {
    background-position-x: var(--hero-banner-position-x);
+}
+
+.card-columns {
+   -webkit-column-count: var(--column-count);
+   -moz-column-count: var(--column-count);
+   column-count: var(--column-count);
 }
 
 @media (min-width: 0) {
@@ -12,8 +19,21 @@
    }
 }
 
+@media (min-width: 576px) {
+   :root {
+      --column-count: 2;
+   }
+}
+
 @media (min-width: 768px) {
    :root {
       --hero-banner-position-x: 50%;
+      --column-count: 3;
+   }
+}
+
+@media (min-width: 992px) {
+   :root {
+      --column-count: 4;
    }
 }

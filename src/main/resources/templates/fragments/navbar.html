@@ -35,6 +35,9 @@
                   <i th:replace="fragments/navlink::link( #{resources.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ResourcesController).URL_BASE} )">Resources</i>
                </li>
                <li class="nav-item">
+                  <i th:replace="fragments/navlink::link( #{events.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.EventsController).URL_BASE} )">Events</i>
+               </li>
+               <li class="nav-item">
                   <i th:replace="fragments/navlink::link( #{contact.navlink}, ${activeTab}, ${T(org.elpuentesearcy.controller.ContactController).URL_BASE} )">Contact Us</i>
                </li>
                <th:block th:if="${properties.testMode}">

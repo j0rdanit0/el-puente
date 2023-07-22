@@ -117,33 +117,6 @@
                </th:block>
             </div>
             <div class="col-12 col-md-6 col-lg-6 col-xl-7 mb-3">
-               <th:block th:if="${!#lists.isEmpty( carouselImageNames ) && !#strings.isEmpty( carouselImagePath )}">
-                  <div class="card">
-                     <div id="carousel" class="carousel slide card-img-top" data-ride="carousel">
-                        <div class="carousel-inner">
-                           <div th:class="'carousel-item '+${imageNameStat.index == carouselImageRandomStartIndex ? 'active' : ''}" th:each="imageName:${carouselImageNames}">
-                              <img th:src="${carouselImagePath + imageName}" class="d-block w-100">
-                           </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                           <span class="sr-only" th:text="#{home.carousel.previous}"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                           <span class="sr-only" th:text="#{home.carousel.next}"></span>
-                        </a>
-                     </div>
-                     <div class="card-body">
-                        <h5 class="card-title" th:text="#{home.carousel.title}"></h5>
-                        <p class="card-text" th:text="#{home.carousel.content}"></p>
-                     </div>
-                  </div>
-                  <br/>
-               </th:block>
-<!--               <div class="text-center">-->
-<!--                  <img class="img-fluid mb-3" th:src="@{/images/87468234_1597136333771589_6164025733371920384_o.jpg}" alt="English Class starts on Monday, March 16 from 6:30-8:00pm"/>-->
-<!--               </div>-->
                <i th:replace="fragments/newsletterSignupForm::mailchimp"></i>
                <br/>
                <div layout:insert="~{layouts/info::card}">
