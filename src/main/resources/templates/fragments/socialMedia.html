@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 </body>
-<span th:fragment="buttons" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
-   <a th:if="${!#strings.isEmpty(properties.facebookUrl)}" th:href="${properties.facebookUrl}" th:class="'facebook '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.facebook}">
+<span th:fragment="buttons">
+   <a th:if="${!#strings.isEmpty(@properties.facebookUrl)}" th:href="${@properties.facebookUrl}" th:class="'facebook '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.facebook}">
       <i class="fab fa-facebook-square"></i>
    </a>
-   <a th:if="${!#strings.isEmpty(properties.twitterUrl)}" th:href="${properties.twitterUrl}" th:class="'twitter '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.twitter}">
+   <a th:if="${!#strings.isEmpty(@properties.twitterUrl)}" th:href="${@properties.twitterUrl}" th:class="'twitter '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.twitter}">
       <i class="fab fa-twitter-square"></i>
    </a>
-   <a th:if="${!#strings.isEmpty(properties.instagramUrl)}" th:href="${properties.instagramUrl}" th:class="'instagram '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.instagram}">
+   <a th:if="${!#strings.isEmpty(@properties.instagramUrl)}" th:href="${@properties.instagramUrl}" th:class="'instagram '+${colorClass ?: 'text-primary'}" target="_blank" th:title="#{social.instagram}">
       <i class="fab fa-instagram"></i>
    </a>
 </span>

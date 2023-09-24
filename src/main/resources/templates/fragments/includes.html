@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(currentURI)" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+<head th:fragment="head(currentURI)">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
 
-   <th:block th:if="${!#strings.isEmpty(properties.google.analytics.trackingId)}" th:with="trackingId=${properties.google.analytics.trackingId}">
+   <th:block th:if="${!#strings.isEmpty(@properties.google.analytics.trackingId)}" th:with="trackingId=${@properties.google.analytics.trackingId}">
       <script async th:src="'https://www.googletagmanager.com/gtag/js?id='+${trackingId}"></script>
       <script th:inline="javascript">
          /*<![CDATA[*/
@@ -25,7 +25,7 @@
       <script async src='https://www.google-analytics.com/analytics.js'></script>
    </th:block>
 
-   <th:block th:unless="${properties.testMode}">
+   <th:block th:unless="${@properties.testMode}">
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
       <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -40,13 +40,13 @@
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
       <link rel="manifest" href="/manifest.json">
-      <link rel="canonical" th:href="'https://'+${properties.domain + currentURI}">
-      <link rel="alternate" th:href="'https://'+${properties.domain + currentURI}" hreflang="x-default">
+      <link rel="canonical" th:href="'https://'+${@properties.domain + currentURI}">
+      <link rel="alternate" th:href="'https://'+${@properties.domain + currentURI}" hreflang="x-default">
       <th:block th:each="language:${T(org.elpuentesearcy.configuration.UrlLocaleResolver.ElPuenteLanguage).values()}">
-         <link rel="alternate" th:hreflang="${language.subdomain}" th:href="'https://'+${language.subdomain +'.'+ properties.domain + currentURI}">
+         <link rel="alternate" th:hreflang="${language.subdomain}" th:href="'https://'+${language.subdomain +'.'+ @properties.domain + currentURI}">
       </th:block>
    </th:block>
-   <th:block th:if="${properties.testMode}">
+   <th:block th:if="${@properties.testMode}">
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-beta-180x180.png">
       <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-beta-192x192.png">
       <link rel="manifest" href="/manifest-beta.json">
@@ -54,27 +54,27 @@
 
    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6ba6cb">
    <meta name="apple-mobile-web-app-capable" content="no">
-   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${properties.testMode?' BETA':''}">
-   <meta name="application-name" th:content="'El Puente'+${properties.testMode?' BETA':''}">
+   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${@properties.testMode?' BETA':''}">
+   <meta name="application-name" th:content="'El Puente'+${@properties.testMode?' BETA':''}">
    <meta name="msapplication-config" content="browserconfig.xml">
-   <meta name="msapplication-TileColor" th:content="'#'+${properties.testMode?'E07F52':'6ba6cb'}">
+   <meta name="msapplication-TileColor" th:content="'#'+${@properties.testMode?'E07F52':'6ba6cb'}">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
    <meta name="theme-color" content="#ffffff">
 
    <meta property="og:type" content="website">
-   <meta property="og:image" th:content="'http://'+${properties.domain}+'/apple-icon-180x180.png'">
-   <meta property="og:site_name" th:content="${properties.domain}">
+   <meta property="og:image" th:content="'http://'+${@properties.domain}+'/apple-icon-180x180.png'">
+   <meta property="og:site_name" th:content="${@properties.domain}">
 <!--   <meta property="fb:app_id" content="">-->
 
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${properties.version}__}">
-   <link rel="stylesheet" th:href="@{'/css/common.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/common.css?v='+__${@properties.version}__}">
 </head>
-<body th:fragment="scripts" th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+<body th:fragment="scripts">
    <script src="/webjars/jquery/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-   <script th:src="@{'/js/common.js?v='+__${properties.version}__}"></script>
+   <script th:src="@{'/js/common.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>

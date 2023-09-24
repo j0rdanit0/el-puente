@@ -3,11 +3,11 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ProgramsController).URL_BASE}">
+      th:with="uri=${@programsController.URL_BASE}">
 <head>
    <th:block th:include="fragments/includes::head(${uri})"></th:block>
-   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
-   <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${@properties.version}__}">
 
    <title th:text="#{programs.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -21,7 +21,7 @@
    <i th:replace="fragments/sectionHeader::bannerText(#{programs.description})"></i>
 
    <i layout:replace="~{layouts/info::cardView}">
-      <div layout:fragment="cards" th:with="phoneLink=${#strings.isEmpty(properties.phone) ? '' : '<a href=&quot;tel:'+properties.phone+'&quot;><strong>'+properties.formattedPhone+'</strong></a>'}">
+      <div layout:fragment="cards" th:with="phoneLink=${#strings.isEmpty(@properties.phone) ? '' : '<a href=&quot;tel:'+@properties.phone+'&quot;><strong>'+@properties.formattedPhone+'</strong></a>'}">
          <div th:if="${!#strings.isEmpty(phoneLink)}"
               class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.english.label}, description=#{programs.english.description(${phoneLink})}, imageUrl=@{/images/20230110_194411.jpg}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-chalkboard-teacher', label=#{programs.spanish.label}, description=#{programs.spanish.description(${phoneLink})}, imageUrl=@{/images/20220222_160030.jpg}"></div>
@@ -39,6 +39,6 @@
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
-<script th:src="@{'/js/cardView.js?v='+__${properties.version}__}"></script>
+<script th:src="@{'/js/cardView.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>

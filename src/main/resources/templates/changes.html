@@ -3,17 +3,17 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.ChangesController).URL_BASE}">
+      th:with="uri=${@changesController.URL_BASE}">
 <head>
    <th:block th:include="fragments/includes::head(${uri})"></th:block>
 
    <title th:text="#{changes.title}">Title</title>
-   <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${@properties.version}__}">
 </head>
 <body>
 <i th:replace="fragments/navbar::header(#{changes.navlink})"></i>
 <main role="main">
-   <i th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')"></i>
+   <i th:replace="fragments/sectionHeader::header(#{changes.changes}+' ('+${@properties.version}+')')"></i>
 
    <div class="container">
       <th:block th:if="${#lists.isEmpty(trelloCards)}">
@@ -47,6 +47,6 @@
 </main>
 
 <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
-<script th:src="@{'/js/changes.js?v='+__${properties.version}__}"></script>
+<script th:src="@{'/js/changes.js?v='+__${@properties.version}__}"></script>
 <script src="https://p.trellocdn.com/embed.min.js"></script>
 </body>

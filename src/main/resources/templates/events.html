@@ -2,10 +2,10 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}, uri=${T(org.elpuentesearcy.controller.EventsController).URL_BASE}">
+      th:with="uri=${@eventsController.URL_BASE}">
 <head>
   <th:block th:include="fragments/includes::head(${uri})"></th:block>
-  <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
+  <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
 
   <title th:text="#{events.title}">Title</title>
   <!--<meta property="og:url" content="">-->

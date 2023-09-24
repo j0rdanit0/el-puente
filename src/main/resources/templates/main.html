@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="properties=${T(org.elpuentesearcy.configuration.Properties).get()}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
    <th:block th:include="fragments/includes::head('/')"></th:block>
 
@@ -10,8 +9,8 @@
    <!--<meta property="og:url" content="">-->
    <meta property="og:title" th:content="#{home.title}">
    <meta property="og:description" th:content="#{home.missionStatement}">
-   <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${properties.version}__}">
-   <link rel="stylesheet" th:href="@{'/css/testimonial.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/main.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/testimonial.css?v='+__${@properties.version}__}">
 
    <!-- Mailchimp styling -->
    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
@@ -41,14 +40,14 @@
          </div>
       </i>
 
-      <div class="container text-center" th:if="${properties.showHispanicHeritageCelebrationDinner}">
+      <div class="container text-center" th:if="${@properties.showHispanicHeritageCelebrationDinner}">
          <div th:if="${#locale.language == 'es'}">
             <img class="mb-5" th:src="@{'/images/HHMCD-Spanish-Ticket-Sales.jpg'}" width="75%" />
          </div>
          <div th:if="${#locale.language != 'es'}">
             <img class="mb-5" th:src="@{'/images/HHMCD-Individual-ticket-sales.jpg'}" width="75%" />
             <div class="mb-5" th:with="fontawesomeClass='fa-share', target='_blank', isLarge=true">
-               <i th:replace="fragments/button::action(${properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')"></i>
+               <i th:replace="fragments/button::action(${@properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')"></i>
             </div>
             <p>
                El Puente Clients may purchase $10 tickets in person on Tuesdays and Thursdays, 3-6pm, at El Puente.  <a th:href="${#httpServletRequest.getRequestURL().toString().replaceFirst('://','://es.')}">Click here for more information.</a>
@@ -78,12 +77,12 @@
          <hr style="margin: 60px auto;">
       </div>
 
-      <div class="container mb-5" th:if="${properties.showGivingTuesdayWidget}">
+      <div class="container mb-5" th:if="${@properties.showGivingTuesdayWidget}">
          <!-- Begin Give Lively Fundraising Widget -->
          <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/branded_donation/el-puente-hispanic-services-center/giving-tuesday.js';document.getElementsByTagName('head')[0].appendChild(gl);</script><div data-widget-src='https://secure.givelively.org/donate/el-puente-hispanic-services-center/giving-tuesday?ref=sd_widget' id="give-lively-widget" class="gl-branded-donation-widget"></div>
          <!-- End Give Lively Fundraising Widget -->
       </div>
-      <div class="container mb-5" th:if="${!properties.showGivingTuesdayWidget}">
+      <div class="container mb-5" th:if="${!@properties.showGivingTuesdayWidget}">
          <!-- Begin Give Lively Fundraising Widget -->
          <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/simple_donation/el-puente-hispanic-services-center/website-donations.js?show_suggested_amount_buttons=false&show_in_honor_of=false&address_required=false&has_required_custom_question=false&prefilled_donation_amount=100';document.getElementsByTagName('head')[0].appendChild(gl);</script><div id="give-lively-widget" class="gl-simple-donation-widget"></div>
          <!-- End Give Lively Fundraising Widget -->
@@ -92,12 +91,12 @@
       <div class="container my-3">
          <div class="row">
             <div class="col-12 col-md-6 col-lg-6 col-xl-5 mb-3">
-               <th:block th:if="${!#strings.isEmpty( properties.facebookUrl )}">
+               <th:block th:if="${!#strings.isEmpty( @properties.facebookUrl )}">
                   <div layout:insert="~{layouts/info::card}">
                      <div layout:fragment="content" th:remove="tag">
                         <h5 class="card-title" th:text="#{social.facebook}"></h5>
                         <div class="fb-page d-block"
-                             th:attr="data-href=${properties.facebookUrl}"
+                             th:attr="data-href=${@properties.facebookUrl}"
                              data-tabs="timeline, events"
                              data-width=""
                              data-height="950"
@@ -105,8 +104,8 @@
                              data-adapt-container-width="true"
                              data-hide-cover="false"
                              data-show-facepile="true">
-                           <blockquote th:cite="${properties.facebookUrl}" class="fb-xfbml-parse-ignore">
-                              <a th:href="${properties.facebookUrl}">
+                           <blockquote th:cite="${@properties.facebookUrl}" class="fb-xfbml-parse-ignore">
+                              <a th:href="${@properties.facebookUrl}">
                                  El Puente Hispanic Services Center
                               </a>
                            </blockquote>
@@ -124,7 +123,7 @@
                      <div class="text-center">
                         <p th:utext="#{home.donationText}"></p>
                         <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
-                           <i th:replace="fragments/button::action(${T(org.elpuentesearcy.controller.InvolvementController).URL_BASE}, #{home.donationOptionsButton})"></i>
+                           <i th:replace="fragments/button::action(${@involvementController.URL_BASE}, #{home.donationOptionsButton})"></i>
                         </th:block>
                      </div>
                   </div>
@@ -151,6 +150,6 @@
       <i th:replace="fragments/footer::footer('')"></i>
 </main>
    <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
-   <script th:src="@{'/js/facebookEmbed.js?v='+__${properties.version}__}"></script>
+   <script th:src="@{'/js/facebookEmbed.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>

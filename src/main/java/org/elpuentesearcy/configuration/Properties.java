@@ -4,12 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.elpuentesearcy.ElPuenteBoot;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,20 +51,6 @@ public class Properties
     private Google google;
     private List<Employee> board;
     private List<Employee> staff;
-
-    private static Properties instance;
-
-    @PostConstruct
-    @Order( Ordered.HIGHEST_PRECEDENCE )
-    public void postConstruct()
-    {
-        instance = this;
-    }
-
-    public static Properties get()
-    {
-        return instance;
-    }
 
     @Data
     public static class Google
