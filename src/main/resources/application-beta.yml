@@ -1,0 +1,8 @@
+server:
+  port: 8091
+
+org.elpuentesearcy:
+  domain: elpuentesearcy.org
+  google:
+    maps:
+      apiKey: ${EL_PUENTE_WEBAPP_GOOGLE_MAPS_API_KEY_BETA}

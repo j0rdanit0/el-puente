@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+logging:
+  level:
+    org.elpuentesearcy: INFO
+
+org.elpuentesearcy:
+  testMode: false
+  domain: elpuentesearcy.org
+  google:
+    analytics:
+      trackingId: ${EL_PUENTE_WEBAPP_GOOGLE_ANALYTICS_TRACKING_ID}
+    maps:
+      apiKey: ${EL_PUENTE_WEBAPP_GOOGLE_MAPS_API_KEY_PROD}

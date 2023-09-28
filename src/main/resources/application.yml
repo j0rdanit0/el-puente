@@ -8,8 +8,8 @@ logging:
 trello:
   api:
     baseUrl: https://api.trello.com/1/
-    key: ENC(0zQwGPaElT2LfCsdtrXmhw1k6rkWQMPSqa6hPFdWY32x7lc8qisX/pqXpCRbhFZw)
-    token: ENC(ekD06id1HzyTBewrxhahay4BJ+g9mFtl7tIM9cNSNyKLBmZ0JyLllYVguDJPzjL0z1YeiU3WOsJzcnmAMyXMfBi+QovIDz5TdRHSc5HLEYg=)
+    key: ${EL_PUENTE_WEBAPP_TRELLO_API_KEY}
+    token: ${EL_PUENTE_WEBAPP_TRELLO_API_TOKEN}
   approvalListId: 5d93720df8af5683824ac6bf
   approvedListId: 5d9373776cd8888e4d4f5977
 
@@ -47,7 +47,7 @@ org.elpuentesearcy:
     analytics:
       trackingId:
     maps:
-      apiKey: ENC(hSb7bNn7DHbUXqEYXdPJi4y+rKajYN7Nj/OsebHHPcnF8/AIdaqSQtbXg+DcX4VI)
+      apiKey: ${EL_PUENTE_WEBAPP_GOOGLE_MAPS_API_KEY}
   board:
     - name: Jay Simpson
       title:
@@ -113,10 +113,3 @@ org.elpuentesearcy:
         es: Consejero Legal
       description:
         en:
-
-#Encrypting sensitive properties:
-#java -cp C:\Users\JordanS\.m2\repository\org\jasypt\jasypt\1.9.3\jasypt-1.9.3.jar  org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="{input}" password={password} algorithm=PBEWithMD5AndDES
-jasypt:
-  encryptor:
-    algorithm: PBEWithMD5AndDES
-    iv-generator-classname: org.jasypt.iv.NoIvGenerator
