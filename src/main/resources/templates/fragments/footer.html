@@ -5,8 +5,8 @@
    <div class="container">
       <script async th:src="'https://cse.google.com/cse.js?cx=009109186331168666000:'+${#locale.language == 'es' ? 'nywmiziagwz' : 'hc8xpk2v2kh'}"></script>
       <div class="gcse-search"></div>
-      <h3 th:insert="fragments/socialMedia::buttons(colorClass='text-secondary')" class="float-right pt-2"></h3>
-      <i th:replace="fragments/navbar::header(activeTab=${activeTab}, footer=true)"></i>
+      <h3 th:insert="~{fragments/socialMedia::buttons(colorClass='text-secondary')}" class="float-right pt-2"></h3>
+      <i th:replace="~{fragments/navbar::header(activeTab=${activeTab}, footer=true)}"></i>
       <hr/>
       <div class="text-center text-secondary">
          <small th:text="#{photoCreds}">Photo creds</small>

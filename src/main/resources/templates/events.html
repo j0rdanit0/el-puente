@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="uri=${@eventsController.URL_BASE}">
 <head>
-  <th:block th:include="fragments/includes::head(${uri})"></th:block>
+  <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
 
   <title th:text="#{events.title}">Title</title>
@@ -13,7 +13,7 @@
   <meta property="og:description" th:content="#{events.description}">
 </head>
 <body>
-<i th:replace="fragments/navbar::header(#{events.navlink})"></i>
+<i th:replace="~{fragments/navbar::header(#{events.navlink})}"></i>
 <main role="main">
   <i layout:replace="~{layouts/info::banner(#{events.navlink},${uri})}"></i>
 
@@ -86,9 +86,9 @@
     </div>
   </div>
 
-  <i th:replace="fragments/footer::footer(#{events.navlink})"></i>
+  <i th:replace="~{fragments/footer::footer(#{events.navlink})}"></i>
 </main>
 
-<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+<!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
 </body>
 </html>

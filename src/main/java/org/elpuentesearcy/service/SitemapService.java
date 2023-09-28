@@ -3,13 +3,11 @@ package org.elpuentesearcy.service;
 import com.redfin.sitemapgenerator.GoogleLinkSitemapGenerator;
 import com.redfin.sitemapgenerator.GoogleLinkSitemapUrl;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.elpuentesearcy.configuration.ElPuenteCaches;
 import org.elpuentesearcy.configuration.UrlLocaleResolver;
 import org.elpuentesearcy.controller.SearchEngineOptimizationController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -20,19 +18,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class SitemapService
 {
-    private static final Logger logger = LoggerFactory.getLogger( SitemapService.class );
-
     private final ListableBeanFactory listableBeanFactory;
     private final UrlService urlService;
 
@@ -87,7 +79,7 @@ public class SitemapService
             }
             catch ( URISyntaxException exception )
             {
-                logger.error( "Unable to construct URL for sitemap: " + url, exception );
+                log.error( "Unable to construct URL for sitemap: " + url, exception );
             }
         }
 

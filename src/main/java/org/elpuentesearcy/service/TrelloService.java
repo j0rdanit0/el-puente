@@ -1,8 +1,7 @@
 package org.elpuentesearcy.service;
 
 import com.google.gson.Gson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,10 +15,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class TrelloService
 {
-    private static final Logger logger = LoggerFactory.getLogger( TrelloService.class );
     private static final Gson GSON = new Gson();
 
     @Value( "${trello.api.baseUrl}" )
@@ -107,7 +106,7 @@ public class TrelloService
                 }
                 error = sb.toString();
             }
-            logger.error( "Unable to make Trello request: " + error, exception );
+            log.error( "Unable to make Trello request: " + error, exception );
         }
 
         return json;

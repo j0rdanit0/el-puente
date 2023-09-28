@@ -5,7 +5,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="uri=${@servicesController.URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${uri})"></th:block>
+   <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${@properties.version}__}">
 
@@ -15,10 +15,10 @@
    <meta property="og:description" th:content="#{services.description}">
 </head>
 <body>
-<i th:replace="fragments/navbar::header(#{services.navlink})"></i>
+<i th:replace="~{fragments/navbar::header(#{services.navlink})}"></i>
 <main role="main">
    <i layout:replace="~{layouts/info::banner(#{services.navlink}, ${uri})}"></i>
-   <i th:replace="fragments/sectionHeader::bannerText(#{services.description})"></i>
+   <i th:replace="~{fragments/sectionHeader::bannerText(#{services.description})}"></i>
 
    <i layout:replace="~{layouts/info::cardView}">
       <div layout:fragment="cards">
@@ -34,10 +34,10 @@
       </div>
    </i>
 
-   <i th:replace="fragments/footer::footer(#{services.navlink})"></i>
+   <i th:replace="~{fragments/footer::footer(#{services.navlink})}"></i>
 </main>
 
-<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+<!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
 <script th:src="@{'/js/cardView.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>

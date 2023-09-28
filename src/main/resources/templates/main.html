@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-   <th:block th:include="fragments/includes::head('/')"></th:block>
+   <th:block th:insert="~{fragments/includes::head('/')}"></th:block>
 
    <title th:text="#{home.title}">Title</title>
    <!--<meta property="og:url" content="">-->
@@ -25,7 +25,7 @@
 <body>
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
-   <i th:replace="fragments/navbar::header('')"></i>
+   <i th:replace="~{fragments/navbar::header('')}"></i>
    <main role="main">
       <i layout:replace="~{layouts/info::banner('El Puente Hispanic Services Center')}">
          <div layout:fragment="textOverlay">
@@ -47,7 +47,7 @@
          <div th:if="${#locale.language != 'es'}">
             <img class="mb-5" th:src="@{'/images/HHMCD-Individual-ticket-sales.jpg'}" width="75%" />
             <div class="mb-5" th:with="fontawesomeClass='fa-share', target='_blank', isLarge=true">
-               <i th:replace="fragments/button::action(${@properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')"></i>
+               <i th:replace="~{fragments/button::action(${@properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')}"></i>
             </div>
             <p>
                El Puente Clients may purchase $10 tickets in person on Tuesdays and Thursdays, 3-6pm, at El Puente.  <a th:href="${#httpServletRequest.getRequestURL().toString().replaceFirst('://','://es.')}">Click here for more information.</a>
@@ -55,7 +55,7 @@
          </div>
       </div>
 
-      <i th:replace="fragments/sectionHeader::header(#{home.whoWeAre})"></i>
+      <i th:replace="~{fragments/sectionHeader::header(#{home.whoWeAre})}"></i>
 
       <div class="container">
          <div class="container video-container">
@@ -116,14 +116,14 @@
                </th:block>
             </div>
             <div class="col-12 col-md-6 col-lg-6 col-xl-7 mb-3">
-               <i th:replace="fragments/newsletterSignupForm::mailchimp"></i>
+               <i th:replace="~{fragments/newsletterSignupForm::mailchimp}"></i>
                <br/>
                <div layout:insert="~{layouts/info::card}">
                   <div layout:fragment="content" th:remove="tag">
                      <div class="text-center">
                         <p th:utext="#{home.donationText}"></p>
                         <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
-                           <i th:replace="fragments/button::action(${@involvementController.URL_BASE}, #{home.donationOptionsButton})"></i>
+                           <i th:replace="~{fragments/button::action(${@involvementController.URL_BASE}, #{home.donationOptionsButton})}"></i>
                         </th:block>
                      </div>
                   </div>
@@ -147,9 +147,9 @@
          </div>
       </div>
 
-      <i th:replace="fragments/footer::footer('')"></i>
+      <i th:replace="~{fragments/footer::footer('')}"></i>
 </main>
-   <!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+   <!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
    <script th:src="@{'/js/facebookEmbed.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>

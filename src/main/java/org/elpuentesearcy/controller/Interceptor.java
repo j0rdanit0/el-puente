@@ -1,19 +1,17 @@
 package org.elpuentesearcy.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.stream.Stream;
 
+@Slf4j
 @Component
-public class Interceptor extends HandlerInterceptorAdapter
+public class Interceptor implements AsyncHandlerInterceptor
 {
-    private static final Logger logger = LoggerFactory.getLogger( Interceptor.class );
-
     @Override
     public boolean preHandle( HttpServletRequest request, HttpServletResponse response, Object handler )
     {
@@ -21,17 +19,17 @@ public class Interceptor extends HandlerInterceptorAdapter
 
         if ( Stream.of( ".css", ".js", ".json", ".xml", ".txt", ".png", ".jpg" ).anyMatch( requestUrl::contains ) )
         {
-            logger.trace( requestUrl );
+            log.trace( requestUrl );
         }
         else
         {
-            logger.info( requestUrl );
+            log.info( requestUrl );
         }
 
         return true;
     }
 
-    private static String getRequestUrl( HttpServletRequest request )
+    private String getRequestUrl( HttpServletRequest request )
     {
         return request.getRequestURL().append( request.getQueryString() == null ? "" : "?" + request.getQueryString() ).toString();
     }

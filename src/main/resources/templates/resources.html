@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="uri=${@resourcesController.URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${uri})"></th:block>
+   <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/cardView.css?v='+__${@properties.version}__}">
    <link rel="stylesheet" th:href="@{'/css/resources.css?v='+__${@properties.version}__}">
@@ -15,7 +15,7 @@
    <meta property="og:description" th:content="#{resources.navlink}">
 </head>
 <body>
-<i th:replace="fragments/navbar::header(#{resources.navlink})"></i>
+<i th:replace="~{fragments/navbar::header(#{resources.navlink})}"></i>
 <main role="main">
    <i layout:replace="~{layouts/info::banner(#{resources.navlink},${uri})}"></i>
 
@@ -38,7 +38,7 @@
       </div>
    </div>
 
-   <i th:replace="fragments/sectionHeader::header(#{resources.services.header})"></i>
+   <i th:replace="~{fragments/sectionHeader::header(#{resources.services.header})}"></i>
    <div class="container">
       <i layout:replace="~{layouts/info::cardView}">
          <div layout:fragment="cards">
@@ -48,7 +48,7 @@
          </div>
       </i>
    </div>
-   <i th:replace="fragments/sectionHeader::header(#{resources.education.header})"></i>
+   <i th:replace="~{fragments/sectionHeader::header(#{resources.education.header})}"></i>
    <div class="container">
       <i layout:replace="~{layouts/info::cardView}">
          <div layout:fragment="cards">
@@ -58,7 +58,7 @@
          </div>
       </i>
    </div>
-   <i th:replace="fragments/sectionHeader::header(#{resources.nonProfits.header})"></i>
+   <i th:replace="~{fragments/sectionHeader::header(#{resources.nonProfits.header})}"></i>
    <div class="container">
       <i layout:replace="~{layouts/info::cardView}">
          <div layout:fragment="cards">
@@ -69,10 +69,10 @@
       </i>
    </div>
 
-   <i th:replace="fragments/footer::footer(#{resources.navlink})"></i>
+   <i th:replace="~{fragments/footer::footer(#{resources.navlink})}"></i>
 </main>
 
-<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+<!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
 <script th:src="@{'/js/cardView.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>

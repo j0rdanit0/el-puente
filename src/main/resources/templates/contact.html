@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:with="uri=${@contactController.URL_BASE}">
 <head>
-   <th:block th:include="fragments/includes::head(${uri})"></th:block>
+   <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
    <link rel="stylesheet" th:href="@{'/css/contact.css?v='+__${@properties.version}__}">
 
    <title th:text="#{contact.title}">Title</title>
@@ -17,7 +17,7 @@
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
 </th:block>
-<i th:replace="fragments/navbar::header(#{contact.navlink})"></i>
+<i th:replace="~{fragments/navbar::header(#{contact.navlink})}"></i>
 <main role="main">
    <i layout:replace="~{layouts/info::banner(#{contact.contactUs}, ${uri})}"></i>
 
@@ -125,10 +125,10 @@
       </iframe>
    </div>
 
-   <i th:replace="fragments/footer::footer(#{contact.navlink})"></i>
+   <i th:replace="~{fragments/footer::footer(#{contact.navlink})}"></i>
 </main>
 
-<!--/*/ <th:block th:include="fragments/includes::scripts"></th:block> /*/-->
+<!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
 <script th:src="@{'/js/contact.js?v='+__${@properties.version}__}"></script>
 <script th:src="@{'/js/facebookEmbed.js?v='+__${@properties.version}__}"></script>
 </body>
