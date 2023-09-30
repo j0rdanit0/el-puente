@@ -25,7 +25,7 @@
       <div th:if="${!#strings.isEmpty(imageUrl)}" class="col-12 cardImageContainer blendedCardImage my-auto">
          <img class="mw-100" th:src="${imageUrl}">
       </div>
-      <div class="col">
+      <div class="col col-12 cardInfoContainer">
          <div th:class="'card-body ' +${#strings.isEmpty(imageUrl) ? '' : 'blendedCardContainer blendedCard'}">
             <th:block th:if="${!#strings.isEmpty(fontawesomeClass)}">
                <div layout:insert="~{layouts/info::icon(${fontawesomeClass})}">
@@ -36,10 +36,23 @@
             </th:block>
             <small th:if="${!#strings.isEmpty(description)}" th:utext="${description}"></small>
             <span th:if="${!#strings.isEmpty(text)}" th:utext="${text}"></span>
-            <div th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-share'}, target='_blank'" class="float-right mb-2">
+            <div th:if="${!#strings.isEmpty(actionButtonURL) && !#strings.isEmpty(actionButtonText)}" th:with="fontawesomeClass=${actionButtonFontawesomeClass ?: 'fa-arrow-up-right-from-square'}, target='_blank'" class="float-right mb-2">
                <i th:replace="~{fragments/button::action(${actionButtonURL}, ${actionButtonText})}"></i>
             </div>
             <div layout:fragment="content"></div>
+         </div>
+      </div>
+      <div class="col cardGiveLivelyContainer p-2" th:if="${!#strings.isEmpty(giveLivelyDonationURL)}">
+         <!-- Begin Give Lively Fundraising Widget -->
+         <script type="text/javascript" th:inline="javascript">
+            /*<![CDATA[*/
+            gl=document.createElement('script');gl.src=[[${giveLivelyDonationURL}]];document.getElementsByTagName('head')[0].appendChild(gl);
+            /*]]>*/
+         </script>
+         <div id="give-lively-widget" class="gl-simple-donation-widget"></div>
+         <!-- End Give Lively Fundraising Widget -->
+         <div class="text-center" th:if="${!#strings.isEmpty(giveLivelyDonationText)}">
+            <small class="d-inline-block" th:text="${giveLivelyDonationText}"></small>
          </div>
       </div>
    </div>

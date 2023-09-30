@@ -46,7 +46,7 @@
          </div>
          <div th:if="${#locale.language != 'es'}">
             <img class="mb-5" th:src="@{'/images/HHMCD-Individual-ticket-sales.jpg'}" width="75%" />
-            <div class="mb-5" th:with="fontawesomeClass='fa-share', target='_blank', isLarge=true">
+            <div class="mb-5" th:with="fontawesomeClass='fa-arrow-up-right-from-square', target='_blank', isLarge=true">
                <i th:replace="~{fragments/button::action(${@properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')}"></i>
             </div>
             <p>
