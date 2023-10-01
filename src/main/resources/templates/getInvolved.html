@@ -4,34 +4,34 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@involvementController.URL_BASE}">
+      th:with="uri=${@getInvolvedController.getUrlBase(#locale.language)}, englishUri=${@getInvolvedController.getUrlBase('en')}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
-   <link rel="stylesheet" th:href="@{'/css/involvement.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/getInvolved.css?v='+__${@properties.version}__}">
 
-   <title th:text="#{involvement.title}">Title</title>
+   <title th:text="#{getInvolved.title}">Title</title>
    <!--<meta property="og:url" content="">-->
-   <meta property="og:title" th:content="#{involvement.title}">
-   <meta property="og:description" th:content="#{involvement.involvement.content}">
+   <meta property="og:title" th:content="#{getInvolved.title}">
+   <meta property="og:description" th:content="#{getInvolved.getInvolved.content}">
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
 </head>
 <body>
-<i th:replace="~{fragments/navbar::header(#{involvement.navlink})}"></i>
+<i th:replace="~{fragments/navbar::header(#{getInvolved.navlink})}"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{involvement.involvement.header},${uri})}"></i>
-   <p class="container mb-5" th:utext="#{involvement.involvement.content}"></p>
+   <i layout:replace="~{layouts/info::banner(#{getInvolved.getInvolved.header},${englishUri})}"></i>
+   <p class="container mb-5" th:utext="#{getInvolved.getInvolved.content}"></p>
    <div class="container text-center" th:with="fontawesomeClass='fa-arrow-up-right-from-square', target='_blank'">
       <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_en}, 'Volunteer Form (English)')}"></i>
       <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_es}, 'Formulario de Voluntariado (Español)')}"></i>
    </div>
 
-   <i th:replace="~{fragments/sectionHeader::header(#{involvement.donations.header})}"></i>
+   <i th:replace="~{fragments/sectionHeader::header(#{getInvolved.donations.header})}"></i>
 
    <div class="container" th:if="${@properties.showGivingTuesdayWidget}">
       <!-- Begin Give Lively Fundraising Widget -->
       <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/branded_donation/el-puente-hispanic-services-center/giving-tuesday.js';document.getElementsByTagName('head')[0].appendChild(gl);</script><div data-widget-src='https://secure.givelively.org/donate/el-puente-hispanic-services-center/giving-tuesday?ref=sd_widget' id="give-lively-widget" class="gl-branded-donation-widget"></div>
       <!-- End Give Lively Fundraising Widget -->
-      <i th:replace="~{fragments/sectionHeader::bannerText(#{involvement.donations.content})}"></i>
+      <i th:replace="~{fragments/sectionHeader::bannerText(#{getInvolved.donations.content})}"></i>
    </div>
 
    <div class="container" th:if="${!@properties.showGivingTuesdayWidget}">
@@ -45,7 +45,7 @@
       <div class="row">
          <div class="col col-md-2 d-lg-none"></div>
          <div class="col-12 col-md-8 col-lg-6">
-            <i th:replace="~{fragments/sectionHeader::bannerText(#{involvement.donations.content})}"></i>
+            <i th:replace="~{fragments/sectionHeader::bannerText(#{getInvolved.donations.content})}"></i>
             <div class="mb-1"></div>
             <!-- Begin Give Lively Fundraising Widget -->
             <script>gl=document.createElement('script');gl.src='https://secure.givelively.org/widgets/simple_donation/el-puente-hispanic-services-center/website-donations.js?show_suggested_amount_buttons=true&show_in_honor_of=true&address_required=false&has_required_custom_question=false&suggested_donation_amounts[]=25&suggested_donation_amounts[]=50&suggested_donation_amounts[]=100&suggested_donation_amounts[]=250';document.getElementsByTagName('head')[0].appendChild(gl);</script><div id="give-lively-widget" class="gl-simple-donation-widget"></div>
@@ -73,31 +73,31 @@
    <i layout:replace="~{layouts/info::cardView}">
       <div layout:fragment="cards">
          <div th:if="${!#strings.isEmpty(@properties.giveLivelyUrl)}"
-              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-hand-holding-usd', label=#{involvement.donations.online.label}, description=#{involvement.donations.online.content},
-              actionButtonURL=${@properties.giveLivelyUrl}, actionButtonText=#{involvement.donations.online.button}"></div>
+              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-hand-holding-usd', label=#{getInvolved.donations.online.label}, description=#{getInvolved.donations.online.content},
+              actionButtonURL=${@properties.giveLivelyUrl}, actionButtonText=#{getInvolved.donations.online.button}"></div>
          <div th:if="${!#strings.isEmpty(@properties.cashtag)}"
-              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-dollar-sign', label=#{involvement.donations.cashapp.label}, description=#{involvement.donations.cashapp.content(${'<strong><a href=&quot;https://cash.me/'+@properties.cashtag+'&quot; target=&quot;_blank&quot;>'+@properties.cashtag+'</a></strong>'})}"></div>
+              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-dollar-sign', label=#{getInvolved.donations.cashapp.label}, description=#{getInvolved.donations.cashapp.content(${'<strong><a href=&quot;https://cash.me/'+@properties.cashtag+'&quot; target=&quot;_blank&quot;>'+@properties.cashtag+'</a></strong>'})}"></div>
          <div th:if="${!#strings.isEmpty(mailingAddress)}"
-              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-envelope-open-text', label=#{involvement.donations.mail.label}, description=#{involvement.donations.mail.content(${'<strong>'+mailingAddress+'</strong>'})}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-monument', label=#{involvement.donations.memorial.label}, description=#{involvement.donations.memorial.content}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-gift', label=#{involvement.donations.wishlist.label}, description=#{involvement.donations.wishlist.content},
-              actionButtonURL='https://www.amazon.com/hz/wishlist/ls/1X94OWK2PE4KH?ref_=wl_share', actionButtonText=#{involvement.donations.wishlist.button}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-file-invoice-dollar', label=#{involvement.donations.matchinggifts.label}, description=#{involvement.donations.matchinggifts.content}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-donate', label=#{involvement.donations.plannedgiving.label}, description=#{involvement.donations.plannedgiving.content}"></div>
+              class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-envelope-open-text', label=#{getInvolved.donations.mail.label}, description=#{getInvolved.donations.mail.content(${'<strong>'+mailingAddress+'</strong>'})}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-monument', label=#{getInvolved.donations.memorial.label}, description=#{getInvolved.donations.memorial.content}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-gift', label=#{getInvolved.donations.wishlist.label}, description=#{getInvolved.donations.wishlist.content},
+              actionButtonURL='https://www.amazon.com/hz/wishlist/ls/1X94OWK2PE4KH?ref_=wl_share', actionButtonText=#{getInvolved.donations.wishlist.button}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-file-invoice-dollar', label=#{getInvolved.donations.matchinggifts.label}, description=#{getInvolved.donations.matchinggifts.content}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-donate', label=#{getInvolved.donations.plannedgiving.label}, description=#{getInvolved.donations.plannedgiving.content}"></div>
       </div>
    </i>
 
-   <i th:replace="~{fragments/sectionHeader::header(#{involvement.volunteers.header})}"></i>
-   <p class="container mb-5" th:utext="#{involvement.volunteers.content}"></p>
+   <i th:replace="~{fragments/sectionHeader::header(#{getInvolved.volunteers.header})}"></i>
+   <p class="container mb-5" th:utext="#{getInvolved.volunteers.content}"></p>
    <div class="container text-center" th:with="fontawesomeClass='fa-arrow-up-right-from-square', target='_blank'">
       <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_en}, 'Volunteer Form (English)')}"></i>
       <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_es}, 'Formulario de Voluntariado (Español)')}"></i>
    </div>
 
-   <i th:replace="~{fragments/sectionHeader::header(#{involvement.sponsors.header})}"></i>
-   <p class="container mb-5" th:utext="#{involvement.sponsors.content}"></p>
+   <i th:replace="~{fragments/sectionHeader::header(#{getInvolved.sponsors.header})}"></i>
+   <p class="container mb-5" th:utext="#{getInvolved.sponsors.content}"></p>
 
-   <i th:replace="~{fragments/footer::footer(#{involvement.navlink})}"></i>
+   <i th:replace="~{fragments/footer::footer(#{getInvolved.navlink})}"></i>
 </main>
 
 <!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->

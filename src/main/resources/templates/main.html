@@ -123,7 +123,7 @@
                      <div class="text-center">
                         <p th:utext="#{home.donationText}"></p>
                         <th:block th:with="fontawesomeClass='fa-hand-holding-heart',isLarge=true">
-                           <i th:replace="~{fragments/button::action(${@involvementController.URL_BASE}, #{home.donationOptionsButton})}"></i>
+                           <i th:replace="~{fragments/button::action(${@getInvolvedController.getUrlBase(#locale.language)}, #{home.donationOptionsButton})}"></i>
                         </th:block>
                      </div>
                   </div>

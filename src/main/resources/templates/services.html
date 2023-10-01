@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@servicesController.URL_BASE}">
+      th:with="uri=${@servicesController.getUrlBase(#locale.language)}, englishUri=${@servicesController.getUrlBase('en')}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
@@ -17,7 +17,7 @@
 <body>
 <i th:replace="~{fragments/navbar::header(#{services.navlink})}"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{services.navlink}, ${uri})}"></i>
+   <i layout:replace="~{layouts/info::banner(#{services.navlink}, ${englishUri})}"></i>
    <i th:replace="~{fragments/sectionHeader::bannerText(#{services.description})}"></i>
 
    <i layout:replace="~{layouts/info::cardView}">

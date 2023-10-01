@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.elpuentesearcy</groupId>
     <artifactId>webapp</artifactId>
-    <version>1.19.4</version>
+    <version>1.19.5</version>
     <name>el-puente</name>
     <description></description>
 
@@ -119,9 +119,9 @@
                                 <cssSourceFile>changes.css</cssSourceFile>
                                 <cssSourceFile>common.css</cssSourceFile>
                                 <cssSourceFile>main.css</cssSourceFile>
-                                <cssSourceFile>contact.css</cssSourceFile>
-                                <cssSourceFile>about.css</cssSourceFile>
-                                <cssSourceFile>involvement.css</cssSourceFile>
+                                <cssSourceFile>contactUs.css</cssSourceFile>
+                                <cssSourceFile>aboutUs.css</cssSourceFile>
+                                <cssSourceFile>getInvolved.css</cssSourceFile>
                                 <cssSourceFile>resources.css</cssSourceFile>
                             </cssSourceFiles>
                             <cssTargetDir>css</cssTargetDir>
@@ -132,7 +132,7 @@
                                 <jsSourceFile>cardView.js</jsSourceFile>
                                 <jsSourceFile>changes.js</jsSourceFile>
                                 <jsSourceFile>common.js</jsSourceFile>
-                                <jsSourceFile>contact.js</jsSourceFile>
+                                <jsSourceFile>contactUs.js</jsSourceFile>
                                 <jsSourceFile>facebookEmbed.js</jsSourceFile>
                             </jsSourceFiles>
                             <jsTargetDir>js</jsTargetDir>

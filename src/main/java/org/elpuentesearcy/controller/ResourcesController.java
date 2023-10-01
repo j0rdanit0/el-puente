@@ -11,11 +11,12 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 @Controller
-public class ResourcesController
+public class ResourcesController extends BaseController
 {
-    public static final String URL_BASE = "/resources";
+    public static final String URL_BASE_EN = "/resources";
+    public static final String URL_BASE_ES = "/recursos";
 
-    @GetMapping( URL_BASE )
+    @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
     public String resources( Model model )
     {
         SortedSet<ResourceCard> services = new TreeSet<>();
@@ -78,5 +79,17 @@ public class ResourcesController
         model.addAttribute( "nonProfits", nonProfits );
 
         return "resources";
+    }
+
+    @Override
+    public String getEnglishUrlBase()
+    {
+        return URL_BASE_EN;
+    }
+
+    @Override
+    public String getSpanishUrlBase()
+    {
+        return URL_BASE_ES;
     }
 }

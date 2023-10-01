@@ -21,7 +21,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @ConditionalOnProperty( "org.elpuentesearcy.testMode" )
-public class ChangesController
+public class ChangesController extends BaseController
 {
     private final TrelloService trelloService;
 
@@ -30,10 +30,11 @@ public class ChangesController
     @Value( "${trello.approvedListId}" )
     private String trelloApprovedListId;
 
-    public static final String URL_BASE = "/changes";
-    public static final String GO_LIVE = URL_BASE + "/goLive";
+    public static final String URL_BASE_EN = "/changes";
+    public static final String URL_BASE_ES = "/cambios";
+    public static final String GO_LIVE = URL_BASE_EN + "/goLive";
 
-    @GetMapping( URL_BASE )
+    @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
     public String home( Model model ) throws IOException
     {
         List<TrelloCard> trelloCards = trelloService.get( new TypeToken<List<TrelloCard>>(){}.getType(), "lists/" + trelloApprovalListId + "/cards/open", "fields", "url,name" );
@@ -62,5 +63,17 @@ public class ChangesController
         {
             log.error( "Unable to Go Live", exception );
         }
+    }
+
+    @Override
+    public String getEnglishUrlBase()
+    {
+        return URL_BASE_EN;
+    }
+
+    @Override
+    public String getSpanishUrlBase()
+    {
+        return URL_BASE_ES;
     }
 }

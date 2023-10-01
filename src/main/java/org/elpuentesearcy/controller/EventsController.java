@@ -1,23 +1,24 @@
 package org.elpuentesearcy.controller;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.ElPuenteBoot;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-public class EventsController
+public class EventsController extends BaseController
 {
-    public static final String URL_BASE = "/events";
+    public static final String URL_BASE_EN = "/events";
+    public static final String URL_BASE_ES = "/eventos";
 
-    @GetMapping( URL_BASE )
-    public String contact( Model model )
+    @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
+    public String events( Model model )
     {
         String eventsFolder = "events/";
 
@@ -75,11 +76,19 @@ public class EventsController
         return "events";
     }
 
-    @Data
-    @RequiredArgsConstructor
-    private static class ElPuenteEvent
+    @Override
+    public String getEnglishUrlBase()
     {
-        private final String year;
-        private final List<String> imagePaths;
+        return URL_BASE_EN;
+    }
+
+    @Override
+    public String getSpanishUrlBase()
+    {
+        return URL_BASE_ES;
+    }
+
+    private record ElPuenteEvent(String year, List<String> imagePaths)
+    {
     }
 }

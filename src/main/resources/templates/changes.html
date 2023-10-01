@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@changesController.URL_BASE}">
+      th:with="uri=${@changesController.getUrlBase(#locale.language)}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
 

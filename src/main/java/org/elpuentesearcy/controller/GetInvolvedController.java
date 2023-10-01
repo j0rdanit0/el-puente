@@ -1,5 +1,6 @@
 package org.elpuentesearcy.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.ElPuenteBoot;
 import org.elpuentesearcy.configuration.Properties;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
@@ -15,14 +17,15 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-public class InvolvementController
+public class GetInvolvedController extends BaseController
 {
-    public static final String URL_BASE = "/involvement";
+    public static final String URL_BASE_EN = "/get-involved";
+    public static final String URL_BASE_ES = "/involucrarse";
 
     private final Properties properties;
 
-    @GetMapping( URL_BASE )
-    public String involvement( Model model )
+    @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
+    public String getInvolved( Model model )
     {
         model.addAttribute( "mailingAddress", String.join( " ", properties.getMailingAddress() ) );
 
@@ -38,6 +41,24 @@ public class InvolvementController
             model.addAttribute( "carouselImagePaths", new TreeSet<>( carouselImagePaths ) );
         }
 
-        return "involvement";
+        return "getInvolved";
+    }
+
+    @GetMapping( value = "/involvement" )
+    public void involvement( HttpServletResponse response ) throws IOException
+    {
+        response.sendRedirect( URL_BASE_EN );
+    }
+
+    @Override
+    public String getEnglishUrlBase()
+    {
+        return URL_BASE_EN;
+    }
+
+    @Override
+    public String getSpanishUrlBase()
+    {
+        return URL_BASE_ES;
     }
 }

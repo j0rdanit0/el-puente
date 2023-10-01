@@ -17,31 +17,31 @@
                   <i th:replace="~{fragments/navlink::link( #{home.navlink}, ${activeTab}, '/' )}">Home</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{about.navlink}, ${activeTab}, ${@aboutController.URL_BASE} )}">About Us</i>
+                  <i th:replace="~{fragments/navlink::link( #{aboutUs.navlink}, ${activeTab}, ${@aboutUsController.getUrlBase(#locale.language)} )}">About Us</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{services.navlink}, ${activeTab}, ${@servicesController.URL_BASE} )}">Services</i>
+                  <i th:replace="~{fragments/navlink::link( #{services.navlink}, ${activeTab}, ${@servicesController.getUrlBase(#locale.language)} )}">Services</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{programs.navlink}, ${activeTab}, ${@programsController.URL_BASE} )}">Programs</i>
+                  <i th:replace="~{fragments/navlink::link( #{programs.navlink}, ${activeTab}, ${@programsController.getUrlBase(#locale.language)} )}">Programs</i>
                </li>
                <li class="nav-item" th:if="${!#strings.isEmpty(@properties.facebookUrl)}" th:with="target='_blank'">
                   <i th:replace="~{fragments/navlink::link( #{news.navlink}, ${activeTab}, ${@properties.facebookUrl} )}">News</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{involvement.navlink}, ${activeTab}, ${@involvementController.URL_BASE} )}">Get Involved</i>
+                  <i th:replace="~{fragments/navlink::link( #{getInvolved.navlink}, ${activeTab}, ${@getInvolvedController.getUrlBase(#locale.language)} )}">Get Involved</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{resources.navlink}, ${activeTab}, ${@resourcesController.URL_BASE} )}">Resources</i>
+                  <i th:replace="~{fragments/navlink::link( #{resources.navlink}, ${activeTab}, ${@resourcesController.getUrlBase(#locale.language)} )}">Resources</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{events.navlink}, ${activeTab}, ${@eventsController.URL_BASE} )}">Events</i>
+                  <i th:replace="~{fragments/navlink::link( #{events.navlink}, ${activeTab}, ${@eventsController.getUrlBase(#locale.language)} )}">Events</i>
                </li>
                <li class="nav-item">
-                  <i th:replace="~{fragments/navlink::link( #{contact.navlink}, ${activeTab}, ${@contactController.URL_BASE} )}">Contact Us</i>
+                  <i th:replace="~{fragments/navlink::link( #{contactUs.navlink}, ${activeTab}, ${@contactUsController.getUrlBase(#locale.language)} )}">Contact Us</i>
                </li>
                <th:block th:if="${@properties.testMode}">
-                  <i th:replace="~{fragments/navlink::betaLink( #{changes.navlink}, ${activeTab}, ${@changesController.URL_BASE} )}">Changes</i>
+                  <i th:replace="~{fragments/navlink::betaLink( #{changes.navlink}, ${activeTab}, ${@changesController.getUrlBase(#locale.language)} )}">Changes</i>
                </th:block>
             </ul>
          </div>

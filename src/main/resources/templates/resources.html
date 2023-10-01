@@ -2,7 +2,7 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@resourcesController.URL_BASE}">
+      th:with="uri=${@resourcesController.getUrlBase(#locale.language)}, englishUri=${@resourcesController.getUrlBase('en')}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
    <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
@@ -17,24 +17,23 @@
 <body>
 <i th:replace="~{fragments/navbar::header(#{resources.navlink})}"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{resources.navlink},${uri})}"></i>
+   <i layout:replace="~{layouts/info::banner(#{resources.navlink},${englishUri})}"></i>
 
    <div class="container">
+      <div class="row mb-2">
+         <div class="col">
+            <iframe class="d-block mx-auto" style="border: 1px solid #777;" src="https://indd.adobe.com/embed/bca87e11-c717-40c0-955b-fcffa692a912?startpage=1&allowFullscreen=true" width="525px" height="371px" frameborder="0" allowfullscreen=""></iframe>
+         </div>
+         <div class="col-lg-5 col-12 p-3" th:utext="#{resources.welcomeBook.description}"></div>
+      </div>
+      <hr/>
       <div class="row">
-         <div class="col"></div>
-         <div class="col-lg-5 col-sm-8 col-12">
+         <div class="col-md-7 col-12 p-3" th:utext="#{resources.citizenshipVideos.description}"></div>
+         <div class="col">
             <div class="video-container">
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLjdEAA4jpEV-_DTWyCBqp4OiBGkBuTEEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+               <iframe width="525px" height="371px" src="https://www.youtube.com/embed/videoseries?list=PLjdEAA4jpEV-_DTWyCBqp4OiBGkBuTEEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
          </div>
-         <div class="col"></div>
-      </div>
-      <div class="row">
-         <div class="col"></div>
-         <div class="col-lg-8 col-12 p-3 text-center">
-            Are you studying for your Citizenship interview and test? Watch these videos where each question is read and answered in English and Spanish, for you to practice.
-         </div>
-         <div class="col"></div>
       </div>
    </div>
 

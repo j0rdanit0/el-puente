@@ -2,7 +2,7 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@eventsController.URL_BASE}">
+      th:with="uri=${@eventsController.getUrlBase(#locale.language)}, englishUri=${@eventsController.getUrlBase('en')}">
 <head>
   <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
   <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
@@ -15,7 +15,7 @@
 <body>
 <i th:replace="~{fragments/navbar::header(#{events.navlink})}"></i>
 <main role="main">
-  <i layout:replace="~{layouts/info::banner(#{events.navlink},${uri})}"></i>
+  <i layout:replace="~{layouts/info::banner(#{events.navlink},${englishUri})}"></i>
 
   <div class="container mb-5">
     <div id="eventsAccordion">

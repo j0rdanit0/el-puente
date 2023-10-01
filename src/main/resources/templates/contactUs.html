@@ -2,24 +2,24 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@contactController.URL_BASE}">
+      th:with="uri=${@contactUsController.getUrlBase(#locale.language)}, englishUri=${@contactUsController.getUrlBase('en')}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
-   <link rel="stylesheet" th:href="@{'/css/contact.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/contactUs.css?v='+__${@properties.version}__}">
 
-   <title th:text="#{contact.title}">Title</title>
+   <title th:text="#{contactUs.title}">Title</title>
    <!--<meta property="og:url" content="">-->
-   <meta property="og:title" th:content="#{contact.title}">
-   <meta property="og:description" th:content="#{contact.contactUs}">
+   <meta property="og:title" th:content="#{contactUs.title}">
+   <meta property="og:description" th:content="#{contactUs.contactUs}">
 </head>
 <body>
 <th:block th:if="${!#strings.isEmpty( @properties.facebookUrl )}">
    <div id="fb-root"></div>
    <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
 </th:block>
-<i th:replace="~{fragments/navbar::header(#{contact.navlink})}"></i>
+<i th:replace="~{fragments/navbar::header(#{contactUs.navlink})}"></i>
 <main role="main">
-   <i layout:replace="~{layouts/info::banner(#{contact.contactUs}, ${uri})}"></i>
+   <i layout:replace="~{layouts/info::banner(#{contactUs.contactUs}, ${englishUri})}"></i>
 
    <div class="container">
       <div class="row">
@@ -33,7 +33,7 @@
                               <strong th:text="${line}">Line</strong>
                               <br/>
                            </th:block>
-                           <small class="text-secondary font-italic" th:text="#{contact.mailNotice}">
+                           <small class="text-secondary font-italic" th:text="#{contactUs.mailNotice}">
                               Don't mail here!
                            </small>
                         </span>
@@ -54,7 +54,7 @@
                      <hr/>
                      <div layout:insert="~{layouts/info::icon('fa-phone-square')}" th:with="href=${ 'tel:'+@properties.phone }">
                         <strong layout:fragment="label" class="text-dark">
-                           <span th:text="#{contact.phone}+':'" class="text-capitalize">
+                           <span th:text="#{contactUs.phone}+':'" class="text-capitalize">
                               Phone:
                            </span>
                            <br/>
@@ -68,7 +68,7 @@
                      <hr/>
                      <div layout:insert="~{layouts/info::icon('fa-at')}" th:with="href=${ 'mailto:'+@properties.email }">
                         <strong layout:fragment="label" class="text-dark">
-                           <span th:text="#{contact.email}+':'" class="text-capitalize">
+                           <span th:text="#{contactUs.email}+':'" class="text-capitalize">
                               Email:
                            </span>
                            <br/>
@@ -82,21 +82,21 @@
                      <hr/>
                      <div layout:insert="~{layouts/info::icon('fa-clock')}">
                         <span layout:fragment="label" class="text-dark">
-                           <strong th:text="#{contact.hours}+':'" class="text-capitalize">
+                           <strong th:text="#{contactUs.hours}+':'" class="text-capitalize">
                               Office Hours:
                            </strong>
                            <br/>
-                           <small class="text-secondary font-italic" th:text="#{contact.hoursNotice}">
+                           <small class="text-secondary font-italic" th:text="#{contactUs.hoursNotice}">
                               Call before you come
                            </small>
                            <br/>
                            <th:block th:if="${!#strings.isEmpty(@properties.officeHoursWeekday)}">
-                              <small th:text="#{contact.hours.weekday}+':'">M-F</small>
+                              <small th:text="#{contactUs.hours.weekday}+':'">M-F</small>
                               <strong class="float-right" th:text="${@properties.officeHoursWeekday}">9:00am - 11:00pm</strong>
                               <br/>
                            </th:block>
                            <th:block th:if="${!#strings.isEmpty(@properties.officeHoursWeekend)}">
-                              <small th:text="#{contact.hours.weekend}+':'">Saturday</small>
+                              <small th:text="#{contactUs.hours.weekend}+':'">Saturday</small>
                               <strong class="float-right" th:text="${@properties.officeHoursWeekend}">9:00am - 11:00pm</strong>
                               <br/>
                            </th:block>
@@ -125,11 +125,11 @@
       </iframe>
    </div>
 
-   <i th:replace="~{fragments/footer::footer(#{contact.navlink})}"></i>
+   <i th:replace="~{fragments/footer::footer(#{contactUs.navlink})}"></i>
 </main>
 
 <!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
-<script th:src="@{'/js/contact.js?v='+__${@properties.version}__}"></script>
+<script th:src="@{'/js/contactUs.js?v='+__${@properties.version}__}"></script>
 <script th:src="@{'/js/facebookEmbed.js?v='+__${@properties.version}__}"></script>
 </body>
 </html>
