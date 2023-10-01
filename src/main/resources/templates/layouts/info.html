@@ -4,7 +4,7 @@
 <head>
 <body>
 <div layout:fragment="banner(bannerTitle, bannerImageUri)">
-   <div class="card heroBanner" th:style="'background-image:  url(&quot;/images/'+${bannerImageUri ?: 'main'}+'-banner.jpg&quot;);'">
+   <div class="card heroBanner" th:style="'background-image:  url(&quot;/images'+${bannerImageUri ?: '/main'}+'-banner.jpg&quot;);'">
       <div layout:fragment="textOverlay"></div>
    </div>
    <div class="container">
