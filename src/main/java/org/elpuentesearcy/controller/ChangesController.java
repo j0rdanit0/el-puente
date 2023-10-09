@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@ConditionalOnProperty( "org.elpuentesearcy.testMode" )
+@ConditionalOnProperty( value = "org.elpuentesearcy.prodMode", havingValue = "false" )
 public class ChangesController extends BaseController
 {
     private final TrelloService trelloService;

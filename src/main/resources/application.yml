@@ -15,7 +15,7 @@ trello:
 
 org.elpuentesearcy:
   version: @project.version@
-  testMode: true
+  prodMode: false
   domain: localhost
   email: office@elpuentesearcy.org
   phone: 5018279944

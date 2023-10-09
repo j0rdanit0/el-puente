@@ -7,7 +7,7 @@ logging:
     org.elpuentesearcy: INFO
 
 org.elpuentesearcy:
-  testMode: false
+  prodMode: true
   domain: elpuentesearcy.org
   google:
     analytics:

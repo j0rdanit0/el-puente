@@ -33,7 +33,7 @@ public class SitemapService
     {
         GoogleLinkSitemapGenerator sitemap = new GoogleLinkSitemapGenerator( urlService.getBaseUrl( subdomain ), getTempFile() );
 
-        List<String> paths = new ArrayList<>();
+        Set<String> paths = new HashSet<>();
         for ( Object controller : listableBeanFactory.getBeansWithAnnotation( Controller.class ).values() )
         {
             if ( !(controller instanceof SearchEngineOptimizationController ) )
@@ -43,7 +43,7 @@ public class SitemapService
                 {
                     for ( Method method : klass.getDeclaredMethods() )
                     {
-                        if ( method.isAnnotationPresent( GetMapping.class ) )
+                        if ( method.isAnnotationPresent( GetMapping.class ) && !method.isAnnotationPresent( Deprecated.class ) )
                         {
                             GetMapping getMapping = method.getAnnotation( GetMapping.class );
                             paths.addAll( Arrays.asList( getMapping.value() ) );

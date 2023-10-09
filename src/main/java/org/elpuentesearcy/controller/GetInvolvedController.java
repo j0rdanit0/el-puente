@@ -44,6 +44,7 @@ public class GetInvolvedController extends BaseController
         return "getInvolved";
     }
 
+    @Deprecated
     @GetMapping( value = "/involvement" )
     public void involvement( HttpServletResponse response ) throws IOException
     {

@@ -27,6 +27,7 @@ public class ContactUsController extends BaseController
         return "contactUs";
     }
 
+    @Deprecated
     @GetMapping( value = "/contact" )
     public void contact( HttpServletResponse response ) throws IOException
     {

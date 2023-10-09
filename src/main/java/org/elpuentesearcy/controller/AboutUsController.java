@@ -26,6 +26,7 @@ public class AboutUsController extends BaseController
         return "aboutUs";
     }
 
+    @Deprecated
     @GetMapping( value = "/about" )
     public void about( HttpServletResponse response ) throws IOException
     {
