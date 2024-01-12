@@ -95,12 +95,14 @@ org.elpuentesearcy:
         es: Directora Ejecutiva
       description:
         en:
+      abice-certified: true
     - name: Corinne Aréchiga
       title:
         en: Assistant Director
         es: Asistente a la Directora
       description:
         en:
+      abice-certified: true
     - name: Laticia Harris
       title:
         en: English Teacher

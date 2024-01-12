@@ -80,19 +80,20 @@ public class Properties
         private String squareImage;
         private Map<String, String> title;
         private Map<String, String> description;
+        private boolean abiceCertified;
 
         public void setName( String name )
         {
             this.name = name;
 
-            String imageFileName = ElPuenteBoot.IMAGE_FOLDER + name.toLowerCase().replaceAll( " ", "" );
+            String imageFileName = ElPuenteBoot.IMAGE_FOLDER + name.toLowerCase().replace( " ", "" );
             setImage( imageFileName + ".jpg" );
             setSquareImage( imageFileName + "-square.jpg" );
         }
 
         public String getLocalTitle( String locale )
         {
-            return getLocalString( locale, title ).replaceAll( " ", "&nbsp;" );
+            return getLocalString( locale, title ).replace( " ", "&nbsp;" );
         }
 
         public String getLocalDescription( String locale )

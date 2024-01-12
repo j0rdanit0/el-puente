@@ -50,18 +50,12 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            cd /etc/profile.d
-            chmod +x tee
-            tee init_webapp.sh <<- EOF > /dev/null
+            cd /opt/elpuente/deploy
             export EL_PUENTE_WEBAPP_TRELLO_API_KEY=${{ secrets.TRELLO_API_KEY }}
             export EL_PUENTE_WEBAPP_TRELLO_API_TOKEN=${{ secrets.TRELLO_API_TOKEN }}
             export EL_PUENTE_WEBAPP_GOOGLE_MAPS_API_KEY_BETA=${{ secrets.GOOGLE_MAPS_API_KEY_BETA }}
             export EL_PUENTE_WEBAPP_GOOGLE_MAPS_API_KEY_PROD=${{ secrets.GOOGLE_MAPS_API_KEY_PROD }}
             export EL_PUENTE_WEBAPP_GOOGLE_ANALYTICS_TRACKING_ID=${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
-            EOF
-            chmod +x init_webapp.sh
-            sh init_webapp.sh
-            cd /opt/elpuente/deploy
             sh deploy.sh webapp-beta
           script_stop: true
 

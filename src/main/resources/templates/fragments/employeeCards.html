@@ -32,6 +32,9 @@
                            <hr th:if="${!#strings.isEmpty(employee.getLocalDescription(#locale.language))}" class="mb-0"/>
                         </h5>
                         <small class="d-block text-center" th:utext="${employee.getLocalDescription(#locale.language)}">Description</small>
+                        <a th:if="${employee.abiceCertified}" href="https://uofapartners.uark.edu/projects/welcome-the-children/abice/" target="_blank">
+                           <img th:src="@{/images/ABICEDB-Credential-250.png}" class="img-fluid" width="100px;" th:alt="#{aboutUs.certifications.abice.description}" th:title="#{aboutUs.certifications.abice.description}">
+                        </a>
                      </div>
                   </div>
                </div>
