@@ -49,69 +49,16 @@ org.elpuentesearcy:
     maps:
       apiKey: ${EL_PUENTE_WEBAPP_GOOGLE_MAPS_API_KEY}
   board:
-    - name: Jay Simpson
-      title:
-        en: President
-        es: Presidente
-      description:
-        en: Senior Associate Director of Financial Aid Services<br/><strong>Harding University</strong>
-    - name: Larry Wilks
-      title:
-        en: Vice President
-        es: Vicepresidente
-      description:
-        en: Retired<br/><strong>U.S. Immigration Service</strong>
-    - name: Jaclyn Seiders
-      title:
-        en: Secretary
-        es: Sectretaria
-      description:
-        en: ESOL and Migrant Coordinator<br/><strong>Searcy Public Schools</strong>
-    - name: Mary Kathryn Lochala
-      title:
-        en: Treasurer
-        es: Tesorera
-      description:
-        en:
-    - name: Tity Abbud
-      title:
-        en:
-      description:
-        en: Community Advocate
-    - name: Logan Albright
-      title:
-        en:
-      description:
-        en: Community Liaison<br/><strong>ARcare</strong>
-    - name: Dr. Roddy Lochala
-      title:
-        en:
-      description:
-        en: Chief Medical Officer<br/><strong>Unity Health</strong>
+    - { name: Jay Simpson, title: { en: President, es: Presidente } }
+    - { name: Dr. Roddy Lochala, title: { en: Vice President, es: Vicepresidente } }
+    - { name: Jaclyn Seiders, title: { en: Secretary, es: Sectretaria } }
+    - { name: Mary Kathryn Lochala, title: { en: Treasurer, es: Tesorera } }
+    - { name: Tity Abbud, title: { en: } }
+    - { name: Maria Bautista, title: { en: } }
+    - { name: Guillermo Hernandez, title: { en: } }
+    - { name: Karen Hite, title: { en: } }
+    - { name: Bill Richardson, title: { en: } }
   staff:
-    - name: Ruth Simpson
-      title:
-        en: Executive Director
-        es: Directora Ejecutiva
-      description:
-        en:
-      abice-certified: true
-    - name: Corinne Aréchiga
-      title:
-        en: Assistant Director
-        es: Asistente a la Directora
-      description:
-        en:
-      abice-certified: true
-    - name: Laticia Harris
-      title:
-        en: English Teacher
-        es: Maestra de Inglés
-      description:
-        en:
-    - name: Guillermo Hernandez
-      title:
-        en: Legal Advisor
-        es: Consejero Legal
-      description:
-        en:
+    - { name: Ruth Simpson, title: { en: Executive Director, es: Directora Ejecutiva }, abice-certified: true }
+    - { name: Corinne Aréchiga, title: { en: Assistant Director, es: Asistente a la Directora }, abice-certified: true }
+    - { name: Laticia Harris, title: { en: English Teacher, es: Maestra de Inglés } }

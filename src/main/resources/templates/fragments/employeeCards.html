@@ -21,17 +21,18 @@
          <div class="row no-gutters">
             <div layout:insert="~{layouts/info::card}" th:each="employee:${employees}" class="pb-3 col-12 col-sm-6 col-md-4 col-lg-3">
                <div layout:fragment="content" class="w-100">
-                  <div th:class="'text-center '+${#strings.isEmpty(employee.getLocalDescription(#locale.language)) ? 'align-items-center' : ''}">
+                  <div class="text-center">
                      <img th:src="@{__${employee.squareImage}__}" class="img-fluid rounded-circle d-block d-md-none p-2 mx-auto" th:alt="${employee.name}">
                      <img th:src="@{__${employee.image}__}" class="d-none d-md-block mr-auto" width="100%" th:alt="${employee.name}">
 
                      <div class="pt-3">
                         <h5 class="mt-0 mb-1 text-center">
                            <span th:text="${employee.name}">Name</span>
-                           <small th:if="${!#strings.isEmpty(employee.getLocalTitle(#locale.language))}" th:utext="${employee.getLocalTitle(#locale.language)}" class="text-secondary font-italic">Title</small>
-                           <hr th:if="${!#strings.isEmpty(employee.getLocalDescription(#locale.language))}" class="mb-0"/>
+                           <th:block th:if="${!#strings.isEmpty(employee.getLocalTitle(#locale.language))}">
+                              <hr class="mb-1"/>
+                              <small th:utext="${employee.getLocalTitle(#locale.language)}" class="text-secondary font-italic">Title</small>
+                           </th:block>
                         </h5>
-                        <small class="d-block text-center" th:utext="${employee.getLocalDescription(#locale.language)}">Description</small>
                         <a th:if="${employee.abiceCertified}" href="https://uofapartners.uark.edu/projects/welcome-the-children/abice/" target="_blank">
                            <img th:src="@{/images/ABICEDB-Credential-250.png}" class="img-fluid" width="100px;" th:alt="#{aboutUs.certifications.abice.description}" th:title="#{aboutUs.certifications.abice.description}">
                         </a>

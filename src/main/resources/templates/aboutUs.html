@@ -19,6 +19,14 @@
 
    <p class="container mb-5" th:utext="#{aboutUs.aboutUs.content}"></p>
 
+   <i th:replace="~{fragments/employeeCards::cards(employees=${staff}, header=#{contactUs.staff}, subheader=#{aboutUs.meetTheStaff})}">
+      Staff Cards
+   </i>
+
+   <i th:replace="~{fragments/employeeCards::cards(employees=${boardOfDirectors}, header=#{aboutUs.boardOfDirectors})}">
+      Board Cards
+   </i>
+
    <i th:replace="~{fragments/sectionHeader::header(#{aboutUs.history.header})}"></i>
 
    <p class="container mb-5 font-weight-bold" th:utext="#{aboutUs.history.content}"></p>
@@ -45,14 +53,6 @@
          </div>
       </div>
    </div>
-
-   <i th:replace="~{fragments/employeeCards::cards(employees=${boardOfDirectors}, header=#{aboutUs.boardOfDirectors}, subheader=#{aboutUs.meetTheBoard})}">
-      Board Cards
-   </i>
-
-   <i th:replace="~{fragments/employeeCards::cards(employees=${staff}, header=#{contactUs.staff})}">
-      Staff Cards
-   </i>
 
    <i th:replace="~{fragments/footer::footer(#{aboutUs.navlink})}"></i>
 </main>

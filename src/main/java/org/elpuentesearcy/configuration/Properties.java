@@ -79,7 +79,6 @@ public class Properties
         private String image;
         private String squareImage;
         private Map<String, String> title;
-        private Map<String, String> description;
         private boolean abiceCertified;
 
         public void setName( String name )
@@ -94,11 +93,6 @@ public class Properties
         public String getLocalTitle( String locale )
         {
             return getLocalString( locale, title ).replace( " ", "&nbsp;" );
-        }
-
-        public String getLocalDescription( String locale )
-        {
-            return getLocalString( locale, description );
         }
 
         private String getLocalString( String locale, Map<String, String> map )
