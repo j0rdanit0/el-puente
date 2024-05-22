@@ -38,6 +38,6 @@ RUN apk update  \
     && apk add curl  \
     && apk cache clean
 
-EXPOSE 8080
+EXPOSE 8091
 
 ENTRYPOINT ["/opt/jre/bin/java","-jar","/el-puente/public-website.jar"]
