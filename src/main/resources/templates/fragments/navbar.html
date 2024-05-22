@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<div id="navContainer" th:fragment="header(activeTab)" th:with="footer=${footer ?: false}" th:class="${footer ? '' : 'fixed-top bg-white decoratedNav'}">
+<div id="navContainer" th:fragment="header(activeTab)" th:with="footer=${footer ?: false}, prodMode=${#arrays.contains(@environment.getActiveProfiles(),'production')}" th:class="${footer ? '' : 'fixed-top bg-white decoratedNav'}">
    <div th:class="${footer ? '' : 'container'}">
       <nav class="navbar navbar-light p-0 navbar-expand-lg">
          <a class="navbar-brand pb-0" th:href="@{/}">
-            <img th:unless="${footer}" id="navLogo" th:src="${'/images/logo_'+(#locale.language == 'es' ? 'es' : 'en')+(@properties.prodMode?'':'_beta')+'.png'}" th:alt="${'EL PUENTE'+(@properties.prodMode?'':' BETA')}">
-            <img th:if="${footer}" th:src="${'/images/logo-small'+(@properties.prodMode?'':'-beta')+'.png'}" th:alt="${'EL PUENTE'+(@properties.prodMode?'':' BETA')}" width="50px">
+            <img th:unless="${footer}" id="navLogo" th:src="${'/images/logo_'+(#locale.language == 'es' ? 'es' : 'en')+(prodMode?'':'_beta')+'.png'}" th:alt="${'EL PUENTE'+(prodMode?'':' BETA')}">
+            <img th:if="${footer}" th:src="${'/images/logo-small'+(prodMode?'':'-beta')+'.png'}" th:alt="${'EL PUENTE'+(prodMode?'':' BETA')}" width="50px">
          </a>
          <button class="navbar-toggler text-danger border-0" style="font-size: 2em; outline: none;" type="button" data-toggle="collapse" th:attr="data-target='#navbarSupportedContent'+${footer},aria-controls='navbarSupportedContent'+${footer}" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-ellipsis-v"></i>
@@ -40,7 +40,7 @@
                <li class="nav-item">
                   <i th:replace="~{fragments/navlink::link( #{contactUs.navlink}, ${activeTab}, ${@contactUsController.getUrlBase(#locale.language)} )}">Contact Us</i>
                </li>
-               <th:block th:unless="${@properties.prodMode}">
+               <th:block th:unless="${prodMode}">
                   <i th:replace="~{fragments/navlink::betaLink( #{changes.navlink}, ${activeTab}, ${@changesController.getUrlBase(#locale.language)} )}">Changes</i>
                </th:block>
             </ul>

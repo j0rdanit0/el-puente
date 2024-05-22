@@ -18,7 +18,6 @@ import java.util.Map;
 public class Properties
 {
     private String version;
-    private boolean prodMode;
     private String domain;
     private List<String> physicalAddress = new ArrayList<>();
     private List<String> mailingAddress = new ArrayList<>();

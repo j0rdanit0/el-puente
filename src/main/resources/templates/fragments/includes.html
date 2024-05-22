@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(currentURI)">
+<head th:fragment="head(currentURI)" th:with="prodMode=${#arrays.contains(@environment.getActiveProfiles(),'production')}">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
@@ -25,7 +25,7 @@
       <script async src='https://www.google-analytics.com/analytics.js'></script>
    </th:block>
 
-   <th:block th:if="${@properties.prodMode}">
+   <th:block th:if="${prodMode}">
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
       <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -46,7 +46,7 @@
          <link rel="alternate" th:hreflang="${language.subdomain}" th:href="'https://'+${language.subdomain +'.'+ @properties.domain + currentURI}">
       </th:block>
    </th:block>
-   <th:block th:unless="${@properties.prodMode}">
+   <th:block th:unless="${prodMode}">
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-beta-180x180.png">
       <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-beta-192x192.png">
       <link rel="manifest" href="/manifest-beta.json">
@@ -54,10 +54,10 @@
 
    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6ba6cb">
    <meta name="apple-mobile-web-app-capable" content="no">
-   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${@properties.prodMode?'':' BETA'}">
-   <meta name="application-name" th:content="'El Puente'+${@properties.prodMode?'':' BETA'}">
+   <meta name="apple-mobile-web-app-title" th:content="'El Puente'+${prodMode?'':' BETA'}">
+   <meta name="application-name" th:content="'El Puente'+${prodMode?'':' BETA'}">
    <meta name="msapplication-config" content="browserconfig.xml">
-   <meta name="msapplication-TileColor" th:content="'#'+${@properties.prodMode?'6ba6cb':'E07F52'}">
+   <meta name="msapplication-TileColor" th:content="'#'+${prodMode?'6ba6cb':'E07F52'}">
    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
    <meta name="theme-color" content="#ffffff">
 

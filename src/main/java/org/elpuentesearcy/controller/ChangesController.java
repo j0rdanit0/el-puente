@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.elpuentesearcy.domain.TrelloCard;
 import org.elpuentesearcy.service.TrelloService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@ConditionalOnProperty( value = "org.elpuentesearcy.prodMode", havingValue = "false" )
+@Profile( "!production, trello" )
 public class ChangesController extends BaseController
 {
     private final TrelloService trelloService;
@@ -56,8 +56,7 @@ public class ChangesController extends BaseController
                 trelloService.makeTrelloRequest( RequestMethod.PUT, "cards/" + trelloCard.id, "{}", "idList", trelloApprovedListId );
             }
 
-            ProcessBuilder processBuilder = new ProcessBuilder( "/bin/bash", "/opt/elpuente/deploy/copyBetaToLive.sh" );
-            processBuilder.start();
+            //todo - call AWS to approve prod deployment
         }
         catch ( Exception exception )
         {
