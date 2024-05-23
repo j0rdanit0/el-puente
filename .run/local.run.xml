@@ -1,8 +1,14 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="local" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="ACTIVE_PROFILES" value="trello" />
+    <option name="envFilePaths">
+      <option value="$PROJECT_DIR$/.run/env.list" />
+    </option>
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
     <module name="webapp" />
+    <selectedOptions>
+      <option name="environmentVariables" />
+    </selectedOptions>
     <option name="SPRING_BOOT_MAIN_CLASS" value="org.elpuentesearcy.ElPuenteBoot" />
     <method v="2">
       <option name="Make" enabled="true" />
