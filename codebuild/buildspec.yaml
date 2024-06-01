@@ -12,21 +12,21 @@ phases:
       - java --version
       - docker --version
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $REPOSITORY_URI
-      - COMMIT_ID=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - VERSION=$COMMIT_ID
-      - if [[ $CODEBUILD_WEBHOOK_HEAD_REF == refs/tags/* ]]; then export VERSION=${CODEBUILD_WEBHOOK_HEAD_REF#refs/tags/}; fi
-      - echo "$VERSION"
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - echo "$IMAGE_TAG"
   build:
     commands:
       - echo Build started on `date`
       - mvn clean install
       - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$VERSION
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
-      - docker push $REPOSITORY_URI:$VERSION
-      - printf '[{"name":"public-website","imageUri":"%s"}]' $REPOSITORY_URI:$VERSION > imagedef.json
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - printf '[{"name":"public-website","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedef.json
 artifacts:
   files:
     - imagedef.json

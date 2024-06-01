@@ -50,13 +50,13 @@ public class ChangesController extends BaseController
     {
         try
         {
+            //todo - call AWS to approve prod deployment
+
             List<TrelloCard> trelloCards = trelloService.get( new TypeToken<List<TrelloCard>>(){}.getType(), "lists/" + trelloApprovalListId + "/cards/open", "fields", "url,name" );
             for ( TrelloCard trelloCard : trelloCards )
             {
                 trelloService.makeTrelloRequest( RequestMethod.PUT, "cards/" + trelloCard.id, "{}", "idList", trelloApprovedListId );
             }
-
-            //todo - call AWS to approve prod deployment
         }
         catch ( Exception exception )
         {
