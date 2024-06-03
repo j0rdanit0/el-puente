@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 public class EventsController extends BaseController
@@ -22,58 +23,50 @@ public class EventsController extends BaseController
     {
         String eventsFolder = "events/";
 
-        String hispanicHeritageMonthDinnerImageFolder = eventsFolder + "hispanic-heritage-month-dinner/";
-        String[] hispanicHeritageMonthDinnerYears = new File( ElPuenteBoot.IMAGE_DIRECTORY + hispanicHeritageMonthDinnerImageFolder ).list();
-        if ( hispanicHeritageMonthDinnerYears != null && hispanicHeritageMonthDinnerYears.length > 0 )
+        List<ElPuenteEvent> beatsAndEatsCincoDeMayos = fetchEvents( eventsFolder + "beats-and-eats-cinco-de-mayo" );
+        if ( !beatsAndEatsCincoDeMayos.isEmpty() )
         {
-            List<ElPuenteEvent> hispanicHeritageMonthDinners = new ArrayList<>();
-            for ( String year : hispanicHeritageMonthDinnerYears )
+            model.addAttribute( "beatsAndEatsCincoDeMayos", beatsAndEatsCincoDeMayos );
+        }
+
+        List<ElPuenteEvent> hispanicHeritageMonthDinners = fetchEvents( eventsFolder + "hispanic-heritage-month-dinner" );
+        if ( !hispanicHeritageMonthDinners.isEmpty() )
+        {
+            model.addAttribute( "hispanicHeritageMonthDinners", hispanicHeritageMonthDinners );
+        }
+
+        return "events";
+    }
+
+    private List<ElPuenteEvent> fetchEvents( String imageFolder )
+    {
+        List<ElPuenteEvent> events = new ArrayList<>();
+
+        String[] yearsArray = new File( ElPuenteBoot.IMAGE_DIRECTORY + imageFolder ).list();
+        if ( yearsArray != null && yearsArray.length > 0 )
+        {
+            List<String> years = Stream
+              .of( yearsArray )
+              .sorted()
+              .toList()
+              .reversed();
+
+            for ( String year : years )
             {
-                String[] hispanicHeritageMonthDinnerImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + hispanicHeritageMonthDinnerImageFolder + year + "/" ).list();
+                String[] hispanicHeritageMonthDinnerImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + imageFolder + "/" + year + "/" ).list();
                 if ( hispanicHeritageMonthDinnerImageNames != null && hispanicHeritageMonthDinnerImageNames.length > 0 )
                 {
                     List<String> imagePaths = Arrays
                       .stream( hispanicHeritageMonthDinnerImageNames )
-                      .map( name -> ElPuenteBoot.IMAGE_FOLDER + hispanicHeritageMonthDinnerImageFolder + year + "/" + name )
+                      .map( name -> ElPuenteBoot.IMAGE_FOLDER + imageFolder + "/" + year + "/" + name )
                       .collect( Collectors.toList() );
 
-                    hispanicHeritageMonthDinners.add( new ElPuenteEvent( year, imagePaths ) );
+                    events.add( new ElPuenteEvent( year, imagePaths ) );
                 }
-            }
-
-            if ( !hispanicHeritageMonthDinners.isEmpty() )
-            {
-                model.addAttribute( "hispanicHeritageMonthDinners", hispanicHeritageMonthDinners );
             }
         }
 
-
-        String beatsAndEatsCincoDeMayoImageFolder = eventsFolder + "beats-and-eats-cinco-de-mayo/";
-        String[] beatsAndEatsCincoDeMayoYears = new File( ElPuenteBoot.IMAGE_DIRECTORY + beatsAndEatsCincoDeMayoImageFolder ).list();
-        if ( beatsAndEatsCincoDeMayoYears != null && beatsAndEatsCincoDeMayoYears.length > 0 )
-        {
-            List<ElPuenteEvent> beatsAndEatsCincoDeMayos = new ArrayList<>();
-            for ( String year : beatsAndEatsCincoDeMayoYears )
-            {
-                String[] beatsAndEatsCincoDeMayoImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + beatsAndEatsCincoDeMayoImageFolder + year + "/" ).list();
-                if ( beatsAndEatsCincoDeMayoImageNames != null && beatsAndEatsCincoDeMayoImageNames.length > 0 )
-                {
-                    List<String> imagePaths = Arrays
-                      .stream( beatsAndEatsCincoDeMayoImageNames )
-                      .map( name -> ElPuenteBoot.IMAGE_FOLDER + beatsAndEatsCincoDeMayoImageFolder + year + "/" + name )
-                      .collect( Collectors.toList() );
-
-                    beatsAndEatsCincoDeMayos.add( new ElPuenteEvent( year, imagePaths ) );
-                }
-            }
-
-            if ( !beatsAndEatsCincoDeMayos.isEmpty() )
-            {
-                model.addAttribute( "beatsAndEatsCincoDeMayos", beatsAndEatsCincoDeMayos );
-            }
-        }
-
-        return "events";
+        return events;
     }
 
     @Override
