@@ -24,7 +24,7 @@
       <div layout:fragment="cards">
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-id-card', label=#{services.idCards.label}, description=#{services.idCards.description}, imageUrl=@{/images/ID-Card-Advertisement.jpg}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-user-friends', label=#{services.interpretations.label}, description=#{services.interpretations.description}"></div>
-         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-copy', label=#{services.translations.label}, description=#{services.translations.description}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-file-signature', label=#{services.translations.label}, description=#{services.translations.description}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-file-invoice', label=#{services.documents.label}, description=#{services.documents.description}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-certificate', label=#{services.notary.label}, description=#{services.notary.description}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-school', label=#{services.school.label}, description=#{services.school.description}, imageUrl=@{/images/school-registration2.jpg}"></div>

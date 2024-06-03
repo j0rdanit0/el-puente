@@ -9,5 +9,6 @@ spring:
   main:
     banner-mode: OFF
 
-org.elpuentesearcy:
-  domain: elpuentesearcy.org
+org:
+  elpuentesearcy:
+    domain: elpuentesearcy.org

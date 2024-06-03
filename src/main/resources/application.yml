@@ -14,51 +14,52 @@ spring:
     virtual:
       enabled: true
 
-org.elpuentesearcy:
-  version: @project.version@
-  domain: localhost
-  email: office@elpuentesearcy.org
-  phone: 5018279944
-#  officeHoursWeekday: 1:30pm - 5:30pm
-#  officeHoursWeekend: 10:00am - 4:00pm
-  physicalAddress:
-    - 904 North Main Street
-    - Searcy, AR 72143
-  mailingAddress:
-    - P.O. Box 8046
-    - Searcy, AR 72145
-  facebookUrl: https://www.facebook.com/profile.php?id=100094143615668
-  twitterUrl:
-  instagramUrl: https://www.instagram.com/el.puente
-  giveLivelyUrl: https://secure.givelively.org/donate/el-puente-hispanic-services-center
-  salsaCompetitionSignupUrl: https://docs.google.com/forms/d/e/1FAIpQLSe1X-sTwzfxQCi8GXluDAtPHG6o_uZGpKo_YX74dfyokr1d2w/viewform?usp=sf_link
-  salsaCompetitionRulesDownload: SalsaCompetitionRules
-  gardenTour2021Url: https://secure.givelively.org/event/el-puente-hispanic-services-center/garden-tour-of-searcy-2021
-  volunteerFormDownload: ElPuenteVolunteerForm
-  cashtag: $ElPuenteSearcy
-  volunteerFormUrl_en: https://forms.gle/Xbez1S4d6gyg7cQB6
-  volunteerFormUrl_es: https://forms.gle/kTxkKQewzYN4kkgq5
-  hispanicHeritageMonthCelebrationDinnerTicketsUrl: https://secure.givelively.org/event/el-puente-hispanic-services-center/hispanic-heritage-month-celebration-dinner-2022
-  showGivingTuesdayWidgetStart: '2019-10-31'
-  showGivingTuesdayWidgetEnd: '2019-12-02'
-  showHispanicHeritageMonthCelebrationDinnerStart: '2022-09-14'
-  showHispanicHeritageMonthCelebrationDinnerEnd: '2022-10-14'
-  google:
-    analytics:
-      trackingId: ${GOOGLE_ANALYTICS_TRACKING_ID:}
-    maps:
-      apiKey: ${GOOGLE_MAPS_API_KEY}
-  board:
-    - { name: Jay Simpson, title: { en: President, es: Presidente } }
-    - { name: Dr. Roddy Lochala, title: { en: Vice President, es: Vicepresidente } }
-    - { name: Jaclyn Seiders, title: { en: Secretary, es: Sectretaria } }
-    - { name: Mary Kathryn Lochala, title: { en: Treasurer, es: Tesorera } }
-    - { name: Tity Abbud, title: { en: } }
-    - { name: Maria Bautista, title: { en: } }
-    - { name: Guillermo Hernandez, title: { en: } }
-    - { name: Karen Hite, title: { en: } }
-    - { name: Bill Richardson, title: { en: } }
-  staff:
-    - { name: Ruth Simpson, title: { en: Executive Director, es: Directora Ejecutiva }, abice-certified: true }
-    - { name: Corinne Aréchiga, title: { en: Assistant Director, es: Asistente a la Directora }, abice-certified: true }
-    - { name: Laticia Harris, title: { en: English Teacher, es: Maestra de Inglés } }
+org:
+  elpuentesearcy:
+    version: @project.version@
+    domain: localhost
+    email: office@elpuentesearcy.org
+    phone: 5018279944
+#    officeHoursWeekday: 1:30pm - 5:30pm
+#    officeHoursWeekend: 10:00am - 4:00pm
+    physicalAddress:
+      - 904 North Main Street
+      - Searcy, AR 72143
+    mailingAddress:
+      - P.O. Box 8046
+      - Searcy, AR 72145
+    facebookUrl: https://www.facebook.com/profile.php?id=100094143615668
+    twitterUrl:
+    instagramUrl: https://www.instagram.com/el.puente
+    giveLivelyUrl: https://secure.givelively.org/donate/el-puente-hispanic-services-center
+    salsaCompetitionSignupUrl: https://docs.google.com/forms/d/e/1FAIpQLSe1X-sTwzfxQCi8GXluDAtPHG6o_uZGpKo_YX74dfyokr1d2w/viewform?usp=sf_link
+    salsaCompetitionRulesDownload: SalsaCompetitionRules
+    gardenTour2021Url: https://secure.givelively.org/event/el-puente-hispanic-services-center/garden-tour-of-searcy-2021
+    volunteerFormDownload: ElPuenteVolunteerForm
+    cashtag: $ElPuenteSearcy
+    volunteerFormUrl_en: https://forms.gle/Xbez1S4d6gyg7cQB6
+    volunteerFormUrl_es: https://forms.gle/kTxkKQewzYN4kkgq5
+    hispanicHeritageMonthCelebrationDinnerTicketsUrl: https://secure.givelively.org/event/el-puente-hispanic-services-center/hispanic-heritage-month-celebration-dinner-2022
+    showGivingTuesdayWidgetStart: '2019-10-31'
+    showGivingTuesdayWidgetEnd: '2019-12-02'
+    showHispanicHeritageMonthCelebrationDinnerStart: '2022-09-14'
+    showHispanicHeritageMonthCelebrationDinnerEnd: '2022-10-14'
+    google:
+      analytics:
+        trackingId: ${GOOGLE_ANALYTICS_TRACKING_ID:}
+      maps:
+        apiKey: ${GOOGLE_MAPS_API_KEY}
+    board:
+      - { name: Jay Simpson, title: { en: President, es: Presidente } }
+      - { name: Dr. Roddy Lochala, title: { en: Vice President, es: Vicepresidente } }
+      - { name: Jaclyn Seiders, title: { en: Secretary, es: Sectretaria } }
+      - { name: Mary Kathryn Lochala, title: { en: Treasurer, es: Tesorera } }
+      - { name: Tity Abbud, title: { en: } }
+      - { name: Maria Bautista, title: { en: } }
+      - { name: Guillermo Hernandez, title: { en: } }
+      - { name: Karen Hite, title: { en: } }
+      - { name: Bill Richardson, title: { en: } }
+    staff:
+      - { name: Ruth Simpson, title: { en: Executive Director, es: Directora Ejecutiva }, abice-certified: true }
+      - { name: Corinne Aréchiga, title: { en: Assistant Director, es: Asistente a la Directora }, abice-certified: true }
+      - { name: Laticia Harris, title: { en: English Teacher, es: Maestra de Inglés } }
