@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@Profile( "!production, trello" )
+@Profile( "!production & trello" )
 public class ChangesController extends BaseController
 {
     private final TrelloService trelloService;

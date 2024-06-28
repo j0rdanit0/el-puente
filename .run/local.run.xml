@@ -1,8 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="local" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <option name="ACTIVE_PROFILES" value="trello" />
     <option name="envFilePaths">
-      <option value="$PROJECT_DIR$/.run/env.list" />
+      <option value="$PROJECT_DIR$/.run/.env" />
     </option>
     <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
     <module name="webapp" />
