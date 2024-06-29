@@ -1,5 +1,6 @@
 org:
   elpuentesearcy:
+    domain: elpuentesearcy.org
     aws:
       region: ${AWS_REGION}
       codepipeline:
