@@ -55,6 +55,10 @@
          </div>
       </div>
 
+      <div class="container">
+         <img th:if="${#dates.createNow().before( #dates.create(2024, 9, 18) )}" class="w-100" th:src="@{'/images/5-year-anniv-dinner-' + __${#locale.language}__ + '.jpg'}" />
+      </div>
+
       <i th:replace="~{fragments/sectionHeader::header(#{home.whoWeAre})}"></i>
 
       <div class="container">
@@ -99,7 +103,7 @@
                              th:attr="data-href=${@properties.facebookUrl}"
                              data-tabs="timeline, events"
                              data-width=""
-                             data-height="950"
+                             data-height="1000"
                              data-small-header="false"
                              data-adapt-container-width="true"
                              data-hide-cover="false"
