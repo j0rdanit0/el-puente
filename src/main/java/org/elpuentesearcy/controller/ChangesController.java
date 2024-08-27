@@ -23,11 +23,13 @@ public class ChangesController extends BaseController
     public static final String URL_BASE_EN = "/changes";
     public static final String URL_BASE_ES = "/cambios";
     public static final String GO_LIVE = URL_BASE_EN + "/goLive";
+    public static final String DECLINE = URL_BASE_EN + "/decline";
 
     @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
     public String home( Model model )
     {
         model.addAttribute( "trelloCards", trelloService.getCardsThatNeedApproval() );
+        model.addAttribute( "readyForApproval", deploymentApprovalService.isReadyForApproval() );
 
         return "changes";
     }
@@ -44,6 +46,20 @@ public class ChangesController extends BaseController
         catch ( Exception exception )
         {
             log.error( "Unable to Go Live", exception );
+        }
+    }
+
+    @PostMapping( DECLINE )
+    @ResponseBody
+    public void decline()
+    {
+        try
+        {
+            deploymentApprovalService.reject();
+        }
+        catch ( Exception exception )
+        {
+            log.error( "Unable to decline deployment", exception );
         }
     }
 

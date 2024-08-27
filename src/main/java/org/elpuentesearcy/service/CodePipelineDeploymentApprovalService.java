@@ -7,6 +7,8 @@ import software.amazon.awssdk.services.codepipeline.CodePipelineClient;
 import software.amazon.awssdk.services.codepipeline.model.ApprovalStatus;
 import software.amazon.awssdk.services.codepipeline.model.PutApprovalResultResponse;
 
+import java.util.Optional;
+
 @Slf4j
 @RequiredArgsConstructor
 public class CodePipelineDeploymentApprovalService implements DeploymentApprovalService
@@ -23,39 +25,70 @@ public class CodePipelineDeploymentApprovalService implements DeploymentApproval
     @Override
     public void approve()
     {
-        log.info( "Approving beta site for deployment to production..." );
+        log.info( "Approving deployment of beta site to production..." );
+        putApprovalResult( ApprovalStatus.APPROVED, "Approved via Go Live button" )
+          .ifPresentOrElse(
+            response -> log.info( "Approved at {}", response.approvedAt() ),
+            () -> log.warn( "Unable to approve deployment at this time." )
+          );
+    }
 
-        String token = codePipelineClient
-          .getPipelineState( request ->
-            request
-              .name( pipelineName )
-              .build()
-          ).stageStates()
+    @Override
+    public void reject()
+    {
+        log.info( "Rejecting deployment of beta site to production..." );
+        putApprovalResult( ApprovalStatus.REJECTED, "Rejected via Decline button" )
+          .ifPresentOrElse(
+            response -> log.info( "Rejected at {}", response.approvedAt() ),
+            () -> log.warn( "Unable to reject deployment at this time." )
+          );
+    }
+
+    @Override
+    public boolean isReadyForApproval()
+    {
+        return fetchToken().isPresent();
+    }
+
+    private Optional<PutApprovalResultResponse> putApprovalResult( ApprovalStatus approvalStatus, String summary )
+    {
+        Optional<PutApprovalResultResponse> response = Optional.empty();
+
+        Optional<String> token = fetchToken();
+        if ( token.isPresent() )
+        {
+            log.debug( "Using approval token: {}", token.get() );
+
+            response = Optional.of(
+              codePipelineClient.putApprovalResult( request ->
+                request
+                  .pipelineName( pipelineName )
+                  .stageName( stageName )
+                  .actionName( actionName )
+                  .result( result ->
+                    result
+                      .status( approvalStatus )
+                      .summary( summary )
+                      .build()
+                  )
+                  .token( token.get() )
+                  .build()
+              ) );
+        }
+
+        return response;
+    }
+
+    private Optional<String> fetchToken()
+    {
+        return codePipelineClient
+          .getPipelineState( request -> request.name( pipelineName ).build() )
+          .stageStates()
           .stream()
           .filter( stageState -> stageState.stageName().equals( stageName ) )
           .flatMap( stageState -> stageState.actionStates().stream() )
           .filter( actionState -> actionState.actionName().equals( actionName ) )
           .map( actionState -> actionState.latestExecution().token() )
-          .findAny()
-          .orElseThrow();
-
-        log.debug( "Using approval token: {}", token );
-
-        PutApprovalResultResponse response = codePipelineClient.putApprovalResult( request ->
-          request
-            .pipelineName( pipelineName )
-            .stageName( stageName )
-            .actionName( actionName )
-            .result( result ->
-              result
-                .status( ApprovalStatus.APPROVED )
-                .summary( "Approved via Go Live button" )
-                .build()
-            )
-            .token( token )
-            .build()
-        );
-
-        log.info( "Approved at {}", response.approvedAt() );
+          .findAny();
     }
 }

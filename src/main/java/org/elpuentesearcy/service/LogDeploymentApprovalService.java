@@ -15,6 +15,18 @@ public class LogDeploymentApprovalService implements DeploymentApprovalService
     @Override
     public void approve()
     {
-        log.info( "No-op approval service" );
+        log.info( "No-op Approved!" );
+    }
+
+    @Override
+    public void reject()
+    {
+        log.info( "No-op Declined!" );
+    }
+
+    @Override
+    public boolean isReadyForApproval()
+    {
+        return true;
     }
 }

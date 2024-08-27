@@ -1,25 +1,37 @@
 $(function () {
    $('#goLiveButton').click( function() {
       const $goLiveButton = $(this);
-      const $loadingIcon = $goLiveButton.find( '.spinner-border' );
-      goLiveInProgress( $goLiveButton, $loadingIcon );
+      updateInProgress( $goLiveButton );
       if ( confirm( 'Are you sure you want to Go Live? This cannot be undone.' ) ) {
          $.post( '/changes/goLive', {}, function() {
-            goLiveFinished( $goLiveButton, $loadingIcon );
+            updateFinished( $goLiveButton );
          });
       }
       else {
-         goLiveFinished( $goLiveButton, $loadingIcon );
+         updateFinished( $goLiveButton );
+      }
+   });
+
+   $('#declineButton').click( function() {
+      const $declineButton = $(this);
+      updateInProgress( $declineButton );
+      if ( confirm( 'Are you sure you want to decline these changes? This cannot be undone. Approval will be available again after further changes are made.' ) ) {
+         $.post( '/changes/decline', {}, function() {
+            updateFinished( $declineButton );
+         });
+      }
+      else {
+         updateFinished( $declineButton );
       }
    });
 });
 
-function goLiveInProgress( $goLiveButton, $loadingIcon ) {
-   $goLiveButton.addClass( 'disabled' );
-   $loadingIcon.removeClass( 'd-none' );
+function updateInProgress( $button ) {
+   $button.addClass( 'disabled' );
+   $button.find( '.spinner-border' ).removeClass( 'd-none' );
 }
 
-function goLiveFinished( $goLiveButton, $loadingIcon ) {
-   $loadingIcon.addClass( 'd-none' );
-   $goLiveButton.removeClass( 'disabled' );
+function updateFinished( $button ) {
+   $button.find( '.spinner-border' ).addClass( 'd-none' );
+   $button.removeClass( 'disabled' );
 }

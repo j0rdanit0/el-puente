@@ -30,9 +30,17 @@
          <blockquote class="trello-card" th:each="trelloCard:${trelloCards}">
             <a th:href="${trelloCard.url}" th:text="${trelloCard.name}"></a>
          </blockquote>
-
+      </th:block>
+      <th:block th:if="${readyForApproval}">
          <div class="text-center m-5">
-            <div id="goLiveButton" class="btn btn-success btn-lg">
+            <div id="declineButton" class="btn btn-outline-danger btn-lg m-2">
+               <i class="fas fa-ban"></i>
+               Decline
+               <div class="spinner-border text-light d-none" role="status">
+                  <span class="sr-only">Loading...</span>
+               </div>
+            </div>
+            <div id="goLiveButton" class="btn btn-success btn-lg m-2">
                <i class="fas fa-cloud"></i>
                Go Live
                <div class="spinner-border text-light d-none" role="status">
