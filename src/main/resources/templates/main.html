@@ -55,8 +55,10 @@
          </div>
       </div>
 
-      <div class="container">
-         <img th:if="${#dates.createNow().before( #dates.create(2024, 9, 18) )}" class="w-100" th:src="@{'/images/5-year-anniv-dinner-' + __${#locale.language}__ + '.jpg'}" />
+      <div class="container" th:if="${#dates.createNow().before( #dates.create(2024, 9, 18) )}">
+         <a href="https://secure.givelively.org/event/el-puente-hispanic-services-center/el-puente-5-year-anniversary-dinner" target="_blank">
+            <img class="w-100" th:src="@{'/images/5-year-anniv-dinner-' + __${#locale.language}__ + '.jpg'}" />
+         </a>
       </div>
 
       <i th:replace="~{fragments/sectionHeader::header(#{home.whoWeAre})}"></i>
