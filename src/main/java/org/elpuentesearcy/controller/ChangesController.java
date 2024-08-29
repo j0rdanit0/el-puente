@@ -26,10 +26,18 @@ public class ChangesController extends BaseController
     public static final String DECLINE = URL_BASE_EN + "/decline";
 
     @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
-    public String home( Model model )
+    public String home( Model model ) throws InterruptedException
     {
-        model.addAttribute( "trelloCards", trelloService.getCardsThatNeedApproval() );
-        model.addAttribute( "readyForApproval", deploymentApprovalService.isReadyForApproval() );
+        Thread trelloFetcher = Thread
+          .ofVirtual()
+          .start( () -> model.addAttribute( "trelloCards", trelloService.getCardsThatNeedApproval() ) );
+
+        Thread deploymentApprovalFetcher = Thread
+          .ofVirtual()
+          .start( () -> model.addAttribute( "readyForApproval", deploymentApprovalService.isReadyForApproval() ) );
+
+        trelloFetcher.join();
+        deploymentApprovalFetcher.join();
 
         return "changes";
     }

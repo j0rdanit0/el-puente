@@ -4,6 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
+   <meta th:if="${#arrays.contains(@environment.getActiveProfiles(),'beta')}" name="robots" content="noindex">
 
    <th:block th:if="${!#strings.isEmpty(@properties.google.analytics.trackingId)}" th:with="trackingId=${@properties.google.analytics.trackingId}">
       <script async th:src="'https://www.googletagmanager.com/gtag/js?id='+${trackingId}"></script>

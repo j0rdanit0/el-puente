@@ -1,5 +1,6 @@
 package org.elpuentesearcy.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.elpuentesearcy.configuration.ElPuenteCaches;
 import org.elpuentesearcy.configuration.SitemapView;
@@ -12,16 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import jakarta.servlet.http.HttpServletResponse;
-
 @Controller
 @RequiredArgsConstructor
 public class SearchEngineOptimizationController
 {
+    public static final String SITEMAP_URL = "/sitemap.xml";
+
     private final SitemapView view;
     private final UrlService urlService;
 
-    @RequestMapping( path = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE )
+    @RequestMapping( path = SITEMAP_URL, produces = MediaType.APPLICATION_XML_VALUE )
     public SitemapView createSitemap()
     {
         return view;
@@ -34,11 +35,11 @@ public class SearchEngineOptimizationController
     {
         response.setContentType( MediaType.TEXT_PLAIN_VALUE );
 
-        String robots = "Sitemap: " + urlService.getBaseUrl() + "/sitemap.xml";
+        String robots = "Sitemap: " + urlService.getBaseUrl() + SITEMAP_URL;
 
         for ( UrlLocaleResolver.ElPuenteLanguage language : UrlLocaleResolver.ElPuenteLanguage.values() )
         {
-            robots += "\nSitemap: " + urlService.getBaseUrl( language ) + "/sitemap.xml";
+            robots += "\nSitemap: " + urlService.getBaseUrl( language ) + SITEMAP_URL;
         }
 
         return robots;

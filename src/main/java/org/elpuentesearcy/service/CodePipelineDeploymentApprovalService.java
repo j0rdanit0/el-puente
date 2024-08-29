@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import software.amazon.awssdk.services.codepipeline.CodePipelineClient;
-import software.amazon.awssdk.services.codepipeline.model.ApprovalStatus;
-import software.amazon.awssdk.services.codepipeline.model.PutApprovalResultResponse;
+import software.amazon.awssdk.services.codepipeline.model.*;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -81,14 +81,23 @@ public class CodePipelineDeploymentApprovalService implements DeploymentApproval
 
     private Optional<String> fetchToken()
     {
-        return codePipelineClient
-          .getPipelineState( request -> request.name( pipelineName ).build() )
-          .stageStates()
-          .stream()
-          .filter( stageState -> stageState.stageName().equals( stageName ) )
-          .flatMap( stageState -> stageState.actionStates().stream() )
-          .filter( actionState -> actionState.actionName().equals( actionName ) )
-          .map( actionState -> actionState.latestExecution().token() )
-          .findAny();
+        GetPipelineStateResponse pipelineState = codePipelineClient.getPipelineState( request -> request.name( pipelineName ).build() );
+
+        Optional<String> token = Optional.empty();
+        if ( pipelineState.hasStageStates() && !pipelineState.stageStates().isEmpty() )
+        {
+            token = pipelineState
+              .stageStates()
+              .stream()
+              .filter( stageState -> stageState.stageName().equals( stageName ) )
+              .flatMap( stageState -> stageState.actionStates().stream() )
+              .filter( actionState -> actionState.actionName().equals( actionName ) )
+              .map( ActionState::latestExecution )
+              .filter( Objects::nonNull )
+              .map( ActionExecution::token )
+              .findAny();
+        }
+
+        return token;
     }
 }
