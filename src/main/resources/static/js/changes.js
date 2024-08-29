@@ -5,6 +5,7 @@ $(function () {
       if ( confirm( 'Are you sure you want to Go Live? This cannot be undone.' ) ) {
          $.post( '/changes/goLive', {}, function() {
             updateFinished( $goLiveButton );
+            window.location.reload();
          });
       }
       else {
@@ -18,6 +19,7 @@ $(function () {
       if ( confirm( 'Are you sure you want to decline these changes? This cannot be undone. Approval will be available again after further changes are made.' ) ) {
          $.post( '/changes/decline', {}, function() {
             updateFinished( $declineButton );
+            window.location.reload();
          });
       }
       else {
