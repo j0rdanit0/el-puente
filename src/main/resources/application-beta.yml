@@ -5,5 +5,5 @@ org:
       region: ${AWS_REGION}
       codepipeline:
         pipeline-name: ${CODEPIPELINE_PIPELINE_NAME:public-website-pipeline}
-        stage-name: ${CODEPIPELINE_STAGE_NAME:Deploy}
+        stage-name: ${CODEPIPELINE_STAGE_NAME:DeployProd}
         action-name: ${CODEPIPELINE_ACTION_NAME:ApproveProdDeployment}
