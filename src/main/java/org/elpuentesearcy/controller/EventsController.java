@@ -23,6 +23,12 @@ public class EventsController extends BaseController
     {
         String eventsFolder = "events/";
 
+        List<ElPuenteEvent> fifthAnniversaryDinners = fetchEvents( eventsFolder + "fifth-anniversary-dinner" );
+        if ( !fifthAnniversaryDinners.isEmpty() )
+        {
+            model.addAttribute( "fifthAnniversaryDinners", fifthAnniversaryDinners );
+        }
+
         List<ElPuenteEvent> beatsAndEatsCincoDeMayos = fetchEvents( eventsFolder + "beats-and-eats-cinco-de-mayo" );
         if ( !beatsAndEatsCincoDeMayos.isEmpty() )
         {

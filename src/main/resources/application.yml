@@ -39,11 +39,8 @@ org:
     cashtag: $ElPuenteSearcy
     volunteerFormUrl_en: https://forms.gle/Xbez1S4d6gyg7cQB6
     volunteerFormUrl_es: https://forms.gle/kTxkKQewzYN4kkgq5
-    hispanicHeritageMonthCelebrationDinnerTicketsUrl: https://secure.givelively.org/event/el-puente-hispanic-services-center/hispanic-heritage-month-celebration-dinner-2022
-    showGivingTuesdayWidgetStart: '2019-10-31'
-    showGivingTuesdayWidgetEnd: '2019-12-02'
-    showHispanicHeritageMonthCelebrationDinnerStart: '2022-09-14'
-    showHispanicHeritageMonthCelebrationDinnerEnd: '2022-10-14'
+    showGivingTuesdayWidgetStart: '2024-10-31'
+    showGivingTuesdayWidgetEnd: '2024-12-03'
     google:
       analytics:
         trackingId: ${GOOGLE_ANALYTICS_TRACKING_ID:}

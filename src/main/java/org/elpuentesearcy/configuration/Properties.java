@@ -36,16 +36,12 @@ public class Properties
     private String cashtag;
     private String volunteerFormUrl_en;
     private String volunteerFormUrl_es;
-    private String hispanicHeritageMonthCelebrationDinnerTicketsUrl;
 
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
     private LocalDate showGivingTuesdayWidgetStart;
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
     private LocalDate showGivingTuesdayWidgetEnd;
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
-    private LocalDate showHispanicHeritageMonthCelebrationDinnerStart;
-    @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
-    private LocalDate showHispanicHeritageMonthCelebrationDinnerEnd;
 
     private Google google;
     private List<Employee> board;
@@ -123,10 +119,5 @@ public class Properties
     public boolean isShowGivingTuesdayWidget()
     {
         return LocalDate.now().isAfter( showGivingTuesdayWidgetStart ) && LocalDate.now().isBefore( showGivingTuesdayWidgetEnd );
-    }
-
-    public boolean isShowHispanicHeritageCelebrationDinner()
-    {
-        return LocalDate.now().isAfter( showHispanicHeritageMonthCelebrationDinnerStart ) && LocalDate.now().isBefore( showHispanicHeritageMonthCelebrationDinnerEnd );
     }
 }

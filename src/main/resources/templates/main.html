@@ -40,27 +40,6 @@
          </div>
       </i>
 
-      <div class="container text-center" th:if="${@properties.showHispanicHeritageCelebrationDinner}">
-         <div th:if="${#locale.language == 'es'}">
-            <img class="mb-5" th:src="@{'/images/HHMCD-Spanish-Ticket-Sales.jpg'}" width="75%" />
-         </div>
-         <div th:if="${#locale.language != 'es'}">
-            <img class="mb-5" th:src="@{'/images/HHMCD-Individual-ticket-sales.jpg'}" width="75%" />
-            <div class="mb-5" th:with="fontawesomeClass='fa-arrow-up-right-from-square', target='_blank', isLarge=true">
-               <i th:replace="~{fragments/button::action(${@properties.hispanicHeritageMonthCelebrationDinnerTicketsUrl}, 'Buy Tickets')}"></i>
-            </div>
-            <p>
-               El Puente Clients may purchase $10 tickets in person on Tuesdays and Thursdays, 3-6pm, at El Puente.  <a th:href="${#httpServletRequest.getRequestURL().toString().replaceFirst('://','://es.')}">Click here for more information.</a>
-            </p>
-         </div>
-      </div>
-
-      <div class="container px-xl-5" th:if="${#dates.createNow().before( #dates.create(2024, 9, 18) )}">
-         <a href="https://secure.givelively.org/event/el-puente-hispanic-services-center/el-puente-5-year-anniversary-dinner" target="_blank">
-            <img class="w-100" th:src="@{'/images/5-year-anniv-dinner-' + __${#locale.language}__ + '.jpg'}" />
-         </a>
-      </div>
-
       <i th:replace="~{fragments/sectionHeader::header(#{home.whoWeAre})}"></i>
 
       <div class="container">
