@@ -58,7 +58,7 @@
    </div>
 </div>
 
-<div layout:fragment="icon(fontawesomeClass)" class="align-content-center" th:with="href=${href ?: ''}">
+<div layout:fragment="icon(fontawesomeClass)" th:with="href=${href ?: ''}">
    <a th:remove="${ #strings.isEmpty(href) ? 'tag' : 'none' }" th:href="${href}">
       <div>
          <h1 th:remove="${ #strings.isEmpty(href) ? 'tag' : 'none' }" class="float-right text-primary ml-3 mb-0 fas fa-chevron-right d-inline-block d-md-none"></h1>

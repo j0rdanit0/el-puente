@@ -73,6 +73,7 @@ public class EventsController extends BaseController
                       throw new RuntimeException( e );
                   }
               } )
+              .filter( year -> year.matches( "\\d{4}" ) )
               .sorted()
               .collect( Collectors.toCollection( LinkedHashSet::new ) )
               .reversed();
@@ -84,7 +85,7 @@ public class EventsController extends BaseController
                   .filter( filename -> {
                       try
                       {
-                          return filename.getURL().getPath().contains( "/" + year + "/" );
+                          return filename.getURL().getPath().matches( ".+/" + year + "/.+" );
                       }
                       catch ( IOException e )
                       {

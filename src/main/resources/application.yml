@@ -13,6 +13,8 @@ spring:
   threads:
     virtual:
       enabled: true
+  messages:
+    encoding: UTF-8
 
 org:
   elpuentesearcy:
