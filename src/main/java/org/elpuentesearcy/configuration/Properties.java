@@ -2,7 +2,6 @@ package org.elpuentesearcy.configuration;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.elpuentesearcy.ElPuenteBoot;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -80,7 +79,7 @@ public class Properties
         {
             this.name = name;
 
-            String imageFileName = ElPuenteBoot.IMAGE_FOLDER + name.toLowerCase().replace( " ", "" );
+            String imageFileName = "/images/" + name.toLowerCase().replace( " ", "" );
             setImage( imageFileName + ".jpg" );
             setSquareImage( imageFileName + "-square.jpg" );
         }
@@ -113,7 +112,7 @@ public class Properties
 
     private String getDownloadsPath( String fileName )
     {
-        return ElPuenteBoot.DOWNLOADS_FOLDER + fileName + ".pdf";
+        return "/downloads/" + fileName + ".pdf";
     }
 
     public boolean isShowGivingTuesdayWidget()

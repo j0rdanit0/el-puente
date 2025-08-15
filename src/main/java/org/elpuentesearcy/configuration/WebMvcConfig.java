@@ -1,7 +1,6 @@
 package org.elpuentesearcy.configuration;
 
 import lombok.RequiredArgsConstructor;
-import org.elpuentesearcy.ElPuenteBoot;
 import org.elpuentesearcy.controller.Interceptor;
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
@@ -11,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -27,13 +25,13 @@ public class WebMvcConfig implements WebMvcConfigurer
         registry.addInterceptor( interceptor );
     }
 
-    @Override
-    public void addResourceHandlers( ResourceHandlerRegistry registry )
-    {
-        registry.addResourceHandler( ElPuenteBoot.IMAGE_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.IMAGE_DIRECTORY );
-        registry.addResourceHandler( ElPuenteBoot.DOWNLOADS_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.DOWNLOADS_DIRECTORY );
-        registry.addResourceHandler( ElPuenteBoot.WELL_KNOWN_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.WELL_KNOWN_DIRECTORY );
-    }
+//    @Override
+//    public void addResourceHandlers( ResourceHandlerRegistry registry )
+//    {
+//        registry.addResourceHandler( ElPuenteBoot.IMAGE_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.IMAGE_DIRECTORY );
+//        registry.addResourceHandler( ElPuenteBoot.DOWNLOADS_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.DOWNLOADS_DIRECTORY );
+//        registry.addResourceHandler( ElPuenteBoot.WELL_KNOWN_FOLDER + "**" ).addResourceLocations( "file:" + ElPuenteBoot.WELL_KNOWN_DIRECTORY );
+//    }
 
     @Override
     public void addViewControllers( ViewControllerRegistry registry )

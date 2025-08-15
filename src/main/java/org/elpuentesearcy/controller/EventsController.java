@@ -1,22 +1,28 @@
 package org.elpuentesearcy.controller;
 
-import org.elpuentesearcy.ElPuenteBoot;
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Objects;
 
 @Controller
+@RequiredArgsConstructor
 public class EventsController extends BaseController
 {
     public static final String URL_BASE_EN = "/events";
     public static final String URL_BASE_ES = "/eventos";
+
+    private final ResourceLoader resourceLoader;
 
     @GetMapping( value = { URL_BASE_EN, URL_BASE_ES } )
     public String events( Model model )
@@ -48,28 +54,43 @@ public class EventsController extends BaseController
     {
         List<ElPuenteEvent> events = new ArrayList<>();
 
-        String[] yearsArray = new File( ElPuenteBoot.IMAGE_DIRECTORY + imageFolder ).list();
-        if ( yearsArray != null && yearsArray.length > 0 )
+        ResourcePatternResolver resourcePatternResolver = ResourcePatternUtils.getResourcePatternResolver( resourceLoader );
+
+        try
         {
-            List<String> years = Stream
-              .of( yearsArray )
+            Resource[] yearResources = resourcePatternResolver.getResources( "classpath:static/images/" + imageFolder + "/*" );
+
+            List<String> years = Arrays
+              .stream( yearResources )
+              .map( resource -> {
+                  String filename = resource.getFilename();
+                  return filename != null ? filename : "";
+              } )
+              .filter( filename -> !filename.isEmpty() )
               .sorted()
               .toList()
               .reversed();
 
             for ( String year : years )
             {
-                String[] hispanicHeritageMonthDinnerImageNames = new File( ElPuenteBoot.IMAGE_DIRECTORY + imageFolder + "/" + year + "/" ).list();
-                if ( hispanicHeritageMonthDinnerImageNames != null && hispanicHeritageMonthDinnerImageNames.length > 0 )
-                {
-                    List<String> imagePaths = Arrays
-                      .stream( hispanicHeritageMonthDinnerImageNames )
-                      .map( name -> ElPuenteBoot.IMAGE_FOLDER + imageFolder + "/" + year + "/" + name )
-                      .collect( Collectors.toList() );
+                // Resolve all image files under static/images/{imageFolder}/{year}
+                Resource[] imageResources = resourcePatternResolver.getResources( "classpath:static/images/" + imageFolder + "/" + year + "/*" );
 
-                    events.add( new ElPuenteEvent( year, imagePaths ) );
-                }
+                List<String> imagePaths = Arrays
+                  .stream( imageResources )
+                  .map( resource -> {
+                      String filename = resource.getFilename();
+                      return filename != null ? "/images/" + imageFolder + "/" + year + "/" + filename : null;
+                  } )
+                  .filter( Objects::nonNull )
+                  .toList();
+
+                events.add( new ElPuenteEvent( year, imagePaths ) );
             }
+        }
+        catch ( IOException e )
+        {
+            throw new RuntimeException( "Failed to load images from classpath: static/images/" + imageFolder, e );
         }
 
         return events;

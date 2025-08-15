@@ -48,12 +48,11 @@ org:
         apiKey: ${GOOGLE_MAPS_API_KEY}
     board:
       - { name: Jay Simpson, title: { en: President, es: Presidente } }
-      - { name: Dr. Roddy Lochala, title: { en: Vice President, es: Vicepresidente } }
+      - { name: Guillermo Hernandez, title: { en: Vice President, es: Vicepresidente } }
       - { name: Jaclyn Seiders, title: { en: Secretary, es: Sectretaria } }
       - { name: Mary Kathryn Lochala, title: { en: Treasurer, es: Tesorera } }
       - { name: Tity Abbud, title: { en: } }
       - { name: Maria Bautista, title: { en: } }
-      - { name: Guillermo Hernandez, title: { en: } }
       - { name: Karen Hite, title: { en: } }
       - { name: Bill Richardson, title: { en: } }
     staff:
