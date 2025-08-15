@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +80,11 @@ public class Properties
         {
             this.name = name;
 
-            String imageFileName = "/images/" + name.toLowerCase().replace( " ", "" );
+            // Normalize the string to NFD (Normalization Form D), which separates
+            // base characters from their diacritical marks (accents).
+            // Remove all combining diacritical marks (accents) using a regex.
+            // \p{M} matches any combining mark.
+            String imageFileName = "/images/" + Normalizer.normalize( name.toLowerCase().replace( " ", "" ), Normalizer.Form.NFD ).replaceAll( "\\p{M}", "" );
             setImage( imageFileName + ".jpg" );
             setSquareImage( imageFileName + "-square.jpg" );
         }
