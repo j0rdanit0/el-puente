@@ -1,6 +1,7 @@
 package org.elpuentesearcy.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -10,11 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class EventsController extends BaseController
@@ -58,31 +58,40 @@ public class EventsController extends BaseController
 
         try
         {
-            Resource[] yearResources = resourcePatternResolver.getResources( "classpath:static/images/" + imageFolder + "/*" );
+            Resource[] yearResources = resourcePatternResolver.getResources( "classpath:static/images/" + imageFolder + "/**/*" );
 
-            List<String> years = Arrays
+            SequencedSet<String> years = Arrays
               .stream( yearResources )
               .map( resource -> {
-                  String filename = resource.getFilename();
-                  return filename != null ? filename : "";
+                  try
+                  {
+                      String[] parts = resource.getURL().getPath().split( "/" );
+                      return parts[parts.length - 2]; // year
+                  }
+                  catch ( IOException e )
+                  {
+                      throw new RuntimeException( e );
+                  }
               } )
-              .filter( filename -> !filename.isEmpty() )
               .sorted()
-              .toList()
+              .collect( Collectors.toCollection( LinkedHashSet::new ) )
               .reversed();
 
             for ( String year : years )
             {
-                // Resolve all image files under static/images/{imageFolder}/{year}
-                Resource[] imageResources = resourcePatternResolver.getResources( "classpath:static/images/" + imageFolder + "/" + year + "/*" );
-
                 List<String> imagePaths = Arrays
-                  .stream( imageResources )
-                  .map( resource -> {
-                      String filename = resource.getFilename();
-                      return filename != null ? "/images/" + imageFolder + "/" + year + "/" + filename : null;
+                  .stream( yearResources )
+                  .filter( filename -> {
+                      try
+                      {
+                          return filename.getURL().getPath().contains( "/" + year + "/" );
+                      }
+                      catch ( IOException e )
+                      {
+                          throw new RuntimeException( e );
+                      }
                   } )
-                  .filter( Objects::nonNull )
+                  .map( resource -> "/images/" + imageFolder + "/" + year + "/" + resource.getFilename() )
                   .toList();
 
                 events.add( new ElPuenteEvent( year, imagePaths ) );
