@@ -3,8 +3,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
 <a th:fragment="action(href, text)"
-   th:with="fontawesomeClass=${fontawesomeClass ?: ''},isLarge=${isLarge ?: false},downloadFileName=${downloadFileName ?: ''},target=${target ?: '_self'}"
-   th:class="'btn m-1 btn-danger '+${isLarge ? 'btn-lg' : ''}+${href == '#' ? 'disabled' : ''}"
+   th:with="fontawesomeClass=${fontawesomeClass ?: ''},isPrimary=${isPrimary ?: false},isLarge=${isLarge ?: false},downloadFileName=${downloadFileName ?: ''},target=${target ?: '_self'}"
+   th:class="'btn m-1 ' + ${isPrimary ? 'btn-primary' : 'btn-danger'} + ' ' + ${isLarge ? 'btn-lg' : ''}+${href == '#' ? 'disabled' : ''}"
    th:href="${href}"
    th:target="${target}"
    th:attr="download=${!#strings.isEmpty(downloadFileName)}?${downloadFileName}">

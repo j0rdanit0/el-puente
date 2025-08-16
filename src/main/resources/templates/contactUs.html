@@ -13,17 +13,13 @@
    <meta property="og:description" th:content="#{contactUs.contactUs}">
 </head>
 <body>
-<th:block th:if="${!#strings.isEmpty( @properties.facebookUrl )}">
-   <div id="fb-root"></div>
-   <script async defer crossorigin="anonymous" th:src="'https://connect.facebook.net/'+${#locale.language + (#locale.language == 'es' ? '_LA' : '_US' )}+'/sdk.js#xfbml=1&version=v3.3'"></script>
-</th:block>
 <i th:replace="~{fragments/navbar::header(#{contactUs.navlink})}"></i>
 <main role="main">
    <i layout:replace="~{layouts/info::banner(#{contactUs.contactUs}, ${englishUri})}"></i>
 
    <div class="container">
       <div class="row">
-         <div class="col-12 col-md-6 mb-3">
+         <div class="col-12 col-lg-8 mb-3">
             <div layout:insert="~{layouts/info::card}">
                <div layout:fragment="content" th:remove="tag">
                   <th:block th:if="${!#lists.isEmpty(@properties.physicalAddress)}">
@@ -106,14 +102,10 @@
                </div>
             </div>
          </div>
-         <div class="col-12 col-md-6 mb-3">
-            <div th:if="${!#strings.isEmpty( @properties.facebookUrl )}" class="fb-page d-block" th:attr="data-href=${@properties.facebookUrl}" data-tabs="messages" data-width="" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-               <blockquote th:cite="${@properties.facebookUrl}" class="fb-xfbml-parse-ignore">
-                  <a th:href="${@properties.facebookUrl}">
-                     El Puente Hispanic Services Center
-                  </a>
-               </blockquote>
-            </div>
+         <div class="col-12 col-lg-4 mb-3">
+             <th:block th:if="${!#strings.isEmpty( @properties.facebookUrl )}" th:with="isPrimary=true, isLarge=true, fontawesomeClass='fab fa-facebook-messenger'">
+                 <i th:replace="~{fragments/button::action(${'https://m.me/' + @properties.facebookUrl.split('id=')[1]}, #{contactUs.facebookButton})}"></i>
+             </th:block>
          </div>
       </div>
 
