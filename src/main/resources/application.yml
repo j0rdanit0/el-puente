@@ -39,8 +39,7 @@ org:
     gardenTour2021Url: https://secure.givelively.org/event/el-puente-hispanic-services-center/garden-tour-of-searcy-2021
     volunteerFormDownload: ElPuenteVolunteerForm
     cashtag: $ElPuenteSearcy
-    volunteerFormUrl_en: https://forms.gle/Xbez1S4d6gyg7cQB6
-    volunteerFormUrl_es: https://forms.gle/kTxkKQewzYN4kkgq5
+    volunteerFormUrl: https://docs.google.com/forms/d/e/1FAIpQLSdrWVZ2SOqI_-XhiRnQnAh8UVavbdWNmF2Y6YhoS5k2fG8fBg/viewform?usp=pp_url&entry.729729187=AR
     showGivingTuesdayWidgetStart: '2024-10-31'
     showGivingTuesdayWidgetEnd: '2024-12-03'
     google:

@@ -21,8 +21,7 @@
    <i layout:replace="~{layouts/info::banner(#{getInvolved.getInvolved.header},${englishUri})}"></i>
    <p class="container mb-5" th:utext="#{getInvolved.getInvolved.content}"></p>
    <div class="container text-center" th:with="fontawesomeClass='fa-arrow-up-right-from-square', target='_blank'">
-      <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_en}, 'Volunteer Form (English)')}"></i>
-      <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_es}, 'Formulario de Voluntariado (Español)')}"></i>
+      <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl}, 'Volunteer Form (English/Español)')}"></i>
    </div>
 
    <i th:replace="~{fragments/sectionHeader::header(#{getInvolved.donations.header})}"></i>
@@ -90,8 +89,7 @@
    <i th:replace="~{fragments/sectionHeader::header(#{getInvolved.volunteers.header})}"></i>
    <p class="container mb-5" th:utext="#{getInvolved.volunteers.content}"></p>
    <div class="container text-center" th:with="fontawesomeClass='fa-arrow-up-right-from-square', target='_blank'">
-      <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_en}, 'Volunteer Form (English)')}"></i>
-      <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl_es}, 'Formulario de Voluntariado (Español)')}"></i>
+       <i th:replace="~{fragments/button::action(${@properties.volunteerFormUrl}, #{getInvolved.volunteerForm.label} + ' (English/Español)')}"></i>
    </div>
 
    <i th:replace="~{fragments/sectionHeader::header(#{getInvolved.sponsors.header})}"></i>

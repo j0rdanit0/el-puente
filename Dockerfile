@@ -24,7 +24,7 @@ RUN apk update  \
         --no-man-pages  \
         --output /minimal-jre
 
-FROM public.ecr.aws/docker/library/alpine:3.18.4 AS final-build
+FROM public.ecr.aws/docker/library/alpine:latest AS final-build
 
 WORKDIR /el-puente
 COPY --from=jre-build /el-puente/app.jar ./app.jar

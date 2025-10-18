@@ -34,8 +34,7 @@ public class Properties
     private String gardenTour2021Url;
     private String volunteerFormDownload;
     private String cashtag;
-    private String volunteerFormUrl_en;
-    private String volunteerFormUrl_es;
+    private String volunteerFormUrl;
 
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
     private LocalDate showGivingTuesdayWidgetStart;
