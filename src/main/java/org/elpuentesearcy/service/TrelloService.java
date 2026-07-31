@@ -74,7 +74,7 @@ public class TrelloService
     private URI createUri( String path, String... keyValues )
     {
         UriComponentsBuilder builder = UriComponentsBuilder
-          .fromHttpUrl( trelloBaseUrl )
+          .fromUriString( trelloBaseUrl )
           .path( path )
           .queryParam( "key", trelloKey )
           .queryParam( "token", trelloToken );

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head(currentURI)" th:with="prodMode=${#arrays.contains(@environment.getActiveProfiles(),'production')}">
+<head th:fragment="head(currentURI)" th:with="prodMode=${#arrays.contains(environment.getActiveProfiles(),'production')}">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="content-language" th:content="${#locale.language}">
-   <meta th:if="${#arrays.contains(@environment.getActiveProfiles(),'beta')}" name="robots" content="noindex">
+   <meta th:if="${#arrays.contains(environment.getActiveProfiles(),'beta')}" name="robots" content="noindex">
 
-   <th:block th:if="${!#strings.isEmpty(@properties.google.analytics.trackingId)}" th:with="trackingId=${@properties.google.analytics.trackingId}">
+   <th:block th:if="${!#strings.isEmpty(properties.google.analytics.trackingId)}" th:with="trackingId=${properties.google.analytics.trackingId}">
       <script async th:src="'https://www.googletagmanager.com/gtag/js?id='+${trackingId}"></script>
       <script th:inline="javascript">
          /*<![CDATA[*/
@@ -42,10 +42,10 @@
       <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
       <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
       <link rel="manifest" href="/manifest.json">
-      <link rel="canonical" th:href="'https://'+${@properties.domain + currentURI}">
-      <link rel="alternate" th:href="'https://'+${@properties.domain + currentURI}" hreflang="x-default">
+      <link rel="canonical" th:href="'https://'+${properties.domain + currentURI}">
+      <link rel="alternate" th:href="'https://'+${properties.domain + currentURI}" hreflang="x-default">
       <th:block th:each="language:${T(org.elpuentesearcy.configuration.UrlLocaleResolver.ElPuenteLanguage).values()}">
-         <link rel="alternate" th:hreflang="${language.subdomain}" th:href="'https://'+${language.subdomain +'.'+ @properties.domain + currentURI}">
+         <link rel="alternate" th:hreflang="${language.subdomain}" th:href="'https://'+${language.subdomain +'.'+ properties.domain + currentURI}">
       </th:block>
    </th:block>
    <th:block th:unless="${prodMode}">
@@ -64,19 +64,19 @@
    <meta name="theme-color" content="#ffffff">
 
    <meta property="og:type" content="website">
-   <meta property="og:image" th:content="'https://'+${@properties.domain}+'/apple-icon-180x180.png'">
-   <meta property="og:site_name" th:content="${@properties.domain}">
+   <meta property="og:image" th:content="'https://'+${properties.domain}+'/apple-icon-180x180.png'">
+   <meta property="og:site_name" th:content="${properties.domain}">
 <!--   <meta property="fb:app_id" content="">-->
 
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-   <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${@properties.version}__}">
-   <link rel="stylesheet" th:href="@{'/css/common.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/bootstrap-overrides.css?v='+__${properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/common.css?v='+__${properties.version}__}">
 </head>
 <body th:fragment="scripts">
    <script src="/webjars/jquery/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-   <script th:src="@{'/js/common.js?v='+__${@properties.version}__}"></script>
+   <script th:src="@{'/js/common.js?v='+__${properties.version}__}"></script>
 </body>
 </html>
