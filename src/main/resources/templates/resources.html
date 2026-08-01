@@ -39,33 +39,36 @@
 
    <i th:replace="~{fragments/sectionHeader::header(#{resources.services.header})}"></i>
    <div class="container">
-      <i layout:replace="~{layouts/info::cardView}">
-         <div layout:fragment="cards">
-            <a th:each="resourceCard:${services}" th:href="${resourceCard.url}" target="_blank">
-               <div class="pt-2" layout:insert="~{layouts/info::card}" th:with="text=${resourceCard.label}, classes='btn p-0 paper'"></div>
-            </a>
-         </div>
-      </i>
+      <div class="card-columns resource-card-columns">
+         <a th:each="resourceCard:${services}" th:href="${resourceCard.url}" target="_blank" class="resource-card-link">
+            <div th:class="'resource-card paper ' + ${resourceCard.colorClass}">
+               <i th:class="${resourceCard.icon} + ' resource-card-icon'"></i>
+               <span th:text="${resourceCard.label}"></span>
+            </div>
+         </a>
+      </div>
    </div>
    <i th:replace="~{fragments/sectionHeader::header(#{resources.education.header})}"></i>
    <div class="container">
-      <i layout:replace="~{layouts/info::cardView}">
-         <div layout:fragment="cards">
-            <a th:each="resourceCard:${education}" th:href="${resourceCard.url}" target="_blank">
-               <div class="pt-2" layout:insert="~{layouts/info::card}" th:with="text=${resourceCard.label}, classes='btn p-0 paper'"></div>
-            </a>
-         </div>
-      </i>
+      <div class="card-columns resource-card-columns">
+         <a th:each="resourceCard:${education}" th:href="${resourceCard.url}" target="_blank" class="resource-card-link">
+            <div th:class="'resource-card paper ' + ${resourceCard.colorClass}">
+               <i th:class="${resourceCard.icon} + ' resource-card-icon'"></i>
+               <span th:text="${resourceCard.label}"></span>
+            </div>
+         </a>
+      </div>
    </div>
    <i th:replace="~{fragments/sectionHeader::header(#{resources.nonProfits.header})}"></i>
-   <div class="container">
-      <i layout:replace="~{layouts/info::cardView}">
-         <div layout:fragment="cards">
-            <a th:each="resourceCard:${nonProfits}" th:href="${resourceCard.url}" target="_blank">
-               <div class="pt-2" layout:insert="~{layouts/info::card}" th:with="text=${resourceCard.label}, classes='btn p-0 paper'"></div>
-            </a>
-         </div>
-      </i>
+   <div class="container my-4">
+      <div class="card-columns resource-card-columns">
+         <a th:each="resourceCard:${nonProfits}" th:href="${resourceCard.url}" target="_blank" class="resource-card-link">
+            <div th:class="'resource-card paper ' + ${resourceCard.colorClass}">
+               <i th:class="${resourceCard.icon} + ' resource-card-icon'"></i>
+               <span th:text="${resourceCard.label}"></span>
+            </div>
+         </a>
+      </div>
    </div>
 
    <i th:replace="~{fragments/footer::footer(#{resources.navlink})}"></i>
