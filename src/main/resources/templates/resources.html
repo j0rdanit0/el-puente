@@ -60,7 +60,7 @@
       </div>
    </div>
    <i th:replace="~{fragments/sectionHeader::header(#{resources.nonProfits.header})}"></i>
-   <div class="container">
+   <div class="container my-4">
       <div class="card-columns resource-card-columns">
          <a th:each="resourceCard:${nonProfits}" th:href="${resourceCard.url}" target="_blank" class="resource-card-link">
             <div th:class="'resource-card paper ' + ${resourceCard.colorClass}">
