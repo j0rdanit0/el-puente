@@ -51,7 +51,6 @@ org:
       - { name: Jay Simpson, title: { en: President, es: Presidente } }
       - { name: Guillermo Hernandez, title: { en: Vice President, es: Vicepresidente } }
       - { name: Jaclyn Seiders, title: { en: Secretary, es: Sectretaria } }
-      - { name: Mary Kathryn Lochala, title: { en: Treasurer, es: Tesorera } }
       - { name: Tity Abbud, title: { en: } }
       - { name: Maria Bautista, title: { en: } }
       - { name: Karen Hite, title: { en: } }
