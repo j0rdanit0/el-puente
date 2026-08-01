@@ -2,7 +2,7 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@aboutUsController.getUrlBase(#locale.language)}, englishUri=${@aboutUsController.getUrlBase('en')}">
+      th:with="uri=${urls.aboutUs.getUrlBase(#locale.language)}, englishUri=${urls.aboutUs.getUrlBase('en')}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
 
@@ -10,7 +10,7 @@
    <!--<meta property="og:url" content="">-->
    <meta property="og:title" th:content="#{aboutUs.title}">
    <meta property="og:description" th:content="#{aboutUs.aboutUs.content}">
-   <link rel="stylesheet" th:href="@{'/css/aboutUs.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/aboutUs.css?v='+__${properties.version}__}">
 </head>
 <body>
 <i th:replace="~{fragments/navbar::header(#{aboutUs.navlink})}"></i>

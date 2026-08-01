@@ -2,11 +2,11 @@ package org.elpuentesearcy.configuration;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.elpuentesearcy.ElPuenteBoot;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,18 +34,13 @@ public class Properties
     private String gardenTour2021Url;
     private String volunteerFormDownload;
     private String cashtag;
-    private String volunteerFormUrl_en;
-    private String volunteerFormUrl_es;
-    private String hispanicHeritageMonthCelebrationDinnerTicketsUrl;
+    private String volunteerFormUrl;
 
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
     private LocalDate showGivingTuesdayWidgetStart;
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
     private LocalDate showGivingTuesdayWidgetEnd;
     @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
-    private LocalDate showHispanicHeritageMonthCelebrationDinnerStart;
-    @DateTimeFormat( iso = DateTimeFormat.ISO.DATE )
-    private LocalDate showHispanicHeritageMonthCelebrationDinnerEnd;
 
     private Google google;
     private List<Employee> board;
@@ -84,7 +79,11 @@ public class Properties
         {
             this.name = name;
 
-            String imageFileName = ElPuenteBoot.IMAGE_FOLDER + name.toLowerCase().replace( " ", "" );
+            // Normalize the string to NFD (Normalization Form D), which separates
+            // base characters from their diacritical marks (accents).
+            // Remove all combining diacritical marks (accents) using a regex.
+            // \p{M} matches any combining mark.
+            String imageFileName = "/images/" + Normalizer.normalize( name.toLowerCase().replace( " ", "" ), Normalizer.Form.NFD ).replaceAll( "\\p{M}", "" );
             setImage( imageFileName + ".jpg" );
             setSquareImage( imageFileName + "-square.jpg" );
         }
@@ -117,16 +116,11 @@ public class Properties
 
     private String getDownloadsPath( String fileName )
     {
-        return ElPuenteBoot.DOWNLOADS_FOLDER + fileName + ".pdf";
+        return "/downloads/" + fileName + ".pdf";
     }
 
     public boolean isShowGivingTuesdayWidget()
     {
         return LocalDate.now().isAfter( showGivingTuesdayWidgetStart ) && LocalDate.now().isBefore( showGivingTuesdayWidgetEnd );
-    }
-
-    public boolean isShowHispanicHeritageCelebrationDinner()
-    {
-        return LocalDate.now().isAfter( showHispanicHeritageMonthCelebrationDinnerStart ) && LocalDate.now().isBefore( showHispanicHeritageMonthCelebrationDinnerEnd );
     }
 }

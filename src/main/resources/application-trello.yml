@@ -1,6 +1,6 @@
 trello:
   api:
-    baseUrl: https://api.trello.com/1/
+    baseUrl: https://api.trello.com/1
     key: ${TRELLO_API_KEY}
     token: ${TRELLO_API_TOKEN}
   approvalListId: 5d93720df8af5683824ac6bf

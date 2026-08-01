@@ -65,11 +65,11 @@ public class SitemapService
             {
                 if ( language == subdomain )
                 {
-                    alternates.put( urlService.getBaseUrl() + path, Collections.singletonMap( "hreflang", "en" ) );
+                    alternates.put( urlService.getBaseUrl() + path, Map.of( "hreflang", "en" ) );
                 }
                 else
                 {
-                    alternates.put( urlService.getBaseUrl( language ) + path, Collections.singletonMap( "hreflang", language.getSubdomain() ) );
+                    alternates.put( urlService.getBaseUrl( language ) + path, Map.of( "hreflang", language.getSubdomain() ) );
                 }
             }
 
@@ -83,7 +83,7 @@ public class SitemapService
             }
         }
 
-        return slurpFileAndDelete( sitemap.write().get( 0 ) );
+        return slurpFileAndDelete( sitemap.write().getFirst() );
     }
 
     private File getTempFile() throws IOException

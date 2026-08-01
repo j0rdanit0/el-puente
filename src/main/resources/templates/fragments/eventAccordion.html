@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="eventAccordion(show)" th:id="${id}">
+    <div class="card">
+        <div class="card-header" th:id="${id}+'Header'">
+            <h5 class="mb-0">
+                <span th:class="'hoverPointer '+${show && eventStat.first ? '' : 'collapsed'}" data-toggle="collapse" th:attr="data-target='#'+${id}+'Collapse', aria-controls=${id}+'Collapse'" aria-expanded="true">
+                   <i class="fa-solid fa-chevron-right"></i>
+                   <span th:utext="${event.year}"></span>
+                </span>
+            </h5>
+        </div>
+        <div th:id="${id}+'Collapse'" th:class="'collapse'+${show && eventStat.first ? ' show' : ''}" th:attr="aria-labelledby=${id}+'Header', data-parent='#'+${id}">
+            <div class="card-body">
+                <div class="card-columns">
+                    <div class="card" th:each="imagePath:${event.imagePaths}">
+                        <img th:src="@{__${imagePath}__}" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

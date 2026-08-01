@@ -2,10 +2,10 @@
 <html th:lang="${#locale.language}"
       xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@eventsController.getUrlBase(#locale.language)}, englishUri=${@eventsController.getUrlBase('en')}">
+      th:with="uri=${urls.events.getUrlBase(#locale.language)}, englishUri=${urls.events.getUrlBase('en')}">
 <head>
   <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
-  <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${@properties.version}__}">
+  <link rel="stylesheet" th:href="@{'/css/cardColumns.css?v='+__${properties.version}__}">
 
   <title th:text="#{events.title}">Title</title>
   <!--<meta property="og:url" content="">-->
@@ -20,34 +20,14 @@
   <div class="container mb-5">
     <div id="eventsAccordion">
       <div class="card">
-        <div class="card-header bg-primary text-white" id="hispanicHeritageMonthDinnerHeader">
+        <div class="card-header bg-primary text-white" id="fifthAnniversaryDinnerHeader">
           <h2 class="mb-0">
-            <span class="hoverPointer" data-toggle="collapse" data-target="#hispanicHeritageMonthDinnerCollapse" aria-expanded="true" aria-controls="hispanicHeritageMonthDinnerCollapse" th:text="#{events.hispanicHeritageMonthDinner.label}">Hispanic Heritage Month Celebration Dinner</span>
+            <span class="hoverPointer" data-toggle="collapse" data-target="#fifthAnniversaryDinnerCollapse" aria-expanded="true" aria-controls="fifthAnniversaryDinnerCollapse" th:text="#{events.fifthAnniversaryDinner.label}">Fifth Anniversary Dinner</span>
           </h2>
         </div>
-        <div id="hispanicHeritageMonthDinnerCollapse" class="collapse show" aria-labelledby="hispanicHeritageMonthDinnerHeader" data-parent="#eventsAccordion">
-          <th:block th:each="event:${hispanicHeritageMonthDinners}" th:with="id='hispanicHeritageMonthDinner'+${event.year}+'Accordion'">
-            <div th:id="${id}">
-              <div class="card">
-                <div class="card-header" th:id="${id}+'Header'">
-                  <h5 class="mb-0">
-                    <span th:class="'hoverPointer '+${eventStat.last ? '' : 'collapsed'}" data-toggle="collapse" th:attr="data-target='#'+${id}+'Collapse', aria-controls=${id}+'Collapse'" aria-expanded="true">
-                      <i class="fa-solid fa-chevron-right"></i>
-                      <span th:utext="${event.year}"></span>
-                    </span>
-                  </h5>
-                </div>
-                <div th:id="${id}+'Collapse'" th:class="'collapse'+${eventStat.last ? ' show' : ''}" th:attr="aria-labelledby=${id}+'Header', data-parent='#'+${id}">
-                  <div class="card-body">
-                    <div class="card-columns">
-                      <div class="card" th:each="imagePath:${event.imagePaths}">
-                        <img th:src="@{__${imagePath}__}" class="w-100">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div id="fifthAnniversaryDinnerCollapse" class="collapse show" aria-labelledby="fifthAnniversaryDinnerHeader" data-parent="#eventsAccordion">
+          <th:block th:each="event:${fifthAnniversaryDinners}" th:with="id='fifthAnniversaryDinner'+${event.year}+'Accordion'">
+            <div th:replace="~{fragments/eventAccordion::eventAccordion(true)}"></div>
           </th:block>
         </div>
       </div>
@@ -59,27 +39,19 @@
         </div>
         <div id="beatsAndEatsCincoDeMayoCollapse" class="collapse show" aria-labelledby="beatsAndEatsCincoDeMayoHeader" data-parent="#eventsAccordion">
           <th:block th:each="event:${beatsAndEatsCincoDeMayos}" th:with="id='beatsAndEatsCincoDeMayo'+${event.year}+'Accordion'">
-            <div th:id="${id}">
-              <div class="card">
-                <div class="card-header" th:id="${id}+'Header'">
-                  <h5 class="mb-0">
-                    <span class="hoverPointer collapsed" data-toggle="collapse" th:attr="data-target='#'+${id}+'Collapse', aria-controls=${id}+'Collapse'" aria-expanded="true">
-                      <i class="fa-solid fa-chevron-right"></i>
-                      <span th:utext="${event.year}"></span>
-                    </span>
-                  </h5>
-                </div>
-                <div th:id="${id}+'Collapse'" class="collapse" th:attr="aria-labelledby=${id}+'Header', data-parent='#'+${id}">
-                  <div class="card-body">
-                    <div class="card-columns">
-                      <div class="card" th:each="imagePath:${event.imagePaths}">
-                        <img th:src="@{__${imagePath}__}" class="w-100">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div th:replace="~{fragments/eventAccordion::eventAccordion(false)}"></div>
+          </th:block>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header bg-primary text-white" id="hispanicHeritageMonthDinnerHeader">
+          <h2 class="mb-0">
+            <span class="hoverPointer" data-toggle="collapse" data-target="#hispanicHeritageMonthDinnerCollapse" aria-expanded="true" aria-controls="hispanicHeritageMonthDinnerCollapse" th:text="#{events.hispanicHeritageMonthDinner.label}">Hispanic Heritage Month Celebration Dinner</span>
+          </h2>
+        </div>
+        <div id="hispanicHeritageMonthDinnerCollapse" class="collapse show" aria-labelledby="hispanicHeritageMonthDinnerHeader" data-parent="#eventsAccordion">
+          <th:block th:each="event:${hispanicHeritageMonthDinners}" th:with="id='hispanicHeritageMonthDinner'+${event.year}+'Accordion'">
+            <div th:replace="~{fragments/eventAccordion::eventAccordion(false)}"></div>
           </th:block>
         </div>
       </div>

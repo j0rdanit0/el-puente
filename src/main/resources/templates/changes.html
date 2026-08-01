@@ -3,17 +3,17 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:with="uri=${@changesController.getUrlBase(#locale.language)}">
+      th:with="uri=${urls.changes.getUrlBase(#locale.language)}">
 <head>
    <th:block th:insert="~{fragments/includes::head(${uri})}"></th:block>
 
    <title th:text="#{changes.title}">Title</title>
-   <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${@properties.version}__}">
+   <link rel="stylesheet" th:href="@{'/css/changes.css?v='+__${properties.version}__}">
 </head>
 <body>
 <i th:replace="~{fragments/navbar::header(#{changes.navlink})}"></i>
 <main role="main">
-   <i th:replace="~{fragments/sectionHeader::header(#{changes.changes}+' ('+${@properties.version}+')')}"></i>
+   <i th:replace="~{fragments/sectionHeader::header(#{changes.changes}+' ('+${properties.version}+')')}"></i>
 
    <div class="container">
       <th:block th:if="${#lists.isEmpty(trelloCards)}">
@@ -30,23 +30,31 @@
          <blockquote class="trello-card" th:each="trelloCard:${trelloCards}">
             <a th:href="${trelloCard.url}" th:text="${trelloCard.name}"></a>
          </blockquote>
-
-         <div class="text-center m-5">
-            <div id="goLiveButton" class="btn btn-success btn-lg">
+      </th:block>
+      <div class="text-center m-5">
+         <th:block th:if="${readyForApproval}">
+            <div id="declineButton" class="btn btn-outline-danger btn-lg m-2">
+               <i class="fas fa-ban"></i>
+               Decline
+               <div class="spinner-border text-light d-none" role="status">
+                  <span class="sr-only">Loading...</span>
+               </div>
+            </div>
+            <div id="goLiveButton" class="btn btn-success btn-lg m-2">
                <i class="fas fa-cloud"></i>
                Go Live
                <div class="spinner-border text-light d-none" role="status">
                   <span class="sr-only">Loading...</span>
                </div>
             </div>
-         </div>
-      </th:block>
+         </th:block>
+      </div>
    </div>
 
    <i th:replace="~{fragments/footer::footer(#{changes.navlink})}"></i>
 </main>
 
 <!--/*/ <th:block th:insert="~{fragments/includes::scripts}"></th:block> /*/-->
-<script th:src="@{'/js/changes.js?v='+__${@properties.version}__}"></script>
+<script th:src="@{'/js/changes.js?v='+__${properties.version}__}"></script>
 <script src="https://p.trellocdn.com/embed.min.js"></script>
 </body>

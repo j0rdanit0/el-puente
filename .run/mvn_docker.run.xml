@@ -3,7 +3,7 @@
     <deployment type="dockerfile">
       <settings>
         <option name="imageTag" value="public-website" />
-        <option name="containerName" value="el-puente" />
+        <option name="containerName" value="public-website" />
         <option name="portBindings">
           <list>
             <DockerPortBindingImpl>
@@ -12,7 +12,7 @@
             </DockerPortBindingImpl>
           </list>
         </option>
-        <option name="commandLineOptions" value="--env-file .run/env.list" />
+        <option name="commandLineOptions" value="--env-file .run/.env" />
         <option name="sourceFilePath" value="Dockerfile" />
       </settings>
     </deployment>
