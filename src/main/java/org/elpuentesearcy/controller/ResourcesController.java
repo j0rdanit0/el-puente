@@ -71,6 +71,7 @@ public class ResourcesController extends BaseController
 
         SortedSet<ResourceCard> nonProfits = new TreeSet<>();
         nonProfits.add( new ResourceCard( "100 Families", "https://www.restorehopear.org/", "fas fa-home", "card-warm" ) );
+        nonProfits.add( new ResourceCard( "Avanza Arkansas", "https://avanzaarkansas.org", "fas fa-globe-americas", "card-warm" ) );
         nonProfits.add( new ResourceCard( "Child Safety Center of White County", "https://childsafetycenter.org/", "fas fa-child", "card-warm" ) );
         nonProfits.add( new ResourceCard( "Community Action Program for Central Arkansas", "https://www.capcainc.org/", "fas fa-people-carry", "card-warm" ) );
         nonProfits.add( new ResourceCard( "El Centro Hispano, Jonesboro", "https://www.centrohispanoarkansas.com/", "fas fa-globe-americas", "card-warm" ) );
