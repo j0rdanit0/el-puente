@@ -61,4 +61,5 @@ org.elpuentesearcy:
   staff:
     - { name: Ruth Simpson, title: { en: Executive Director, es: Directora Ejecutiva }, abice-certified: true }
     - { name: Corinne Aréchiga, title: { en: Assistant Director, es: Asistente a la Directora }, abice-certified: true }
+    - { name: Angela Stewart, title: { en: Event and Program Coordinator, es: Coordinadora de Eventos y Programas } }
     - { name: Laticia Harris, title: { en: English Teacher, es: Maestra de Inglés } }
