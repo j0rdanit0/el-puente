@@ -90,7 +90,7 @@ public class Properties
 
         public String getLocalTitle( String locale )
         {
-            return getLocalString( locale, title ).replace( " ", "&nbsp;" );
+            return getLocalString( locale, title );
         }
 
         private String getLocalString( String locale, Map<String, String> map )
