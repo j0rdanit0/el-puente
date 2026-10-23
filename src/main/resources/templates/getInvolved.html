@@ -80,7 +80,9 @@
               class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-envelope-open-text', label=#{getInvolved.donations.mail.label}, description=#{getInvolved.donations.mail.content(${'<strong>'+mailingAddress+'</strong>'})}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-monument', label=#{getInvolved.donations.memorial.label}, description=#{getInvolved.donations.memorial.content}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-gift', label=#{getInvolved.donations.wishlist.label}, description=#{getInvolved.donations.wishlist.content},
-              actionButtonURL='https://www.amazon.com/hz/wishlist/ls/1X94OWK2PE4KH?ref_=wl_share', actionButtonText=#{getInvolved.donations.wishlist.button}"></div>
+              actionButtonURL='https://www.amazon.com/hz/wishlist/ls/1ZIPN36PDZ852?ref_=wl_share', actionButtonText=#{getInvolved.donations.wishlist.button}"></div>
+         <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-baby', label=#{getInvolved.donations.babyshowerwishlist.label}, description=#{getInvolved.donations.babyshowerwishlist.content},
+              actionButtonURL='https://www.amazon.com/hz/wishlist/ls/1CPKIJ52NAFIJ?ref_=wl_share', actionButtonText=#{getInvolved.donations.babyshowerwishlist.button}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-file-invoice-dollar', label=#{getInvolved.donations.matchinggifts.label}, description=#{getInvolved.donations.matchinggifts.content}"></div>
          <div class="pt-1" layout:insert="~{layouts/info::card}" th:with="fontawesomeClass='fa-donate', label=#{getInvolved.donations.plannedgiving.label}, description=#{getInvolved.donations.plannedgiving.content}"></div>
       </div>
